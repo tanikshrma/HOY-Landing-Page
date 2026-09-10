@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
-import { ProblemSection } from './components/ProblemSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
 import { ValuePropSection } from './components/ValuePropSection';
-import { BuiltAroundYouSection } from './components/BuiltAroundYouSection';
 import { WardrobeSection } from './components/WardrobeSection';
 import { PersonalStyleSection } from './components/PersonalStyleSection';
-import { ShoppingSection } from './components/ShoppingSection';
-import { LimitedAccessSection } from './components/LimitedAccessSection';
-import { BrandStatementSection } from './components/BrandStatementSection';
 import { FinalCtaSection } from './components/FinalCtaSection';
 import { Footer } from './components/Footer';
 import { StickyMobileCta } from './components/StickyMobileCta';
@@ -46,44 +41,29 @@ export default function App() {
 
       {/* Main Editorial Experience */}
       <main className="grow">
-        {/* Split Hero Section with Visual & Integrated Lead Form Card */}
+        {/* 1. HERO */}
         <HeroSection
           onLeadSuccess={handleLeadSuccess}
           onCtaClick={scrollToLeadForm}
         />
 
-        {/* Problem Section: Getting dressed shouldn't take this much thinking */}
-        <ProblemSection />
-
-        {/* How HOY Works: 3 Large Visual Cards */}
+        {/* 2. HOW HOY WORKS */}
         <HowItWorksSection />
 
-        {/* Value Proposition: 5 Elegant Cards */}
+        {/* 3. MORE THAN OUTFIT IDEAS */}
         <ValuePropSection />
 
-        {/* Built Around You: Interactive connection tags */}
-        <BuiltAroundYouSection />
-
-        {/* Wardrobe Section: Start with what you already own */}
+        {/* 4. START WITH WHAT YOU ALREADY OWN */}
         <WardrobeSection onCtaClick={scrollToLeadForm} />
 
-        {/* Personal Style Section: Full-width editorial image */}
-        <PersonalStyleSection />
+        {/* 5. BECAUSE YOUR STYLE SHOULD LOOK LIKE YOU */}
+        <PersonalStyleSection onCtaClick={scrollToLeadForm} />
 
-        {/* Shopping Section: Discovery with intent */}
-        <ShoppingSection onCtaClick={scrollToLeadForm} />
-
-        {/* Limited Access Section: Core Black background */}
-        <LimitedAccessSection onCtaClick={scrollToLeadForm} />
-
-        {/* Brand Statement: Large typography */}
-        <BrandStatementSection />
-
-        {/* Final CTA Section */}
+        {/* 6. 20 USERS + FINAL CTA */}
         <FinalCtaSection onCtaClick={scrollToLeadForm} />
       </main>
 
-      {/* Footer */}
+      {/* 7. FOOTER */}
       <Footer />
 
       {/* Mobile Sticky CTA */}
