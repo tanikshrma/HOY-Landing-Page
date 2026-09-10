@@ -1,0 +1,7 @@
+{
+  "name": "HOY — House of You",
+  "description": "Hyper-personalised digital personal styling platform for Gen Z & Millennial Indian adults. Your style. Sorted.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

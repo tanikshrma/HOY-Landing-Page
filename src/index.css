@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Montserrat', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-editorial: 'Cinzel', serif;
+  --font-cinzel: 'Cinzel', serif;
+
+  --color-mustard: #AB8850;
+  --color-terracotta: #C07A61;
+  --color-core-black: #1A1A1A;
+  --color-white: #FFFFFF;
+}
+
+:root {
+  font-family: 'Montserrat', sans-serif;
+  color: #1A1A1A;
+  background-color: #FFFFFF;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #AB8850;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8e6f3d;
+}
+
+/* Smooth focus styles without neon */
+input:focus, button:focus {
+  outline: none;
+}
