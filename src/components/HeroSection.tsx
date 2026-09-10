@@ -3,6 +3,7 @@ import { ArrowRight, Crown, Users, UserCheck } from 'lucide-react';
 import { IMAGES } from '../assets/images';
 import { LeadFormCard } from './LeadFormCard';
 import { LeadFormData } from '../types';
+import { useSlots } from '../context/SlotsContext';
 
 interface HeroSectionProps {
   onLeadSuccess: (data: LeadFormData) => void;
@@ -13,6 +14,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onLeadSuccess,
   onCtaClick,
 }) => {
+  const { slots } = useSlots();
+
   return (
     <section className="relative overflow-hidden bg-white pt-6 sm:pt-10 lg:pt-12 pb-16 lg:pb-24 border-b border-[#1A1A1A]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -32,7 +35,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               {/* Main Headline */}
               <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] tracking-tight leading-[0.95] sm:leading-[0.93] uppercase">
                 <span className="text-[#1A1A1A] block">YOUR STYLE.</span>
-                <span className="text-[#AB8850] block mt-1">SORTED.</span>
+                <span className="text-[#C07A61] block mt-1">SORTED.</span>
               </h1>
 
               {/* Supporting Headline */}
@@ -42,7 +45,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* Body Copy */}
               <p className="mt-3 sm:mt-4 font-montserrat text-xs sm:text-sm md:text-base text-[#1A1A1A]/75 leading-relaxed font-normal">
-                Your body. Your wardrobe. Your occasion. Your style. HOY brings it together into effortless, head-to-toe looks made for you.
+                Your wardrobe. Your style. Your plans. HOY brings them together to help you put together complete looks that actually feel like you.
+              </p>
+              
+              <p className="mt-2 font-montserrat font-medium text-xs sm:text-sm text-[#AB8850]">
+                Personal styling, built around your real wardrobe.
               </p>
 
               {/* Desktop Actions (Rendered inside Left Column for desktop) */}
@@ -53,19 +60,19 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     onClick={onCtaClick}
                     className="px-7 py-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#AB8850] text-white font-montserrat font-bold text-xs tracking-[0.18em] uppercase transition-all duration-300 shadow-xs cursor-pointer active:scale-[0.99] text-center"
                   >
-                    GET MY ACCESS
+                    {slots.isSoldOut ? 'VIEW ACCESS PROFILE' : 'GET MY ACCESS'}
                   </button>
 
                   <div className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#AB8850]/10 border border-[#AB8850]/35 text-[#1A1A1A]">
                     <Users className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
                     <span className="font-montserrat font-bold text-[10px] tracking-[0.14em] uppercase text-[#1A1A1A] whitespace-nowrap">
-                      FIRST 20 USERS EACH DAY
+                      {slots.isSoldOut ? 'SOLD OUT FOR TODAY' : `${slots.remainingSlots} SLOTS LEFT TODAY`}
                     </span>
                   </div>
                 </div>
 
                 <p className="font-montserrat text-xs text-[#1A1A1A]/50 tracking-wide font-medium pl-1">
-                  Limited daily access.
+                  {slots.bookedCount} / {slots.maxCapacity} passes claimed today.
                 </p>
 
                 {/* Subtle Editorial Marker */}
@@ -98,23 +105,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   </span>
                 </div>
 
-                {/* Overlay 2 & 3: PERSONALIZED FOR YOU + YOUR WARDROBE + NEW DISCOVERY */}
+                {/* Overlay 2 & 3: PERSONALISED FOR YOU + Your wardrobe + what you need */}
                 <div className="absolute bottom-4 left-4 right-4 z-10">
                   <div className="p-3 sm:p-3.5 rounded-xl bg-white/95 backdrop-blur-md border border-white/60 shadow-xs text-[#1A1A1A]">
                     <div className="flex items-center justify-between text-[10px] font-montserrat font-bold tracking-[0.16em] uppercase">
-                      <span className="text-[#1A1A1A]">PERSONALIZED FOR YOU</span>
+                      <span className="text-[#1A1A1A]">PERSONALISED FOR YOU</span>
                       <UserCheck className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
                     </div>
                     <p className="font-montserrat text-xs text-[#1A1A1A]/80 font-medium mt-1">
-                      Your wardrobe + new discovery
+                      Your wardrobe + what you need
                     </p>
                   </div>
                 </div>
               </div>
 
               {/* Editorial Caption Underneath */}
-              <p className="mt-2.5 text-center font-montserrat text-[11px] sm:text-xs text-[#1A1A1A]/60 leading-normal font-normal">
-                Personalised curation built around your real wardrobe context.
+              <p className="mt-2.5 text-center font-montserrat text-[11px] sm:text-xs text-[#1A1A1A]/60 leading-normal font-normal max-w-xs mx-auto">
+                Get outfit suggestions based on what you own, what you like, where you're going and what you're dressing for.
               </p>
             </div>
           </div>
@@ -125,11 +132,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="flex items-center gap-2">
                 <Users className="w-3.5 h-3.5 text-[#AB8850] shrink-0" strokeWidth={2} />
                 <span className="font-montserrat font-bold text-[10px] sm:text-[11px] tracking-[0.16em] uppercase text-[#1A1A1A]">
-                  FIRST 20 USERS EACH DAY
+                  20 PASSES DAILY
                 </span>
               </div>
-              <span className="font-cinzel text-[10px] text-[#AB8850] font-bold tracking-wider uppercase">
-                6 SLOTS LEFT
+              <span className={`font-cinzel text-[10px] font-bold tracking-wider uppercase ${
+                slots.isSoldOut ? 'text-[#C07A61]' : 'text-[#AB8850]'
+              }`}>
+                {slots.isSoldOut ? 'SOLD OUT' : `${slots.remainingSlots} SLOTS LEFT`}
               </span>
             </div>
           </div>

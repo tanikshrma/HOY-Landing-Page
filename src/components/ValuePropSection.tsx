@@ -5,43 +5,43 @@ export const ValuePropSection: React.FC = () => {
   const cards = [
     {
       id: '01',
-      title: 'EFFORTLESS CURATION',
-      body: 'Complete, tailored outfits ready in seconds.',
+      title: 'PERSONAL STYLING',
+      body: 'Get complete outfit ideas based on you, not generic trends.',
       icon: UserCheck,
       editorialNum: 'I',
     },
     {
       id: '02',
-      title: 'HYPER-PERSONALISED FIT',
-      body: 'Styling based on your body shape and skin tone.',
+      title: 'BUILT AROUND YOU',
+      body: 'Your style, preferences, occasion and wardrobe shape every suggestion.',
       icon: Ruler,
       editorialNum: 'II',
     },
     {
       id: '03',
       title: 'YOUR WARDROBE, BETTER',
-      body: 'Mix, match and rewear what you already own.',
+      body: 'Mix, match and rewear pieces you already own in new ways.',
       icon: Shirt,
       editorialNum: 'III',
     },
     {
       id: '04',
-      title: 'FRESH DISCOVERIES',
-      body: 'Discover new pieces only when they add value.',
+      title: 'SMARTER DISCOVERY',
+      body: 'Find new pieces that work with what you already have.',
       icon: ShoppingBag,
       editorialNum: 'IV',
     },
     {
       id: '05',
-      title: 'HUMAN-CENTRIC GUIDANCE',
-      body: 'Useful advice that feels personal, not automated.',
+      title: 'MADE FOR INDIA',
+      body: 'Style that understands both your Western and Indian wardrobe.',
       icon: MessageSquare,
       editorialNum: 'V',
     },
   ];
 
   return (
-    <section id="why-hoy" className="py-12 sm:py-16 lg:py-20 bg-[#FFFFFF] border-b border-[#1A1A1A]/10">
+    <section id="why-hoy" className="py-12 sm:py-16 lg:py-20 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-3xl mb-8 sm:mb-10 lg:mb-12">
@@ -54,8 +54,11 @@ export const ValuePropSection: React.FC = () => {
           <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#1A1A1A] uppercase">
             MORE THAN OUTFIT IDEAS.
           </h2>
-          <p className="mt-2.5 sm:mt-3 font-montserrat font-medium text-sm sm:text-base text-[#1A1A1A]/85 max-w-2xl leading-relaxed">
-            Not everyone's style needs the same answer. Getting dressed shouldn't take this much thinking.
+          <p className="mt-2.5 sm:mt-3 font-montserrat font-semibold text-sm sm:text-base text-[#1A1A1A] max-w-2xl leading-snug">
+            You already have clothes. The hard part is knowing what to wear.
+          </p>
+          <p className="mt-2 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 max-w-2xl leading-relaxed font-normal">
+            HOY helps you make better use of your wardrobe, discover combinations you may not have thought of and find something new only when you actually need it.
           </p>
         </div>
 

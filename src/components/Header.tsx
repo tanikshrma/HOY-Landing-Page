@@ -25,7 +25,15 @@ export const Header: React.FC<HeaderProps> = ({ onGetAccessClick }) => {
   const handleNavClick = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const header = document.getElementById('main-header');
+      const headerHeight = header ? header.getBoundingClientRect().height : 75;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = Math.max(0, elementPosition - headerHeight - 12);
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
     }
   };
 

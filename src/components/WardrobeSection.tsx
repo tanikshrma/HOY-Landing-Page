@@ -8,7 +8,7 @@ interface WardrobeSectionProps {
 
 export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) => {
   return (
-    <section id="your-wardrobe" className="py-12 sm:py-16 lg:py-20 bg-[#FFFFFF] border-b border-[#1A1A1A]/10">
+    <section id="your-wardrobe" className="py-12 sm:py-16 lg:py-20 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 items-center">
           
@@ -52,23 +52,27 @@ export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) 
             <div className="inline-flex items-center gap-2 mb-2 sm:mb-3">
               <RotateCcw className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
               <span className="font-montserrat font-semibold text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[#1A1A1A]/70">
-                WARDROBE STYLING
+                MORE WAYS TO WEAR
               </span>
             </div>
 
             {/* Headline */}
             <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#1A1A1A] uppercase leading-tight">
-              START WITH WHAT YOU ALREADY OWN.
+              ONE PIECE. MORE POSSIBILITIES.
             </h2>
 
-            {/* Main Lead Copy */}
-            <p className="mt-3 sm:mt-4 font-montserrat font-semibold text-base sm:text-lg text-[#C07A61] leading-snug">
-              Your wardrobe doesn't need more clothes. It needs more possibilities.
+            {/* Sub-headline with highlight */}
+            <p className="mt-3 sm:mt-4 font-montserrat font-extrabold text-base sm:text-lg text-[#C07A61] leading-snug uppercase">
+              MAKE MORE OF WHAT YOU OWN.
             </p>
 
             {/* Supporting Text */}
-            <p className="mt-2 sm:mt-3 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 leading-relaxed font-normal">
-              HOY helps you mix, match and rewear what you already own, while discovering new pieces when they genuinely add value.
+            <p className="mt-2.5 sm:mt-3 font-montserrat font-medium text-xs sm:text-sm text-[#1A1A1A]">
+              That shirt you've worn a hundred times? It might have more looks in it.
+            </p>
+
+            <p className="mt-1.5 sm:mt-2 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 leading-relaxed font-normal">
+              HOY helps you discover new ways to mix, match and rewear the clothes already sitting in your wardrobe.
             </p>
 
             {/* Single CTA */}

@@ -7,34 +7,34 @@ export const HowItWorksSection: React.FC = () => {
     {
       number: '01',
       title: 'UPLOAD',
-      description: 'Start with your style, body and wardrobe.',
+      description: 'Add photos of the clothes you already own and build your digital wardrobe.',
       image: IMAGES.wardrobeRack,
-      alt: 'Digital wardrobe upload and personal styling foundation',
-      tag: 'YOUR FOUNDATION',
+      alt: 'Add photos of clothes you own for digital wardrobe styling',
+      tag: 'YOUR WARDROBE',
       icon: Upload,
     },
     {
       number: '02',
       title: 'PERSONALISE',
-      description: "Tell us your preferences, body context and what you're dressing for.",
+      description: "Tell us about your style, preferences, occasion and what you're looking for.",
       image: IMAGES.wardrobeDetail,
-      alt: 'Personalised styling preferences with custom fabric context',
-      tag: 'YOUR CONTEXT',
+      alt: 'Personalise style preferences, occasion and fashion recommendations',
+      tag: 'YOUR STYLE',
       icon: SlidersHorizontal,
     },
     {
       number: '03',
-      title: 'GENERATE',
-      description: 'Get complete looks curated around you.',
+      title: 'STYLE',
+      description: 'Get complete outfit suggestions built around your wardrobe, occasion, weather and personal preferences.',
       image: IMAGES.outfitStyled,
-      alt: 'Head-to-toe outfit recommendations generated for you',
+      alt: 'Complete head-to-toe outfit suggestions generated for your wardrobe',
       tag: 'YOUR LOOK',
       icon: Layers,
     },
   ];
 
   return (
-    <section id="how-it-works" className="py-12 sm:py-16 lg:py-20 bg-[#FFFFFF] border-b border-[#1A1A1A]/10">
+    <section id="how-it-works" className="py-12 sm:py-16 lg:py-20 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 lg:mb-12 gap-3">

@@ -26,18 +26,22 @@ export const PersonalStyleSection: React.FC<PersonalStyleSectionProps> = ({ onCt
           <div className="inline-flex items-center gap-2 mb-3">
             <BadgeCheck className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
             <span className="font-montserrat font-semibold text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[#AB8850]">
-              AUTHENTIC IDENTITY
+              INDIAN STYLE. YOUR WAY.
             </span>
           </div>
 
           {/* Headline */}
           <h2 className="font-montserrat font-bold text-2xl sm:text-4xl lg:text-5xl tracking-tight text-white uppercase leading-[1.08]">
-            BECAUSE YOUR STYLE SHOULD LOOK LIKE YOU.
+            BECAUSE YOUR STYLE DOESN'T FIT INTO ONE CATEGORY.
           </h2>
 
           {/* Supporting text */}
-          <p className="mt-4 sm:mt-5 font-montserrat text-sm sm:text-lg text-white/80 font-normal leading-relaxed max-w-2xl">
-            HOY starts with your personal style, wardrobe and occasion, then helps you discover new pieces only when they genuinely add value.
+          <p className="mt-3.5 sm:mt-4 font-montserrat font-semibold text-xs sm:text-sm text-[#C07A61] tracking-wide uppercase">
+            A kurta for one day. Jeans and a shirt for another. A saree, a dress, a co-ord or whatever feels right.
+          </p>
+
+          <p className="mt-2 sm:mt-3 font-montserrat text-xs sm:text-base text-white/80 font-normal leading-relaxed max-w-2xl">
+            HOY brings your wardrobe and your real-life occasions together, so personal styling works for the way you actually dress.
           </p>
 
           {/* CTA */}

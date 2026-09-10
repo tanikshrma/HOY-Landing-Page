@@ -13,12 +13,12 @@ export const Footer: React.FC = () => {
           <div className="space-y-2.5">
             <HoyLogo variant="white" showSubtitle={false} className="h-10 sm:h-12" />
             
-            <p className="font-montserrat text-[11px] text-[#AB8850] tracking-[0.2em] uppercase font-semibold">
+            <p className="font-montserrat text-[11px] text-[#AB8850] tracking-[0.2em] uppercase font-bold">
               PERSONAL STYLING PLATFORM
             </p>
 
-            <p className="font-montserrat text-xs text-white/60 leading-relaxed max-w-md">
-              Hyper-personalised digital styling platform for Indian men and women. Head-to-toe outfit recommendations tailored to your body, wardrobe, and occasions.
+            <p className="font-montserrat text-xs text-white/70 leading-relaxed max-w-md">
+              Your personal stylist in your hand. Build your digital wardrobe, get personalised outfit suggestions and discover what to wear based on your style, wardrobe and occasion.
             </p>
           </div>
 
@@ -51,9 +51,15 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright line */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs font-montserrat text-white/40">
           <p>&copy; {currentYear} HOY (House of You). All rights reserved.</p>
-          <p className="tracking-widest uppercase text-[#AB8850] font-semibold text-[11px]">
-            YOUR STYLE. SORTED.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="tracking-widest uppercase text-[#AB8850] font-semibold text-[11px]">
+              YOUR STYLE. SORTED.
+            </p>
+            <span className="text-white/20">&bull;</span>
+            <a href="#hero-lead-form" className="tracking-widest uppercase text-white/70 hover:text-white font-bold text-[11px]">
+              GET STARTED
+            </a>
+          </div>
         </div>
       </div>
     </footer>

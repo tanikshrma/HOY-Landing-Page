@@ -1,11 +1,14 @@
 import React from 'react';
 import { ArrowRight, Users } from 'lucide-react';
+import { useSlots } from '../context/SlotsContext';
 
 interface StickyMobileCtaProps {
   onCtaClick: () => void;
 }
 
 export const StickyMobileCta: React.FC<StickyMobileCtaProps> = ({ onCtaClick }) => {
+  const { slots } = useSlots();
+
   return (
     <div
       id="sticky-mobile-cta"
@@ -13,14 +16,14 @@ export const StickyMobileCta: React.FC<StickyMobileCtaProps> = ({ onCtaClick }) 
     >
       <div className="flex items-center justify-between gap-3 max-w-md mx-auto">
         <div className="flex flex-col justify-center min-w-0">
-          <div className="flex items-center gap-1.5 text-[#AB8850]">
+          <div className={`flex items-center gap-1.5 ${slots.isSoldOut ? 'text-[#C07A61]' : 'text-[#AB8850]'}`}>
             <Users className="w-3.5 h-3.5 shrink-0" strokeWidth={2} />
             <span className="font-montserrat font-bold text-[10px] tracking-[0.14em] uppercase truncate">
-              20 SLOTS DAILY
+              {slots.isSoldOut ? 'SOLD OUT TODAY' : `${slots.remainingSlots} SLOTS LEFT`}
             </span>
           </div>
           <span className="font-montserrat text-[11px] text-[#1A1A1A]/70 font-medium truncate">
-            Complimentary private intake
+            {slots.isSoldOut ? '20/20 Passes Claimed' : '20 Passes Daily Limit'}
           </span>
         </div>
 
@@ -29,7 +32,7 @@ export const StickyMobileCta: React.FC<StickyMobileCtaProps> = ({ onCtaClick }) 
           onClick={onCtaClick}
           className="px-5 py-2.5 rounded-full bg-[#1A1A1A] active:bg-[#AB8850] text-white font-montserrat font-bold text-xs tracking-[0.16em] uppercase transition-all duration-200 flex items-center gap-1.5 shrink-0 cursor-pointer shadow-sm active:scale-95 whitespace-nowrap"
         >
-          <span>GET ACCESS</span>
+          <span>{slots.isSoldOut ? 'VIEW FORM' : 'GET ACCESS'}</span>
           <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>
