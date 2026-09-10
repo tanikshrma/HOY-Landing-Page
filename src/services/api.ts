@@ -54,10 +54,16 @@ export async function submitBooking(data: LeadFormData): Promise<BookingResponse
     body: JSON.stringify(data),
   });
 
-  const responseData = await res.json();
+  const contentType = res.headers.get('content-type');
+  const isJson = contentType && contentType.includes('application/json');
+  const responseData = isJson ? await res.json() : await res.text();
 
   if (!res.ok) {
-    throw new Error(responseData.message || 'Failed to submit booking');
+    throw new Error(
+      (typeof responseData === 'object' && responseData.message) 
+        ? responseData.message 
+        : `Failed to submit booking: ${res.statusText}`
+    );
   }
 
   return responseData as BookingResponse;
