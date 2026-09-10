@@ -55,10 +55,6 @@ export const Footer: React.FC = () => {
             <p className="tracking-widest uppercase text-[#AB8850] font-semibold text-[11px]">
               YOUR STYLE. SORTED.
             </p>
-            <span className="text-white/20">&bull;</span>
-            <a href="#hero-lead-form" className="tracking-widest uppercase text-white/70 hover:text-white font-bold text-[11px]">
-              GET STARTED
-            </a>
           </div>
         </div>
       </div>

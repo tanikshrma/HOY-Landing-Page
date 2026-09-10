@@ -219,7 +219,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
             EXCLUSIVE ACCESS
           </span>
         </div>
-        <span className="font-montserrat text-[11px] font-bold tracking-[0.08em] uppercase px-2.5 py-0.5 rounded-full bg-[#AB8850]/15 text-[#AB8850] border border-[#AB8850]/30">
+        <span className="font-montserrat text-[11px] font-bold tracking-[0.08em] uppercase text-[#AB8850]">
           LIMITED
         </span>
       </div>

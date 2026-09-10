@@ -68,7 +68,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onCtaClick }) 
         </p>
 
         <p className="mt-2 font-montserrat text-xs text-[#1A1A1A]/60 font-normal max-w-lg mx-auto">
-          <strong className="text-[#AB8850] uppercase tracking-wider">GET STARTED &bull; </strong> Access HOY and be among the first to experience personal styling built around your own wardrobe.
+          Access HOY and be among the first to experience personal styling built around your own wardrobe.
         </p>
 
         {/* CTA Button */}
@@ -78,16 +78,9 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onCtaClick }) 
             onClick={onCtaClick}
             className="w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-[#1A1A1A] hover:bg-[#AB8850] text-white font-montserrat font-bold text-xs sm:text-sm tracking-[0.18em] uppercase transition-all duration-300 shadow-sm inline-flex items-center justify-center gap-2.5 cursor-pointer active:scale-98"
           >
-            <span>{slots.isSoldOut ? 'CHECK ACCESS FORM' : 'GET MY ACCESS'}</span>
+            <span>{slots.isSoldOut ? 'CHECK ACCESS FORM' : 'GET STARTED'}</span>
             <ArrowRight className="w-4 h-4" />
           </button>
-        </div>
-
-        {/* Closing Signature */}
-        <div className="mt-8 sm:mt-10 pt-6 sm:pt-7 border-t border-[#1A1A1A]/10">
-          <p className="font-montserrat font-extrabold text-xs sm:text-sm tracking-[0.24em] uppercase text-[#AB8850]">
-            YOUR STYLE. SORTED.
-          </p>
         </div>
 
       </div>
