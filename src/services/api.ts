@@ -59,11 +59,20 @@ export async function submitBooking(data: LeadFormData): Promise<BookingResponse
   const responseData = isJson ? await res.json() : await res.text();
 
   if (!res.ok) {
-    throw new Error(
-      (typeof responseData === 'object' && responseData.message) 
-        ? responseData.message 
-        : `Failed to submit booking: ${res.statusText}`
-    );
+    console.error('API Error Response:', { status: res.status, data: responseData });
+    
+    let errorMessage = 'Failed to submit booking';
+    
+    if (typeof responseData === 'object' && responseData !== null && 'message' in responseData) {
+        errorMessage = (responseData as any).message;
+    } else if (typeof responseData === 'string' && responseData.length < 100) {
+        // If it's a short string, use it
+        errorMessage = responseData;
+    } else {
+        errorMessage = `${errorMessage}: ${res.statusText}`;
+    }
+    
+    throw new Error(errorMessage);
   }
 
   return responseData as BookingResponse;
