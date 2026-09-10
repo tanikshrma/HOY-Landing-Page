@@ -5,7 +5,7 @@ export const Footer: React.FC = () => {
   const currentYear = 2026;
 
   return (
-    <footer id="main-footer" className="bg-[#1A1A1A] text-white pt-10 sm:pt-12 pb-24 md:pb-16 border-t border-white/10">
+    <footer id="main-footer" className="bg-[#1A1A1A] text-white pt-10 sm:pt-12 pb-16 md:pb-10 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 sm:pb-10 border-b border-white/10">
           
@@ -52,9 +52,6 @@ export const Footer: React.FC = () => {
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs font-montserrat text-white/40">
           <p>&copy; {currentYear} HOY (House of You). All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <p className="tracking-widest uppercase text-[#AB8850] font-semibold text-[11px]">
-              YOUR STYLE. SORTED.
-            </p>
           </div>
         </div>
       </div>
