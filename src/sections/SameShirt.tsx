@@ -18,9 +18,9 @@ const LOOKS: { image: PhotoKey; where: string; how: string; alt: string }[] = [
   },
   {
     image: 'look-festive',
-    where: 'Family dinner',
-    how: 'Tucked into a block-print skirt, juttis.',
-    alt: 'The same striped shirt tucked into a teal block-print midi skirt with embroidered juttis',
+    where: 'Wedding, evening',
+    how: 'Worn as the blouse, saree draped over it.',
+    alt: 'The same striped shirt worn as a blouse under a draped teal silk saree with juttis',
   },
 ];
 

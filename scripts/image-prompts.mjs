@@ -31,7 +31,11 @@ const NEGATIVE =
   'Avoid: white or European subjects, American or European interiors, run-down or peeling rooms, ' +
   'dim muddy lighting, distressed or unhappy expressions, colour-coordinated matching outfits, ' +
   'wide toothy grins, posed catalogue stances, empty beige studio backdrops, glossy retouched skin, ' +
-  'teal-and-orange grading, visible text or logos, stock-photo energy.';
+  'teal-and-orange grading, visible text or logos, stock-photo energy. ' +
+  // Naming a film stock above sometimes makes the model draw the film rebate
+  // itself, complete with "KODAK PORTRA 400" printed along the edge.
+  'Do not draw a film border, film rebate, sprocket holes, frame edge, brand markings or ' +
+  'any printed text anywhere in the image. Full bleed photograph only.';
 
 /** @type {{key:string, aspect:string, prompt:string}[]} */
 export const PROMPTS = [
@@ -107,8 +111,8 @@ export const PROMPTS = [
       'blue-and-white fine-striped cotton shirt laid in the centre, with three different sets of ' +
       'things it could be worn with arranged loosely around it — charcoal high-waisted wide-leg ' +
       'trousers with pointed tan leather loafers; straight-leg mid-blue jeans with off-white canvas ' +
-      'sneakers; and a deep teal block-print silk midi skirt with tan embroidered juttis and a pair ' +
-      'of gold jhumka earrings. Everything is worn-in rather than brand new. Bright soft daylight ' +
+      'sneakers; and a folded deep teal silk saree with a fine gold zari border, with tan embroidered ' +
+      'juttis, a slim tan belt and a pair of gold jhumka earrings. Everything is worn-in rather than brand new. Bright soft daylight ' +
       'from the left. Shot from directly overhead, 35mm lens, arrangement slightly off-centre. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
@@ -139,8 +143,11 @@ export const PROMPTS = [
       'pointed tan leather loafers.\n' +
       'CENTRE: the very same shirt unbuttoned, hanging open and untucked over a plain white ribbed ' +
       'tank, sleeves rolled to the elbow, straight-leg mid-blue jeans, off-white canvas sneakers.\n' +
-      'RIGHT: the very same shirt buttoned and tucked into a deep teal block-print silk midi skirt, ' +
-      'tan embroidered juttis, gold jhumka earrings.\n\n' +
+      'RIGHT: the very same shirt worn as the blouse under a saree — slim-fit shirt tucked into the ' +
+      'petticoat, a deep teal silk saree with a fine gold zari border draped over it, pleats falling ' +
+      'clean, the pallu left loose over the left shoulder rather than pinned flat against the collar, ' +
+      'a slim tan belt over the shirt at the waist to define the drape, tan embroidered juttis and ' +
+      'gold jhumka earrings.\n\n' +
       'Indian woman, late twenties, South Asian features, brown skin, long dark hair loose, minimal ' +
       'natural makeup, same calm half-smile and relaxed stance in each. ' +
       `${CRAFT} Avoid: three different shirts, varying stripe widths, different walls or lighting ` +

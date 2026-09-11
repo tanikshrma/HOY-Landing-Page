@@ -5,7 +5,6 @@ import { Header } from './components/Header';
 import { StickyCta } from './components/StickyCta';
 import { SuccessModal } from './components/SuccessModal';
 import { Hero } from './sections/Hero';
-import { Stats } from './sections/Stats';
 import { Problem } from './sections/Problem';
 import { HowItWorks } from './sections/HowItWorks';
 import { Measurements } from './sections/Measurements';
@@ -69,7 +68,6 @@ export default function App() {
 
       <main>
         <Hero onSuccess={handleSuccess} />
-        <Stats />
         <Problem />
         <HowItWorks />
         <Measurements />
