@@ -8,7 +8,7 @@ import { Hero } from './sections/Hero';
 import { Problem } from './sections/Problem';
 import { HowItWorks } from './sections/HowItWorks';
 import { Measurements } from './sections/Measurements';
-import { SameShirt } from './sections/SameShirt';
+import { Looks } from './sections/Looks';
 import { WhatYouGet } from './sections/WhatYouGet';
 import { PhotoBand } from './sections/PhotoBand';
 import { MadeForIndia } from './sections/MadeForIndia';
@@ -71,7 +71,7 @@ export default function App() {
         <Problem />
         <HowItWorks />
         <Measurements />
-        <SameShirt onCta={scrollToForm} />
+        <Looks onCta={scrollToForm} />
         <WhatYouGet />
         <PhotoBand
           name="band-rail"

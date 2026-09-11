@@ -7,57 +7,46 @@ const LOOKS: { image: PhotoKey; where: string; how: string; alt: string }[] = [
   {
     image: 'look-office',
     where: 'Monday, office',
-    how: 'Tucked into wide-leg trousers, tan loafers.',
-    alt: 'The striped shirt tucked into charcoal wide-leg trousers with tan loafers',
+    how: 'Cream blazer, brown wide-legs, loafer mules.',
+    alt: 'A cream blazer over a white tee with dark brown wide-leg trousers, cream loafer mules and a tan tote',
   },
   {
     image: 'look-weekend',
-    where: 'Saturday, out',
-    how: 'Open over a tank, sleeves rolled, jeans.',
-    alt: 'The same striped shirt worn open over a white tank top with straight-leg jeans',
+    where: 'Saturday night',
+    how: 'Cropped denim, mini skirt, knee boots.',
+    alt: 'A black cropped denim jacket over a white top with a black mini skirt and tall black knee boots',
   },
   {
     image: 'look-festive',
-    where: 'Wedding, evening',
-    how: 'Tucked into a sharara, dupatta over one shoulder.',
-    alt: 'The same striped shirt tucked into a teal silk sharara with a gold dupatta and juttis',
+    where: 'The wedding',
+    how: 'Embroidered kurta, gold sharara, dupatta.',
+    alt: 'A dusty rose embroidered kurta with a gold tissue sharara and a matching organza dupatta',
   },
 ];
 
 /**
- * One garment, three occasions — the same shirt, the same person, shot against
- * the same wall. This is the clearest single proof of what the service does,
- * so it gets full-height photography and almost no prose.
+ * Three occasions out of one wardrobe.
+ *
+ * This was "one shirt, three ways" until the client supplied reference looks
+ * that share no garment — a blazer and trousers, a jacket and a mini skirt,
+ * and a full sharara suit. The single-garment headline could not survive
+ * that, so the claim is now about the wardrobe rather than the shirt. Keep
+ * the two in step: if the photographs ever go back to sharing a piece, the
+ * stronger single-garment claim can come back with them.
  */
-export function SameShirt({ onCta }: { onCta: () => void }) {
+export function Looks({ onCta }: { onCta: () => void }) {
   return (
     <section className="border-b border-line bg-paper-2/50">
       <div className="container-page py-16 sm:py-20 lg:py-24">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow">One shirt, three places</p>
+          <p className="eyebrow">One wardrobe, three occasions</p>
           <h2 className="mt-4 text-[1.75rem] leading-tight font-semibold sm:text-4xl">
-            This is the same shirt in all three photographs.
+            Monday, Saturday night, and the wedding.
           </h2>
           <p className="mt-5 text-[1.0625rem] leading-relaxed text-ink-70">
-            Not three shirts that look alike. One shirt you already own, put to work three
-            different ways.
+            Three outfits with nothing in common except the cupboard they came out of.
+            Nothing here was bought for the occasion.
           </p>
-        </Reveal>
-
-        <Reveal delay={80} className="mt-10 sm:mt-12">
-          <figure>
-            <div className="overflow-hidden rounded-2xl bg-paper">
-              <Photo
-                name="rewear"
-                alt="The striped shirt laid out with three sets of trousers, shoes and layers it works with"
-                sizes="(min-width: 1024px) 80vw, 100vw"
-                className="aspect-4/3 w-full object-cover sm:aspect-16/9"
-              />
-            </div>
-            <figcaption className="mt-3 text-[0.8125rem] text-ink-50">
-              The shirt, and the three sets of things it goes with.
-            </figcaption>
-          </figure>
         </Reveal>
 
         <ul className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-3 sm:gap-7 lg:gap-8">
@@ -85,11 +74,27 @@ export function SameShirt({ onCta }: { onCta: () => void }) {
           ))}
         </ul>
 
-        <Reveal delay={200} className="mt-14 flex justify-center sm:mt-16">
+        <Reveal delay={160} className="mt-12 sm:mt-14">
+          <figure>
+            <div className="overflow-hidden rounded-2xl bg-paper">
+              <Photo
+                name="wardrobe-spread"
+                alt="All the pieces from the three outfits laid out together on a bed"
+                sizes="(min-width: 1024px) 80vw, 100vw"
+                className="aspect-4/3 w-full object-cover sm:aspect-16/9"
+              />
+            </div>
+            <figcaption className="mt-3 text-[0.8125rem] text-ink-50">
+              Every piece above, out of one cupboard.
+            </figcaption>
+          </figure>
+        </Reveal>
+
+        <Reveal delay={200} className="mt-12 flex justify-center sm:mt-14">
           <button
             type="button"
             onClick={() => {
-              track('cta_click', { location: 'same-shirt' });
+              track('cta_click', { location: 'looks' });
               onCta();
             }}
             className="group inline-flex items-center gap-2 rounded-full border border-ink px-7 py-3.5

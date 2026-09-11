@@ -100,33 +100,34 @@ export const PROMPTS = [
   },
   {
     /*
-     * Must match the three look-* photographs exactly: same striped shirt,
-     * and the same three sets of things it is worn with. A flat lay showing
-     * different garments makes the section's whole claim untrue.
+     * Must show exactly the pieces that appear in the three look-*
+     * photographs and nothing else. A flat lay containing garments that are
+     * in none of the looks makes the section's claim untrue.
      */
-    key: 'rewear',
+    key: 'wardrobe-spread',
     aspect: '4:3',
     prompt:
-      `${ANCHOR} Overhead flat lay on a clean, lightly creased white bedsheet in an Indian home: one ` +
-      'blue-and-white fine-striped cotton shirt laid in the centre, with three different sets of ' +
-      'things it could be worn with arranged loosely around it — charcoal high-waisted wide-leg ' +
-      'trousers with pointed tan leather loafers; straight-leg mid-blue jeans with off-white canvas ' +
-      'sneakers; and a deep teal silk sharara with a gold zari hem, folded beside a soft gold-yellow ' +
-      'chanderi dupatta, with tan embroidered juttis and a pair of gold jhumka earrings. Everything is worn-in rather than brand new. Bright soft daylight ' +
-      'from the left. Shot from directly overhead, 35mm lens, arrangement slightly off-centre. ' +
+      `${ANCHOR} Overhead flat lay on a clean white bedsheet in a bright Indian bedroom: the ` +
+      'contents of one wardrobe laid out in three loose groups.\n' +
+      'Group one: an ivory cream blazer, a plain white t-shirt, dark chocolate-brown wide-leg ' +
+      'tailored trousers, a slim dark belt with a gold buckle, cream leather loafer mules, a tan ' +
+      'leather tote bag.\n' +
+      'Group two: a black cropped denim jacket, a fitted white top, a short black wrap mini skirt, ' +
+      'tall black leather knee boots, a small black shoulder bag.\n' +
+      'Group three: a dusty rose embroidered short kurta, a folded antique-gold tissue sharara, a ' +
+      'dusty rose organza dupatta, gold statement earrings and gold bangles.\n\n' +
+      'Everything worn-in rather than brand new. Bright soft daylight from the left. Shot from ' +
+      'directly overhead, 35mm lens, arrangement relaxed and slightly off-centre. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
   {
     /*
-     * All three looks in ONE frame, then sliced into panels by
-     * scripts/slice-triptych.mjs.
+     * All three outfits in ONE frame, then sliced into panels by
+     * scripts/slice-triptych.mjs. One canvas keeps the face, the room and the
+     * light identical across the three, which separate calls will not.
      *
-     * Generating them as three separate calls does not work, even with
-     * reference conditioning: the face stays put but the shirt does not — you
-     * get three similar striped shirts with different stripe widths and
-     * collars. The section's headline says "this is the same shirt in all
-     * three photographs", so that is not a cosmetic problem, it makes the
-     * page lie. One canvas gives the model one shirt to be consistent about.
+     * The outfits come from client-supplied reference images. Do not loosen
+     * them: the brief is these three specific looks, not "an office look".
      */
     key: 'looks-triptych',
     aspect: '16:9',
@@ -134,27 +135,26 @@ export const PROMPTS = [
     prompt:
       'One single continuous photograph, no borders or dividing lines, of the SAME Indian woman ' +
       'appearing three times in the SAME room — a bright, warm bedroom in a contemporary Indian ' +
-      'home with white walls, a wooden floor, a large window with a sheer curtain on the left, and ' +
-      'a leafy plant in the corner. Soft natural morning light throughout. She stands in three ' +
-      'different spots across the room, full length, evenly spaced.\n\n' +
-      'CRITICAL: in all three she wears the IDENTICAL SAME blue-and-white striped cotton shirt — ' +
-      'the exact same garment, identical narrow stripe width, identical collar, identical buttons. ' +
-      'Only what is worn with it, and what she is doing, changes.\n\n' +
-      'LEFT: shirt tucked into charcoal high-waisted wide-leg trousers with tan loafers. She is ' +
-      'standing near the window fastening one shirt cuff, head tilted down towards her wrist.\n' +
-      'CENTRE: the same shirt unbuttoned and untucked over a white ribbed tank, sleeves rolled, ' +
-      'straight-leg jeans, bare feet. She leans one shoulder against the wall, hands loose, ' +
-      'laughing softly at something off camera.\n' +
-      'RIGHT: the same shirt tucked into a deep teal silk sharara — wide flared palazzo-style ' +
-      'trousers with a fine gold zari border at the hem — with a soft contrasting gold-yellow ' +
-      'chanderi dupatta draped over one shoulder and falling down her back, tan embroidered ' +
-      'juttis and gold jhumka earrings. She is mid-turn, one hand settling the dupatta on her ' +
-      'shoulder, the sharara moving with her.\n\n' +
-      'Indian woman, late twenties, South Asian features, brown skin, long dark hair worn loose, ' +
-      'minimal natural makeup. Three natural candid moments, NOT three identical straight-on poses. ' +
-      `${CRAFT} Avoid: three different shirts, varying stripe widths, a plain white studio ` +
-      'backdrop, a flat e-commerce catalogue look, identical repeated poses, arms hanging stiffly ' +
-      `at the sides, direct eye contact with the camera. ${NEGATIVE}`,
+      'home with pale walls, a wooden floor, a large window with a sheer curtain on the left. ' +
+      'Soft natural daylight throughout. She stands in three well-separated spots across the room, ' +
+      'full length head to toe, with clear empty wall between them.\n\n' +
+      'Same face, same long dark wavy hair, same warm skin in all three. Three completely ' +
+      'different outfits:\n' +
+      'LEFT, office: a relaxed ivory cream single-button blazer worn open, sleeves slightly pushed ' +
+      'up, over a plain white fitted t-shirt tucked in; dark chocolate-brown high-waisted wide-leg ' +
+      'tailored trousers with a slim dark belt and a gold buckle; cream leather loafer mules; a tan ' +
+      'leather tote bag held at her side. Relaxed stance, one hand on the bag, looking off camera.\n' +
+      'CENTRE, Saturday night: a black cropped denim jacket worn open over a fitted white top; a ' +
+      'short black wrap mini skirt; tall black knee-high leather boots; a small black leather ' +
+      'shoulder bag. Confident stance, weight on one hip, chin slightly lifted.\n' +
+      'RIGHT, wedding: a dusty rose sleeveless short kurta with heavy tonal silver and pale pink ' +
+      'embroidery across the yoke and hem; a wide flared antique-gold tissue brocade sharara; a ' +
+      'matching dusty rose organza dupatta with an embroidered border draped over one shoulder; ' +
+      'gold statement earrings and bangles. Turned slightly, one hand at her waist, a soft smile.\n\n' +
+      'Three natural relaxed poses, NOT three identical straight-on stances. ' +
+      `${CRAFT} Avoid: a plain white studio backdrop, a flat e-commerce catalogue look, identical ` +
+      'repeated poses, arms hanging stiffly at the sides, mixing the three outfits up, putting the ' +
+      `same garment into more than one look. ${NEGATIVE}`,
   },
   {
     key: 'measure-form',
