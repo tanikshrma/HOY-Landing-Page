@@ -227,10 +227,14 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           className="p-6 rounded-xl bg-[#1A1A1A] text-white text-center space-y-4"
         >
-          <div className="w-12 h-12 mx-auto rounded-full bg-[#AB8850]/20 border border-[#AB8850] flex items-center justify-center text-[#AB8850]">
+          <div className="w-12 h-12 mx-auto rounded-full bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-xs">
             <CheckCircle2 className="w-6 h-6" />
           </div>
           <div>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-montserrat font-bold text-[11px] sm:text-xs tracking-wider uppercase whitespace-nowrap mb-2.5 shadow-xs">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              PASS CONFIRMED
+            </div>
             <h4 className="font-montserrat font-bold text-lg text-white">ACCESS SECURED</h4>
             <p className="font-montserrat text-xs text-white/70 mt-1">
               Welcome, {formData.fullName.trim()}. Your exclusive styling profile link is on its way to{' '}

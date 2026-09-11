@@ -35,14 +35,16 @@ export const PersonalStyleSection: React.FC<PersonalStyleSectionProps> = ({ onCt
             BECAUSE YOUR STYLE DOESN'T FIT INTO ONE CATEGORY.
           </h2>
 
-          {/* Supporting text */}
-          <p className="mt-3.5 sm:mt-4 font-montserrat font-semibold text-xs sm:text-sm text-[#C07A61] tracking-wide uppercase">
-            A kurta for one day. Jeans and a shirt for another. A saree, a dress, a co-ord or whatever feels right.
-          </p>
+          {/* Supporting paragraphs styled consistently */}
+          <div className="mt-4 sm:mt-5 space-y-3 max-w-2xl">
+            <p className="font-montserrat text-sm sm:text-base text-white/85 font-normal leading-relaxed">
+              A kurta for one day. Jeans and a shirt for another. A saree, a dress, a co-ord or whatever feels right.
+            </p>
 
-          <p className="mt-2 sm:mt-3 font-montserrat text-xs sm:text-base text-white/80 font-normal leading-relaxed max-w-2xl">
-            HOY brings your wardrobe and your real-life occasions together, so personal styling works for the way you actually dress.
-          </p>
+            <p className="font-montserrat text-sm sm:text-base text-white/85 font-normal leading-relaxed">
+              HOY brings your wardrobe and your real-life occasions together, so personal styling works for the way you actually dress.
+            </p>
+          </div>
 
           {/* CTA */}
           <div className="mt-6 sm:mt-8">

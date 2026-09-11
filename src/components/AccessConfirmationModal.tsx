@@ -64,38 +64,44 @@ export const AccessConfirmationModal: React.FC<AccessConfirmationModalProps> = (
             </div>
 
             {/* Digital Access Pass Container */}
-            <div className="border border-[#1A1A1A]/15 rounded-xl p-5 sm:p-6 bg-[#1A1A1A] text-white relative overflow-hidden mb-6">
-              <div className="flex justify-between items-start border-b border-white/10 pb-4 mb-4">
-                <div>
-                  <p className="font-montserrat text-[10px] tracking-[0.25em] text-[#AB8850] uppercase">
+            <div className="border border-[#AB8850]/30 rounded-xl p-5 sm:p-6 bg-[#1A1A1A] text-white relative overflow-hidden mb-6 shadow-lg">
+              {/* Subtle gold glow accent */}
+              <div className="absolute top-0 right-0 w-28 h-28 bg-[#AB8850]/10 rounded-full blur-xl pointer-events-none" />
+
+              {/* Pass Header */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4 mb-4">
+                <div className="min-w-0">
+                  <p className="font-montserrat text-[10px] tracking-[0.25em] text-[#AB8850] uppercase font-bold">
                     CONFIRMED INVITATION
                   </p>
-                  <h4 className="font-montserrat font-bold text-xl text-white mt-0.5">
+                  <h4 className="font-montserrat font-bold text-lg sm:text-xl text-white mt-1 break-words">
                     {leadData.fullName}
                   </h4>
                 </div>
-                <div className="text-right">
-                  <span className="inline-block px-2.5 py-1 rounded-full bg-[#AB8850]/20 border border-[#AB8850]/40 text-[#AB8850] font-montserrat text-xs font-semibold">
+                <div className="flex sm:flex-col items-center sm:items-end justify-between gap-1.5 shrink-0 pt-1 sm:pt-0">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 font-montserrat text-[11px] sm:text-xs font-bold tracking-wider uppercase whitespace-nowrap shadow-xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                     PASS CONFIRMED
                   </span>
-                  <p className="font-montserrat text-[10px] text-white/50 mt-1">{todayStr}</p>
+                  <p className="font-montserrat text-[11px] text-white/60 font-medium">{todayStr}</p>
                 </div>
               </div>
 
-              <div className="space-y-2 text-xs font-montserrat text-white/80">
-                <div className="flex justify-between py-1 border-b border-white/5">
-                  <span className="text-white/50">Contact</span>
-                  <span className="font-medium text-white">{leadData.phoneNumber}</span>
+              {/* Information Grid */}
+              <div className="space-y-2.5 text-xs font-montserrat text-white/90">
+                <div className="flex items-center justify-between py-1.5 border-b border-white/5 gap-3">
+                  <span className="text-white/50 shrink-0">Contact</span>
+                  <span className="font-semibold text-white tracking-wide">{leadData.phoneNumber}</span>
                 </div>
-                <div className="flex justify-between py-1 border-b border-white/5">
-                  <span className="text-white/50">Dispatch To</span>
-                  <span className="font-medium text-white truncate max-w-[200px]">
+                <div className="flex items-center justify-between py-1.5 border-b border-white/5 gap-3">
+                  <span className="text-white/50 shrink-0">Dispatch To</span>
+                  <span className="font-medium text-white text-right break-all">
                     {leadData.emailAddress}
                   </span>
                 </div>
-                <div className="flex justify-between py-1">
-                  <span className="text-white/50">Access Tier</span>
-                  <span className="text-[#AB8850] font-semibold">House of You Early Cohort</span>
+                <div className="flex items-center justify-between py-1.5 gap-3">
+                  <span className="text-white/50 shrink-0">Access Tier</span>
+                  <span className="text-[#AB8850] font-bold text-right">House of You Early Cohort</span>
                 </div>
               </div>
             </div>

@@ -43,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ onGetAccessClick }) => {
       className={`sticky top-0 z-40 w-full transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md border-b border-[#1A1A1A]/10 py-3.5 shadow-xs'
-          : 'bg-white border-b border-[#1A1A1A]/5 py-4 sm:py-5'
+          : 'bg-white md:bg-transparent border-b border-[#1A1A1A]/5 md:border-transparent py-4 sm:py-5 md:py-6 shadow-none'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
