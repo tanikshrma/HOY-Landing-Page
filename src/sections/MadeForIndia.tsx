@@ -4,7 +4,7 @@ import { Reveal } from '../components/ui/Reveal';
 const POINTS = [
   {
     title: 'Both halves of your wardrobe',
-    body: 'Kurtas and blazers hang on the same rail here. Styling advice written for a different country only ever understands one of them.',
+    body: 'Kurtas and blazers hang on the same rail here. Advice written for another country only understands one of them.',
   },
   {
     title: 'Dress codes that actually exist',
@@ -12,14 +12,14 @@ const POINTS = [
   },
   {
     title: 'Weather that swings 30 degrees',
-    body: 'What works in Delhi in December and Chennai in May are not the same clothes, and layering advice has to know the difference.',
+    body: 'Delhi in December and Chennai in May are not the same clothes. Layering has to know the difference.',
   },
 ];
 
 export function MadeForIndia() {
   return (
-    <section className="border-b border-line bg-paper-2/50">
-      <div className="container-page py-16 sm:py-20 lg:py-24">
+    <section className="border-b border-line">
+      <div className="container-page py-20 sm:py-24 lg:py-32">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
             <p className="eyebrow">Made for India</p>

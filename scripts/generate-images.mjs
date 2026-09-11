@@ -10,7 +10,7 @@
  * API call.
  */
 import fs from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
@@ -30,6 +30,7 @@ const WIDTHS = {
   'hero-desktop': [1024, 1600, 2048],
   'hero-mobile': [480, 720, 960],
   'og-share': [1200],
+  'band-rail': [1024, 1600, 2200],
   _default: [480, 800, 1200],
 };
 
@@ -45,7 +46,7 @@ function log(...a) {
   console.log('[images]', ...a);
 }
 
-async function generate({ key, aspect, prompt }) {
+async function generate({ key, aspect, prompt, ref }) {
   const rawPath = path.join(RAW_DIR, `${key}.jpg`);
 
   if (existsSync(rawPath) && !FORCE) {
@@ -60,7 +61,23 @@ async function generate({ key, aspect, prompt }) {
     );
   }
 
-  log(`${key}: generating (${aspect})…`);
+  // A `ref` names an already-generated image to condition on. Text alone
+  // cannot hold a face and a specific garment steady across separate calls,
+  // so the "same shirt, three ways" series passes the first frame into the
+  // next two.
+  const parts = [];
+  if (ref) {
+    const refPath = path.join(RAW_DIR, `${ref}.jpg`);
+    if (!existsSync(refPath)) {
+      throw new Error(`${key}: reference image ${ref} must be generated first`);
+    }
+    parts.push({
+      inlineData: { mimeType: 'image/jpeg', data: readFileSync(refPath).toString('base64') },
+    });
+  }
+  parts.push({ text: prompt });
+
+  log(`${key}: generating (${aspect})${ref ? ` from ${ref}` : ''}…`);
 
   const res = await fetch(
     `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`,
@@ -71,7 +88,7 @@ async function generate({ key, aspect, prompt }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
+        contents: [{ parts }],
         generationConfig: {
           responseModalities: ['IMAGE'],
           imageConfig: { aspectRatio: aspect, imageSize: '2K' },

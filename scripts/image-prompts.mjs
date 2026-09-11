@@ -106,6 +106,61 @@ export const PROMPTS = [
       'Shot from directly overhead, 35mm lens, arrangement slightly off-centre. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
+  /*
+   * "Same shirt, three ways". look-office is generated first and then passed
+   * back in as a reference for the other two, because a text prompt alone will
+   * not hold the same face and the same garment steady across three calls.
+   * Regenerate them together, in this order.
+   */
+  {
+    key: 'look-office',
+    aspect: '3:4',
+    prompt:
+      `${ANCHOR} Full-length vertical portrait of a 29-year-old Indian man standing against a plain ` +
+      'white interior wall, dressed for the office: a blue-and-white fine-striped cotton shirt tucked ' +
+      'into charcoal tailored trousers, brown leather belt, dark brown derby shoes, sleeves buttoned. ' +
+      'Relaxed posture, hands loose at his sides, a calm half-smile, looking slightly off camera. ' +
+      'Soft even daylight from the left. Shot head to toe on a 50mm lens with room above and below. ' +
+      `${CRAFT} ${NEGATIVE}`,
+  },
+  {
+    key: 'look-weekend',
+    ref: 'look-office',
+    aspect: '3:4',
+    prompt:
+      'Keep the same man, the same face, the same blue-and-white fine-striped cotton shirt and the same ' +
+      'plain white wall, lighting and camera position as the reference image. Change only how the shirt ' +
+      'is worn: now it hangs open and untucked over a plain white crew-neck t-shirt, with sleeves rolled ' +
+      'to the elbow, mid-blue jeans and off-white canvas sneakers. Same relaxed stance, full length, ' +
+      'same framing. ' +
+      `${CRAFT} ${NEGATIVE}`,
+  },
+  {
+    key: 'look-festive',
+    ref: 'look-office',
+    aspect: '3:4',
+    prompt:
+      'Keep the same man, the same face, the same blue-and-white fine-striped cotton shirt and the same ' +
+      'plain white wall, lighting and camera position as the reference image. Change only the layering: ' +
+      'the striped shirt is now worn tucked in under a black Nehru-collar sleeveless jacket, with ' +
+      'cream cotton trousers and tan leather juttis, dressed for a family celebration. Same relaxed ' +
+      'stance, full length, same framing. ' +
+      `${CRAFT} ${NEGATIVE}`,
+  },
+  {
+    key: 'band-rail',
+    aspect: '21:9',
+    prompt:
+      `${ANCHOR} A wide cinematic view straight down a long wardrobe rail in a bright Indian home, ` +
+      'densely packed with clothes on mismatched hangers — cotton kurtas, crisp shirts, a folded ' +
+      'saree in a garment bag, denim, two dupattas draped over the rail, a linen jacket. ' +
+      'Colours run warm and varied, nothing colour-matched. No people in frame. Soft morning light ' +
+      'rakes in from a window at the right, falling off gently into the depth of the wardrobe. ' +
+      'Shot on a 50mm lens at a shallow aperture, focus landing a third of the way along the rail, ' +
+      'the near and far ends softly out of focus. Composed for an extremely wide crop with the ' +
+      'clothes filling the lower two-thirds of the frame. ' +
+      `${CRAFT} ${NEGATIVE}`,
+  },
   {
     key: 'occasion',
     aspect: '4:3',

@@ -5,10 +5,13 @@ import { Header } from './components/Header';
 import { StickyCta } from './components/StickyCta';
 import { SuccessModal } from './components/SuccessModal';
 import { Hero } from './sections/Hero';
+import { Stats } from './sections/Stats';
 import { Problem } from './sections/Problem';
 import { HowItWorks } from './sections/HowItWorks';
+import { Measurements } from './sections/Measurements';
+import { SameShirt } from './sections/SameShirt';
 import { WhatYouGet } from './sections/WhatYouGet';
-import { Rewear } from './sections/Rewear';
+import { PhotoBand } from './sections/PhotoBand';
 import { MadeForIndia } from './sections/MadeForIndia';
 import { Testimonials } from './sections/Testimonials';
 import { Faq } from './sections/Faq';
@@ -66,10 +69,17 @@ export default function App() {
 
       <main>
         <Hero onSuccess={handleSuccess} />
+        <Stats />
         <Problem />
         <HowItWorks />
+        <Measurements />
+        <SameShirt onCta={scrollToForm} />
         <WhatYouGet />
-        <Rewear onCta={scrollToForm} />
+        <PhotoBand
+          name="band-rail"
+          alt="A long wardrobe rail packed with kurtas, shirts, jeans, sarees and dupattas"
+          caption="Twelve pieces you already own are more outfits than you think."
+        />
         <MadeForIndia />
         <Testimonials />
         <Faq />

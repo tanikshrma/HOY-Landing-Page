@@ -14,7 +14,7 @@ export function Testimonials() {
 
   return (
     <section className="border-b border-line bg-paper-2/50">
-      <div className="container-page py-16 sm:py-20 lg:py-24">
+      <div className="container-page py-20 sm:py-24 lg:py-32">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">From the first users</p>
           <h2 className="mt-3 text-[1.75rem] leading-tight font-semibold sm:text-4xl">
