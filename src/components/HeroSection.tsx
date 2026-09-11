@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Crown, Users, UserCheck } from 'lucide-react';
+import { ArrowRight, Crown, UserCheck } from 'lucide-react';
 import { IMAGES } from '../assets/images';
 import { LeadFormCard } from './LeadFormCard';
 import { LeadFormData } from '../types';
@@ -115,25 +115,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           </div>
 
-          {/* 3. MOBILE & TABLET ATELIER INTAKE BANNER */}
-          <div className="order-3 md:col-span-2 lg:hidden w-full max-w-lg mx-auto">
-            <div className="flex items-center justify-between px-4 py-3 rounded-xl bg-[#AB8850]/10 border border-[#AB8850]/30 text-[#1A1A1A]">
-              <div className="flex items-center gap-2">
-                <Users className="w-3.5 h-3.5 text-[#AB8850] shrink-0" strokeWidth={2} />
-                <span className="font-montserrat font-bold text-[10px] sm:text-[11px] tracking-[0.16em] uppercase text-[#1A1A1A]">
-                  20 PASSES DAILY
-                </span>
-              </div>
-              <span className={`font-cinzel text-[10px] font-bold tracking-wider uppercase ${
-                slots.isSoldOut ? 'text-[#C07A61]' : 'text-[#AB8850]'
-              }`}>
-                {slots.isSoldOut ? 'SOLD OUT' : `${slots.remainingSlots} SLOTS LEFT`}
-              </span>
-            </div>
-          </div>
-
-          {/* 4. RIGHT COLUMN: Refined Lead Generation Form Card */}
-          <div className="order-4 md:col-span-2 lg:col-span-4 w-full max-w-lg mx-auto md:max-w-xl lg:max-w-none">
+          {/* 3. RIGHT COLUMN: Refined Lead Generation Form Card */}
+          <div className="order-3 md:col-span-2 lg:col-span-4 w-full max-w-lg mx-auto md:max-w-xl lg:max-w-none">
             <LeadFormCard
               id="hero-lead-form"
               onSuccess={onLeadSuccess}
