@@ -116,6 +116,36 @@ up in the CSV export.
 
 ---
 
+## The logo
+
+The master artwork lives in `scripts/brand-src/` — two 1536x1024 PNGs with
+alpha, dark and white. Everything the site uses is derived from them:
+
+```bash
+npm run brand
+```
+
+That writes `src/assets/brand/hoy-mark-{dark,light}.png` and the favicons.
+
+The master is a single lockup: the mark (H pill, O circle, tall Y pill, full
+stop) with "HOUSE OF YOU" tucked bottom-left underneath. The build cuts the
+mark out on its own, because the baked-in wordmark renders around 7px even at
+a 64px lockup — below the size at which it reads as words. Where a tagline is
+wanted, the footer sets "House of You" in type instead, at a size you can
+actually read.
+
+The crop is measured from the alpha channel, not eyeballed. It works because
+the H pill and O circle end at row 808, the wordmark starts at row 830, and
+the Y pill starts at column 902 while the wordmark ends by column 890. If the
+master artwork is ever redrawn, re-measure — those constants are at the top of
+`scripts/build-brand.mjs`.
+
+Use `<Wordmark />` rather than importing the PNGs directly; it picks the right
+colour variant from the `tone` prop and declares intrinsic dimensions so the
+header does not shift as it loads.
+
+---
+
 ## Photography
 
 Every photograph is generated with Gemini (Nano Banana Pro) from the prompts in

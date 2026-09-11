@@ -14,7 +14,7 @@ export function Footer() {
       <div className="container-page py-12 sm:py-14">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <Wordmark tone="paper" withTagline />
+            <Wordmark tone="paper" withTagline size="h-11" />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-paper/55">
               Personal styling that starts with the wardrobe you already own.
               Built in India.

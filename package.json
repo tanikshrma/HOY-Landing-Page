@@ -10,7 +10,8 @@
     "preview": "npm run build && npm run start",
     "images": "node scripts/generate-images.mjs",
     "lint": "tsc --noEmit",
-    "clean": "rimraf dist dist-server"
+    "clean": "rimraf dist dist-server",
+    "brand": "node scripts/build-brand.mjs"
   },
   "dependencies": {
     "dotenv": "^17.2.3",

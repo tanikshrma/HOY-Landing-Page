@@ -26,7 +26,7 @@ export function Header({ onCta }: { onCta: () => void }) {
     >
       <div className="container-page flex h-16 items-center justify-between gap-4 sm:h-[4.5rem]">
         <a href="#top" aria-label="HOY — House of You, back to top" className="shrink-0">
-          <Wordmark />
+          <Wordmark size="h-9 sm:h-10" />
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
