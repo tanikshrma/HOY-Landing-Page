@@ -38,7 +38,7 @@ const ITEMS = [
 export function WhatYouGet() {
   return (
     <section id="what-you-get" className="scroll-mt-20 border-b border-line bg-ink text-paper">
-      <div className="container-page py-20 sm:py-24 lg:py-32">
+      <div className="container-page py-16 sm:py-20 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/*
             The photo takes whatever height is left once the heading is placed,

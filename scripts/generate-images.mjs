@@ -31,6 +31,10 @@ const WIDTHS = {
   'hero-mobile': [480, 720, 960],
   'og-share': [1200],
   'band-rail': [1024, 1600, 2200],
+  // Sliced out of looks-triptych rather than generated directly.
+  'look-office': [480, 800, 1200],
+  'look-weekend': [480, 800, 1200],
+  'look-festive': [480, 800, 1200],
   _default: [480, 800, 1200],
 };
 
@@ -46,7 +50,7 @@ function log(...a) {
   console.log('[images]', ...a);
 }
 
-async function generate({ key, aspect, prompt, ref }) {
+async function generate({ key, aspect, prompt, ref, size }) {
   const rawPath = path.join(RAW_DIR, `${key}.jpg`);
 
   if (existsSync(rawPath) && !FORCE) {
@@ -91,7 +95,7 @@ async function generate({ key, aspect, prompt, ref }) {
         contents: [{ parts }],
         generationConfig: {
           responseModalities: ['IMAGE'],
-          imageConfig: { aspectRatio: aspect, imageSize: '2K' },
+          imageConfig: { aspectRatio: aspect, imageSize: size || '2K' },
         },
       }),
     },
@@ -158,6 +162,18 @@ async function main() {
   const manifest = {};
   for (const spec of targets) {
     const rawPath = await generate(spec);
+
+    // The triptych is not served itself — it is cut into the three look
+    // panels, which are what the page uses.
+    if (spec.key === 'looks-triptych') {
+      const { sliceTriptych } = await import('./slice-triptych.mjs');
+      for (const key of await sliceTriptych()) {
+        manifest[key] = await encode(key, path.join(RAW_DIR, `${key}.jpg`));
+        log(`${key}: sliced and encoded`);
+      }
+      continue;
+    }
+
     manifest[spec.key] = await encode(spec.key, rawPath);
     log(`${spec.key}: encoded ${manifest[spec.key].widths.join(', ')}`);
   }

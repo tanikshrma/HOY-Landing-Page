@@ -8,7 +8,7 @@ interface FinalCtaProps {
 export function FinalCta({ onSuccess }: FinalCtaProps) {
   return (
     <section id="claim" className="scroll-mt-20 border-b border-line">
-      <div className="container-page py-20 sm:py-24 lg:py-32">
+      <div className="container-page py-16 sm:py-20 lg:py-24">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <p className="eyebrow">Twenty a day</p>

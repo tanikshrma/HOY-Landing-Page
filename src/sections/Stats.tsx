@@ -15,12 +15,12 @@ const STATS = [
 export function Stats() {
   return (
     <section className="border-b border-line bg-paper-2/50">
-      <div className="container-page py-14 sm:py-16 lg:py-20">
+      <div className="container-page py-10 sm:py-11 lg:py-12">
         {/*
           Hairline rules between the figures. Without them the four numbers
           read as scraps floating in the band rather than one set.
         */}
-        <dl className="grid grid-cols-2 gap-y-10 sm:gap-y-12 lg:grid-cols-4">
+        <dl className="grid grid-cols-2 gap-y-8 sm:gap-y-9 lg:grid-cols-4 lg:gap-y-0">
           {STATS.map((stat, i) => (
             <Reveal
               key={stat.unit}
@@ -39,7 +39,7 @@ export function Stats() {
                   {stat.unit}
                 </span>
               </dt>
-              <dd className="mt-3.5 max-w-[15rem] text-[0.875rem] leading-relaxed text-ink-70">
+              <dd className="mt-2.5 max-w-[15rem] text-[0.875rem] leading-relaxed text-ink-70">
                 {stat.caption}
               </dd>
             </Reveal>

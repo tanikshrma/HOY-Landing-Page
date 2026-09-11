@@ -19,7 +19,7 @@ const POINTS = [
 export function MadeForIndia() {
   return (
     <section className="border-b border-line">
-      <div className="container-page py-20 sm:py-24 lg:py-32">
+      <div className="container-page py-16 sm:py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
             <p className="eyebrow">Made for India</p>

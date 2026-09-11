@@ -31,7 +31,7 @@ const STEPS: { n: string; title: string; body: string; aside: string; image: Pho
 export function HowItWorks() {
   return (
     <section id="how-it-works" className="scroll-mt-20 border-b border-line bg-paper-2/50">
-      <div className="container-page py-20 sm:py-24 lg:py-32">
+      <div className="container-page py-16 sm:py-20 lg:py-24">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">How it works</p>
           <h2 className="mt-3 text-[1.75rem] leading-tight font-semibold sm:text-4xl">

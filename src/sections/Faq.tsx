@@ -51,7 +51,7 @@ export function Faq() {
 
   return (
     <section id="faq" className="scroll-mt-20 border-b border-line bg-paper-2/50">
-      <div className="container-page py-20 sm:py-24 lg:py-32">
+      <div className="container-page py-16 sm:py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-4">
             <p className="eyebrow">Before you sign up</p>

@@ -112,47 +112,51 @@ export const PROMPTS = [
       'from the left. Shot from directly overhead, 35mm lens, arrangement slightly off-centre. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
-  /*
-   * "Same shirt, three ways". look-office is generated first and then passed
-   * back in as a reference for the other two, because a text prompt alone will
-   * not hold the same face and the same garment steady across three calls.
-   * Regenerate them together, in this order.
-   */
   {
-    key: 'look-office',
-    aspect: '3:4',
+    /*
+     * All three looks in ONE frame, then sliced into panels by
+     * scripts/slice-triptych.mjs.
+     *
+     * Generating them as three separate calls does not work, even with
+     * reference conditioning: the face stays put but the shirt does not — you
+     * get three similar striped shirts with different stripe widths and
+     * collars. The section's headline says "this is the same shirt in all
+     * three photographs", so that is not a cosmetic problem, it makes the
+     * page lie. One canvas gives the model one shirt to be consistent about.
+     */
+    key: 'looks-triptych',
+    aspect: '16:9',
+    size: '4K',
     prompt:
-      `${ANCHOR} Full-length vertical fashion portrait of a poised, elegant 28-year-old Indian woman ` +
-      'standing against a plain white interior wall, dressed for the office: a crisp blue-and-white ' +
-      'fine-striped cotton shirt tucked into charcoal high-waisted wide-leg trousers, slim tan belt, ' +
-      'pointed tan leather loafers. Long dark hair loose over one shoulder, small gold hoop earrings, ' +
-      'minimal natural makeup. Confident relaxed stance, weight on one hip, a calm half-smile, ' +
-      'looking just off camera. Soft even daylight from the left. Head to toe on an 85mm lens with ' +
-      'clear room above and below her. ' +
-      `${CRAFT} ${NEGATIVE}`,
+      'One single continuous photograph, no borders or dividing lines: the SAME Indian woman ' +
+      'photographed three times, standing side by side against the SAME continuous plain white ' +
+      'wall, in the SAME soft daylight from the left, same camera height, same full-length framing ' +
+      'head to toe, evenly spaced with space between them.\n\n' +
+      'CRITICAL: in all three she wears the IDENTICAL SAME blue-and-white striped cotton shirt — ' +
+      'the exact same garment, identical narrow stripe width, identical collar, identical buttons. ' +
+      'Only what is worn WITH it changes.\n\n' +
+      'LEFT: shirt buttoned and tucked into charcoal high-waisted wide-leg trousers, slim tan belt, ' +
+      'pointed tan leather loafers.\n' +
+      'CENTRE: the very same shirt unbuttoned, hanging open and untucked over a plain white ribbed ' +
+      'tank, sleeves rolled to the elbow, straight-leg mid-blue jeans, off-white canvas sneakers.\n' +
+      'RIGHT: the very same shirt buttoned and tucked into a deep teal block-print silk midi skirt, ' +
+      'tan embroidered juttis, gold jhumka earrings.\n\n' +
+      'Indian woman, late twenties, South Asian features, brown skin, long dark hair loose, minimal ' +
+      'natural makeup, same calm half-smile and relaxed stance in each. ' +
+      `${CRAFT} Avoid: three different shirts, varying stripe widths, different walls or lighting ` +
+      `between the three. ${NEGATIVE}`,
   },
   {
-    key: 'look-weekend',
-    ref: 'look-office',
-    aspect: '3:4',
+    key: 'measure-form',
+    aspect: '4:3',
     prompt:
-      'Keep the same woman, the same face, the same hair, the same blue-and-white fine-striped cotton ' +
-      'shirt, and the same plain white wall, lighting and camera position as the reference image. ' +
-      'Change only how the shirt is worn: now it hangs open and untucked over a plain white ribbed ' +
-      'tank top, sleeves rolled to the elbow, with straight-leg mid-blue jeans and off-white canvas ' +
-      'sneakers. Same relaxed stance, same full-length framing. ' +
-      `${CRAFT} ${NEGATIVE}`,
-  },
-  {
-    key: 'look-festive',
-    ref: 'look-office',
-    aspect: '3:4',
-    prompt:
-      'Keep the same woman, the same face, the same hair, the same blue-and-white fine-striped cotton ' +
-      'shirt, and the same plain white wall, lighting and camera position as the reference image. ' +
-      'Change only the styling around it: the striped shirt is now tucked into a deep teal silk ' +
-      'block-print midi skirt, with tan embroidered juttis and gold jhumka earrings, dressed for a ' +
-      'family celebration. Same relaxed stance, same full-length framing. ' +
+      'A tailor’s adjustable dress form standing in a bright, calm room in an Indian home, with a ' +
+      'soft yellow measuring tape draped over one shoulder and hanging down. The form is covered in ' +
+      'warm oatmeal linen on a dark wooden tripod stand. On a small side table beside it: a pair of ' +
+      'fabric shears, a folded blue-and-white striped cotton shirt, and a few tailor’s chalk pieces. ' +
+      'Clean white wall, a large window out of frame to the left casting soft directional daylight ' +
+      'and a gentle shadow. Shot on a 50mm lens at a shallow aperture, the form sharp and the ' +
+      'background falling away softly. Generous empty wall space above. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
   {

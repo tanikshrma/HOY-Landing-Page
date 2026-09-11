@@ -32,7 +32,7 @@ const LOOKS: { image: PhotoKey; where: string; how: string; alt: string }[] = [
 export function SameShirt({ onCta }: { onCta: () => void }) {
   return (
     <section className="border-b border-line bg-paper-2/50">
-      <div className="container-page py-20 sm:py-24 lg:py-32">
+      <div className="container-page py-16 sm:py-20 lg:py-24">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">One shirt, three places</p>
           <h2 className="mt-4 text-[1.75rem] leading-tight font-semibold sm:text-4xl">
@@ -69,7 +69,7 @@ export function SameShirt({ onCta }: { onCta: () => void }) {
                   alt={look.alt}
                   sizes="(min-width: 640px) 31vw, 100vw"
                   position="object-top"
-                  className="aspect-3/4 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  className="aspect-[3/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
                 />
               </div>
               <div className="mt-5 flex items-baseline gap-3">
