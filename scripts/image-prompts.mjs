@@ -111,8 +111,8 @@ export const PROMPTS = [
       'blue-and-white fine-striped cotton shirt laid in the centre, with three different sets of ' +
       'things it could be worn with arranged loosely around it — charcoal high-waisted wide-leg ' +
       'trousers with pointed tan leather loafers; straight-leg mid-blue jeans with off-white canvas ' +
-      'sneakers; and a folded deep teal silk saree with a fine gold zari border, with tan embroidered ' +
-      'juttis, a slim tan belt and a pair of gold jhumka earrings. Everything is worn-in rather than brand new. Bright soft daylight ' +
+      'sneakers; and a deep teal silk sharara with a gold zari hem, folded beside a soft gold-yellow ' +
+      'chanderi dupatta, with tan embroidered juttis and a pair of gold jhumka earrings. Everything is worn-in rather than brand new. Bright soft daylight ' +
       'from the left. Shot from directly overhead, 35mm lens, arrangement slightly off-centre. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
@@ -145,9 +145,11 @@ export const PROMPTS = [
       'CENTRE: the same shirt unbuttoned and untucked over a white ribbed tank, sleeves rolled, ' +
       'straight-leg jeans, bare feet. She leans one shoulder against the wall, hands loose, ' +
       'laughing softly at something off camera.\n' +
-      'RIGHT: the same shirt worn as the blouse under a deep teal silk saree with a fine gold zari ' +
-      'border, tucked into the petticoat with the saree draped over it, tan juttis, gold jhumkas. ' +
-      'She is mid-motion lifting the pallu up over her left shoulder, looking towards it.\n\n' +
+      'RIGHT: the same shirt tucked into a deep teal silk sharara — wide flared palazzo-style ' +
+      'trousers with a fine gold zari border at the hem — with a soft contrasting gold-yellow ' +
+      'chanderi dupatta draped over one shoulder and falling down her back, tan embroidered ' +
+      'juttis and gold jhumka earrings. She is mid-turn, one hand settling the dupatta on her ' +
+      'shoulder, the sharara moving with her.\n\n' +
       'Indian woman, late twenties, South Asian features, brown skin, long dark hair worn loose, ' +
       'minimal natural makeup. Three natural candid moments, NOT three identical straight-on poses. ' +
       `${CRAFT} Avoid: three different shirts, varying stripe widths, a plain white studio ` +

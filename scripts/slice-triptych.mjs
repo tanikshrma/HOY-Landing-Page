@@ -2,74 +2,122 @@
  * Cuts scripts/.raw/looks-triptych.jpg into the three look panels.
  *
  * The three looks are generated in one frame on purpose — see the
- * looks-triptych entry in image-prompts.mjs for why — so they have to be
- * separated before the page can use them as three cards.
+ * looks-triptych entry in image-prompts.mjs — so they have to be separated
+ * before the page can use them as three cards.
+ *
+ * Crops a third of the frame around each of the three figures.
+ *
+ * Earlier versions hunted for the thin rules the model sometimes draws
+ * between panels and failed twice — once reading a pair of dark jeans as a
+ * divider, once the edge of a curtain, giving panels of 969, 3480 and 1031
+ * pixels. Column variance is the reliable signal instead: a wall is flat and
+ * a person is not, and a drawn rule is flat too, so the same measurement
+ * finds both the figures and the seams whether or not a rule was drawn.
  *
  * Run by generate-images.mjs; also runnable on its own:
  *   node scripts/slice-triptych.mjs
  */
 import sharp from 'sharp';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const RAW = path.join(path.dirname(fileURLToPath(import.meta.url)), '.raw');
 const SRC = path.join(RAW, 'looks-triptych.jpg');
 const OUT = ['look-office', 'look-weekend', 'look-festive'];
+
+/** Mean absolute deviation of a column — high over a person, low over a wall. */
+function columnActivity(data, width, height) {
+  const out = new Float64Array(width);
+  for (let x = 0; x < width; x++) {
+    let sum = 0;
+    for (let y = 0; y < height; y++) sum += data[y * width + x];
+    const mean = sum / height;
+    let dev = 0;
+    for (let y = 0; y < height; y++) dev += Math.abs(data[y * width + x] - mean);
+    out[x] = dev / height;
+  }
+  return out;
+}
+
+/** Box blur, to stop a single busy column splitting a figure into two runs. */
+function smooth(arr, radius) {
+  const out = new Float64Array(arr.length);
+  for (let i = 0; i < arr.length; i++) {
+    let sum = 0;
+    let n = 0;
+    for (let j = Math.max(0, i - radius); j <= Math.min(arr.length - 1, i + radius); j++) {
+      sum += arr[j];
+      n++;
+    }
+    out[i] = sum / n;
+  }
+  return out;
+}
 
 export async function sliceTriptych() {
   const img = sharp(SRC);
   const { width, height } = await img.metadata();
   const { data, info } = await img.clone().greyscale().raw().toBuffer({ resolveWithObject: true });
 
-  // The model drew thin dark rules between the panels. Find them by looking for
-  // columns whose mean luminance is far below the image mean.
-  const colMean = [];
-  for (let x = 0; x < info.width; x++) {
-  let sum = 0;
-  for (let y = 0; y < info.height; y++) sum += data[y * info.width + x];
-  colMean.push(sum / info.height);
-  }
-  const overall = colMean.reduce((a, b) => a + b, 0) / colMean.length;
-  const dark = colMean.map((m, x) => ({ x, m })).filter((c) => c.m < overall * 0.72);
+  const activity = smooth(columnActivity(data, info.width, info.height), Math.round(width * 0.01));
+  const peak = Math.max(...activity);
+  const floor = Math.min(...activity);
+  const threshold = floor + (peak - floor) * 0.35;
 
-  // Group adjacent dark columns into runs, then take the centre of each run that
-  // sits away from the outer edges.
+  // Runs of "busy" columns — the figures, plus any furniture behind them.
   const runs = [];
-  for (const c of dark) {
-  const last = runs.at(-1);
-  if (last && c.x - last.at(-1) <= 3) last.push(c.x);
-  else runs.push([c.x]);
+  let start = -1;
+  for (let x = 0; x < width; x++) {
+    if (activity[x] > threshold && start < 0) start = x;
+    else if (activity[x] <= threshold && start >= 0) {
+      runs.push([start, x - 1]);
+      start = -1;
+    }
   }
-  // A drawn rule is only a few pixels wide and dark down the whole column;
-  // a pair of dark jeans is hundreds of pixels wide. Filter on run width.
-  const cuts = runs
-  .filter((r) => r.length <= 14)
-  .map((r) => Math.round((r[0] + r.at(-1)) / 2))
-  .filter((x) => x > width * 0.15 && x < width * 0.85);
+  if (start >= 0) runs.push([start, width - 1]);
 
-  console.log(`image ${width}x${height}, detected cuts at: ${cuts.join(', ') || '(none)'}`);
+  // Keep the three strongest, then put them back in left-to-right order.
+  const weight = ([a, b]) => {
+    let w = 0;
+    for (let x = a; x <= b; x++) w += activity[x] - threshold;
+    return w;
+  };
+  const figures = runs
+    .sort((p, q) => weight(q) - weight(p))
+    .slice(0, 3)
+    .sort((p, q) => p[0] - q[0]);
 
-  // Fall back to even thirds if the rules were not drawn.
-  const bounds = cuts.length === 2
-  ? [[0, cuts[0]], [cuts[0], cuts[1]], [cuts[1], width]]
-  : [[0, width / 3], [width / 3, (width * 2) / 3], [(width * 2) / 3, width]];
+  // One third of the frame, centred on each figure. Deriving the width from
+  // the gaps instead was a mistake: when the model spaced the figures
+  // unevenly the narrowest gap was 1308px, every panel was squeezed to that,
+  // and the outer two figures were sliced through.
+  const panelWidth = Math.floor(width / 3);
 
-  for (const [i, [a, b]] of bounds.entries()) {
-  const pad = 6; // step off the rule itself
-  const left = Math.round(a === 0 ? 0 : a + pad);
-  const right = Math.round(b === width ? width : b - pad);
-  const w = right - left;
-  await sharp(SRC)
-    .extract({ left, top: 0, width: w, height })
-    .jpeg({ quality: 95 })
-    .toFile(`scripts/.raw/${OUT[i]}.jpg`);
-  console.log(`${OUT[i]}: ${w}x${height}  aspect ${(w / height).toFixed(3)}`);
+  const centres =
+    figures.length === 3
+      ? figures.map(([a, b]) => Math.round((a + b) / 2))
+      : [0, 1, 2].map((i) => Math.round(panelWidth * (i + 0.5)));
+
+  if (figures.length !== 3) {
+    console.log(`found ${figures.length} figures, not 3 — falling back to even thirds`);
+  }
+
+  for (const [i, centre] of centres.entries()) {
+    const left = Math.max(0, Math.min(centre - Math.floor(panelWidth / 2), width - panelWidth));
+    await sharp(SRC)
+      .extract({ left, top: 0, width: panelWidth, height })
+      .jpeg({ quality: 95 })
+      .toFile(path.join(RAW, `${OUT[i]}.jpg`));
+    console.log(`${OUT[i]}: ${panelWidth}x${height} centred on x=${centre}, cropped from x=${left}`);
   }
 
   return OUT;
 }
 
-// Allow running directly.
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Allow running directly. pathToFileURL rather than string concatenation:
+// on Windows argv[1] is "C:\path\to\file", which never matches the
+// "file:///C:/path/to/file" form import.meta.url uses, so the naive compare
+// silently skipped the run.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   await sliceTriptych();
 }

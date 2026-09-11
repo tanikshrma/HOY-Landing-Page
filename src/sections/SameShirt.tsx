@@ -14,13 +14,13 @@ const LOOKS: { image: PhotoKey; where: string; how: string; alt: string }[] = [
     image: 'look-weekend',
     where: 'Saturday, out',
     how: 'Open over a tank, sleeves rolled, jeans.',
-    alt: 'The same striped shirt worn open over a white tank top with jeans and canvas sneakers',
+    alt: 'The same striped shirt worn open over a white tank top with straight-leg jeans',
   },
   {
     image: 'look-festive',
     where: 'Wedding, evening',
-    how: 'Worn as the blouse, saree draped over it.',
-    alt: 'The same striped shirt worn as a blouse under a draped teal silk saree with juttis',
+    how: 'Tucked into a sharara, dupatta over one shoulder.',
+    alt: 'The same striped shirt tucked into a teal silk sharara with a gold dupatta and juttis',
   },
 ];
 
