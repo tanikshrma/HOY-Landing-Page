@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import fsp from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { DAILY_CAPACITY, TIMEZONE } from './config.js';
@@ -92,7 +93,35 @@ function summarise(day: string, claimed: number): Availability {
  * Filesystem backend — for a VM or container with a persistent volume.
  * ------------------------------------------------------------------ */
 
-const DATA_DIR = path.join(process.cwd(), 'data');
+/**
+ * Where the filesystem store lives.
+ *
+ * Serverless roots are read-only — only the temp directory is writable — so
+ * probe the working directory once and fall back rather than throwing on
+ * every submission. Landing in temp means the data is ephemeral, which is
+ * exactly why the Redis store above exists; the structured HOY_LEAD log line
+ * in server/app.ts is the safety net until it is configured.
+ */
+function resolveDataDir(): string {
+  if (process.env.DATA_DIR) return process.env.DATA_DIR;
+
+  const preferred = path.join(process.cwd(), 'data');
+  try {
+    fs.mkdirSync(preferred, { recursive: true });
+    fs.accessSync(preferred, fs.constants.W_OK);
+    return preferred;
+  } catch {
+    const fallback = path.join(os.tmpdir(), 'hoy-data');
+    fs.mkdirSync(fallback, { recursive: true });
+    console.warn(
+      `[store] ${preferred} is not writable; using ${fallback}. ` +
+        'Data here does not survive a restart — configure Redis for durability.',
+    );
+    return fallback;
+  }
+}
+
+const DATA_DIR = resolveDataDir();
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 
 /**
