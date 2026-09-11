@@ -146,10 +146,10 @@ export const ValuePropSection: React.FC = () => {
             <h2 className="font-montserrat font-bold text-2xl sm:text-3xl lg:text-4xl tracking-tight text-[#1A1A1A] uppercase leading-tight">
               MORE THAN OUTFIT IDEAS.
             </h2>
-            <p className="mt-3 sm:mt-3.5 font-montserrat font-semibold text-sm sm:text-base text-[#1A1A1A] max-w-2xl leading-snug">
+            <p className="mt-3 sm:mt-3.5 font-montserrat font-semibold text-[15px] sm:text-base text-[#1A1A1A] max-w-2xl leading-snug">
               You already have clothes. The hard part is knowing what to wear.
             </p>
-            <p className="mt-2.5 sm:mt-3 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 max-w-2xl leading-relaxed font-normal">
+            <p className="mt-2.5 sm:mt-3 font-montserrat text-[13.5px] xs:text-sm sm:text-sm text-[#1A1A1A]/75 max-w-2xl leading-relaxed font-normal">
               HOY helps you make better use of your wardrobe, discover combinations you may not have thought of and find something new only when you actually need it.
             </p>
           </div>
@@ -214,7 +214,7 @@ export const ValuePropSection: React.FC = () => {
                     </h3>
 
                     {/* Body */}
-                    <p className="mt-2.5 sm:mt-3 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
+                    <p className="mt-2.5 sm:mt-3 font-montserrat text-[13.5px] xs:text-sm sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
                       {card.body}
                     </p>
                   </div>

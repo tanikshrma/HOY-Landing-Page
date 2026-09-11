@@ -19,13 +19,13 @@ export const ProblemSection: React.FC = () => {
         </h2>
 
         {/* Copy */}
-        <p className="mt-5 sm:mt-8 font-montserrat text-sm sm:text-base md:text-lg text-[#1A1A1A]/80 leading-relaxed max-w-2xl mx-auto font-normal">
+        <p className="mt-5 sm:mt-8 font-montserrat text-[15px] sm:text-base md:text-lg text-[#1A1A1A]/80 leading-relaxed max-w-2xl mx-auto font-normal">
           Your wardrobe already has more possibilities than you realise. The hard part is knowing what works for you, what works together, and what actually fits the moment.
         </p>
 
         {/* Key Brand Philosophy Hook */}
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-[#1A1A1A]/10 max-w-xl mx-auto">
-          <p className="font-montserrat font-semibold text-sm sm:text-base md:text-lg text-[#AB8850] leading-snug">
+          <p className="font-montserrat font-semibold text-[15px] sm:text-base md:text-lg text-[#AB8850] leading-snug">
             HOY brings your personal context into styling, so the outfit starts with you, not a catalogue.
           </p>
         </div>

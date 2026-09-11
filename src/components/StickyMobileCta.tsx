@@ -12,14 +12,27 @@ export const StickyMobileCta: React.FC<StickyMobileCtaProps> = ({ onCtaClick }) 
 
   React.useEffect(() => {
     const handleScroll = () => {
-      // Reveal sticky bottom CTA as soon as scrolling starts (> 20px)
-      setIsVisible(window.scrollY > 20);
+      // Only show after the "YOUR LOOK, IN THREE STEPS." (#how-it-works) section starts on mobile
+      const howItWorksSection = document.getElementById('how-it-works');
+      if (howItWorksSection) {
+        const rect = howItWorksSection.getBoundingClientRect();
+        // Trigger when the section starts entering the mobile viewport
+        setIsVisible(rect.top <= window.innerHeight - 80);
+      } else {
+        // Fallback if element not found yet
+        setIsVisible(window.scrollY > 600);
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Check initial state in case page was reloaded when scrolled
+    window.addEventListener('resize', handleScroll, { passive: true });
+    // Check initial state in case page was reloaded when already scrolled
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, []);
 
   return (

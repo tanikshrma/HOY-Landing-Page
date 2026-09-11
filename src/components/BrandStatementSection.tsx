@@ -164,7 +164,7 @@ export const BrandStatementSection: React.FC = () => {
                           {tenet.title}
                         </h3>
                         <p
-                          className={`font-cinzel text-xs sm:text-sm italic tracking-wider block ${
+                          className={`font-cinzel text-[13px] sm:text-sm italic tracking-wider block ${
                             isLast ? 'text-[#AB8850]' : 'text-[#AB8850]'
                           }`}
                         >
@@ -173,7 +173,7 @@ export const BrandStatementSection: React.FC = () => {
                       </div>
 
                       <p
-                        className={`font-montserrat text-xs sm:text-sm leading-relaxed font-normal ${
+                        className={`font-montserrat text-[13.5px] xs:text-sm sm:text-sm leading-relaxed font-normal ${
                           isLast ? 'text-white/80' : 'text-[#1A1A1A]/75'
                         }`}
                       >
@@ -204,7 +204,7 @@ export const BrandStatementSection: React.FC = () => {
                       <h4 className="font-montserrat font-bold text-xs tracking-wider uppercase text-[#1A1A1A]">
                         {g.title}
                       </h4>
-                      <p className="font-montserrat text-[11px] sm:text-xs text-[#1A1A1A]/60 leading-normal mt-0.5">
+                      <p className="font-montserrat text-xs sm:text-xs text-[#1A1A1A]/60 leading-normal mt-0.5">
                         {g.desc}
                       </p>
                     </div>

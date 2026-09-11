@@ -59,7 +59,7 @@ export const BuiltAroundYouSection: React.FC = () => {
           <h2 className="font-montserrat font-bold text-2xl sm:text-4xl md:text-5xl tracking-tight text-[#1A1A1A] uppercase leading-[1.12] sm:leading-[1.08]">
             NOT EVERYONE'S STYLE NEEDS THE SAME ANSWER.
           </h2>
-          <p className="mt-3 sm:mt-4 font-montserrat text-sm sm:text-base md:text-lg text-[#1A1A1A]/70 font-normal">
+          <p className="mt-3 sm:mt-4 font-montserrat text-[15px] sm:text-base md:text-lg text-[#1A1A1A]/70 font-normal">
             HOY considers the details that make your style yours.
           </p>
         </div>
@@ -161,7 +161,7 @@ export const BuiltAroundYouSection: React.FC = () => {
                       </h4>
                     </div>
 
-                    <p className="font-montserrat text-xs sm:text-sm text-white/80 leading-relaxed font-normal">
+                    <p className="font-montserrat text-[13.5px] xs:text-sm sm:text-sm text-white/80 leading-relaxed font-normal">
                       {activeTag.detail}
                     </p>
 

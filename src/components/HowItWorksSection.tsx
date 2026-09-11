@@ -129,7 +129,7 @@ export const HowItWorksSection: React.FC = () => {
                       </h3>
                       <StepIcon className="w-4 h-4 text-[#AB8850]" strokeWidth={1.75} />
                     </div>
-                    <p className="font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 leading-relaxed font-normal">
+                    <p className="font-montserrat text-[13.5px] xs:text-sm sm:text-sm text-[#1A1A1A]/75 leading-relaxed font-normal">
                       {step.description}
                     </p>
                   </div>

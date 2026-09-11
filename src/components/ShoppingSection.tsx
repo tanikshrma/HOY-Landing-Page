@@ -26,7 +26,7 @@ export const ShoppingSection: React.FC<ShoppingSectionProps> = ({ onCtaClick }) 
             </h2>
 
             {/* Copy */}
-            <p className="mt-4 sm:mt-6 font-montserrat text-sm sm:text-lg text-[#1A1A1A]/80 leading-relaxed font-normal">
+            <p className="mt-4 sm:mt-6 font-montserrat text-[15px] sm:text-lg text-[#1A1A1A]/80 leading-relaxed font-normal">
               HOY keeps new-product discovery separate from your wardrobe, so recommendations feel intentional, not overwhelming.
             </p>
 

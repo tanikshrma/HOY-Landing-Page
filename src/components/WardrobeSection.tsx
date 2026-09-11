@@ -68,11 +68,11 @@ export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) 
 
             {/* Supporting Text */}
             <div className="mt-3.5 sm:mt-4 space-y-3 max-w-xl">
-              <p className="font-montserrat font-medium text-xs sm:text-sm text-[#1A1A1A]">
+              <p className="font-montserrat font-medium text-[13.5px] xs:text-sm sm:text-sm text-[#1A1A1A]">
                 That shirt you've worn a hundred times? It might have more looks in it.
               </p>
 
-              <p className="font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 leading-relaxed font-normal">
+              <p className="font-montserrat text-[13.5px] xs:text-sm sm:text-sm text-[#1A1A1A]/75 leading-relaxed font-normal">
                 HOY helps you discover new ways to mix, match and rewear the clothes already sitting in your wardrobe.
               </p>
             </div>
