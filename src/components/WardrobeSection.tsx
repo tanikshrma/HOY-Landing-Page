@@ -7,44 +7,48 @@ interface WardrobeSectionProps {
 }
 
 export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) => {
+  const renderWardrobeImage = () => (
+    <div className="relative rounded-2xl overflow-hidden border border-[#1A1A1A]/10 shadow-md bg-[#1A1A1A] aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3.2]">
+      <img
+        src={IMAGES.wardrobeDetail}
+        alt="Personal wardrobe styling and sustainable rewear possibilities"
+        className="w-full h-full object-cover object-center"
+        referrerPolicy="no-referrer"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/75 via-transparent to-transparent pointer-events-none" />
+
+      {/* Floating Pill Annotation */}
+      <div className="absolute bottom-3.5 sm:bottom-5 left-3.5 sm:left-5 right-3.5 sm:right-5 p-3.5 sm:p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white/60 shadow-md">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-8 h-8 rounded-full bg-[#AB8850]/15 flex items-center justify-center text-[#AB8850] shrink-0">
+              <Shirt className="w-4 h-4" strokeWidth={1.75} />
+            </div>
+            <div className="min-w-0">
+              <p className="font-montserrat font-bold text-xs uppercase tracking-wider text-[#1A1A1A] truncate">
+                Rewear Intelligence
+              </p>
+              <p className="font-montserrat text-[11px] text-[#1A1A1A]/70 truncate">
+                1 Key Piece &bull; Multiple Curated Outfits
+              </p>
+            </div>
+          </div>
+          <span className="font-montserrat text-[9px] sm:text-[10px] uppercase font-bold text-[#AB8850] tracking-widest px-3 py-1 rounded-full bg-[#AB8850]/10 border border-[#AB8850]/30 shrink-0">
+            ZERO WASTE
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <section id="your-wardrobe" className="py-16 sm:py-20 lg:py-24 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           
-          {/* Left Column: Visual Representation of Wardrobe Versatility */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-[#1A1A1A]/10 shadow-md bg-[#1A1A1A] aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3.2]">
-              <img
-                src={IMAGES.wardrobeDetail}
-                alt="Personal wardrobe styling and sustainable rewear possibilities"
-                className="w-full h-full object-cover object-center"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/75 via-transparent to-transparent pointer-events-none" />
-
-              {/* Floating Pill Annotation */}
-              <div className="absolute bottom-3.5 sm:bottom-5 left-3.5 sm:left-5 right-3.5 sm:right-5 p-3.5 sm:p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white/60 shadow-md">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-8 h-8 rounded-full bg-[#AB8850]/15 flex items-center justify-center text-[#AB8850] shrink-0">
-                      <Shirt className="w-4 h-4" strokeWidth={1.75} />
-                    </div>
-                    <div className="min-w-0">
-                      <p className="font-montserrat font-bold text-xs uppercase tracking-wider text-[#1A1A1A] truncate">
-                        Rewear Intelligence
-                      </p>
-                      <p className="font-montserrat text-[11px] text-[#1A1A1A]/70 truncate">
-                        1 Key Piece &bull; Multiple Curated Outfits
-                      </p>
-                    </div>
-                  </div>
-                  <span className="font-montserrat text-[9px] sm:text-[10px] uppercase font-bold text-[#AB8850] tracking-widest px-3 py-1 rounded-full bg-[#AB8850]/10 border border-[#AB8850]/30 shrink-0">
-                    ZERO WASTE
-                  </span>
-                </div>
-              </div>
-            </div>
+          {/* Left Column: Desktop Visual Representation of Wardrobe Versatility */}
+          <div className="hidden lg:block lg:col-span-6 relative">
+            {renderWardrobeImage()}
           </div>
 
           {/* Right Column: Copy & CTA */}
@@ -75,6 +79,11 @@ export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) 
               <p className="font-montserrat text-[13.5px] xs:text-sm sm:text-sm text-[#1A1A1A]/75 leading-relaxed font-normal">
                 HOY helps you discover new ways to mix, match and rewear the clothes already sitting in your wardrobe.
               </p>
+            </div>
+
+            {/* Mobile Visual Representation: Displayed directly after the supporting text */}
+            <div className="lg:hidden mt-6">
+              {renderWardrobeImage()}
             </div>
 
             {/* Single CTA */}
