@@ -1,5 +1,5 @@
 import React from 'react';
-import { Crown, Sparkles, ShieldCheck, RotateCcw, Award, Check } from 'lucide-react';
+import { Crown, Target, ShieldCheck, RotateCcw, Award, Check } from 'lucide-react';
 import { HoyLogo } from './HoyLogo';
 
 export const BrandStatementSection: React.FC = () => {
@@ -45,7 +45,7 @@ export const BrandStatementSection: React.FC = () => {
       desc: 'Maximizing the pieces already in your wardrobe',
     },
     {
-      icon: Sparkles,
+      icon: Target,
       title: 'INTENT OVER NOISE',
       desc: 'Zero sponsored clutter or disposable fast-fashion',
     },

@@ -41,15 +41,13 @@ function ensureDataStore(): BookingRecord[] {
   }
 }
 
-// Atomic save helper
+// Persistent save helper
 function saveBookings(bookings: BookingRecord[]): void {
   try {
     if (!fs.existsSync(DATA_DIR)) {
       fs.mkdirSync(DATA_DIR, { recursive: true });
     }
-    const tempFile = `${BOOKINGS_FILE}.tmp`;
-    fs.writeFileSync(tempFile, JSON.stringify(bookings, null, 2), 'utf-8');
-    fs.renameSync(tempFile, BOOKINGS_FILE);
+    fs.writeFileSync(BOOKINGS_FILE, JSON.stringify(bookings, null, 2), 'utf-8');
   } catch (err) {
     console.error('Error saving bookings data store:', err);
   }

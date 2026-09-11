@@ -76,7 +76,7 @@ export default function App() {
         </main>
 
         {/* 7. FOOTER */}
-        <Footer />
+        <Footer onCtaClick={scrollToLeadForm} />
 
         {/* Mobile Sticky CTA */}
         <StickyMobileCta onCtaClick={scrollToLeadForm} />

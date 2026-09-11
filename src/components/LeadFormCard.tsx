@@ -20,12 +20,8 @@ export const validateFullName = (value: string): string | null => {
   if (trimmed.length < 2) {
     return 'Name must be at least 2 characters long';
   }
-  if (trimmed.length > 50) {
-    return 'Name cannot exceed 50 characters';
-  }
-  const nameRegex = /^[a-zA-Z\u00C0-\u024F\u1E00-\u1EFF\s.'-]+$/;
-  if (!nameRegex.test(trimmed)) {
-    return 'Please enter a valid name using letters only';
+  if (trimmed.length > 60) {
+    return 'Name cannot exceed 60 characters';
   }
   return null;
 };
@@ -35,23 +31,13 @@ export const validatePhoneNumber = (value: string): string | null => {
   if (!trimmed) {
     return 'Please enter your phone number';
   }
-  const cleanPhone = trimmed.replace(/[\s\-\(\)\.]/g, '');
-  if (!/^\+?[0-9]{10,15}$/.test(cleanPhone)) {
-    return 'Please enter a valid 10 to 15 digit mobile number';
-  }
-
-  const digitsOnly = cleanPhone.replace(/\D/g, '');
+  const digitsOnly = trimmed.replace(/\D/g, '');
   if (digitsOnly.length < 10) {
-    return 'Phone number must have at least 10 digits';
+    return 'Please enter a valid 10-digit mobile number';
   }
   if (digitsOnly.length > 15) {
     return 'Phone number cannot exceed 15 digits';
   }
-
-  if (/^(\d)\1+$/.test(digitsOnly)) {
-    return 'Please enter a valid active phone number';
-  }
-
   return null;
 };
 
@@ -63,17 +49,9 @@ export const validateEmailAddress = (value: string): string | null => {
   if (trimmed.length > 100) {
     return 'Email address cannot exceed 100 characters';
   }
-  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(trimmed)) {
     return 'Please enter a valid email address (e.g. name@example.com)';
-  }
-  const parts = trimmed.split('@');
-  if (parts.length !== 2 || !parts[1].includes('.')) {
-    return 'Please enter a complete email domain (e.g. .com, .in)';
-  }
-  const tld = parts[1].split('.').pop();
-  if (!tld || tld.length < 2) {
-    return 'Please enter a valid domain extension';
   }
   return null;
 };
@@ -228,8 +206,11 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
         <h3 className="font-montserrat font-extrabold text-2xl tracking-tight text-[#1A1A1A] uppercase">
           MAKE IT YOURS.
         </h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
-          Tell us a little about yourself, upload your wardrobe and get started with the HOY experience.
+        <p className="mt-1.5 text-xs sm:text-sm text-[#1A1A1A]/80 leading-relaxed font-normal">
+          Be one of the first 20 users to experience HOY free of charge.
+        </p>
+        <p className="mt-1 text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
+          Tell us a little about yourself, upload your wardrobe and let HOY start styling around you.
         </p>
       </div>
 
@@ -320,7 +301,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
               aria-required="true"
               aria-invalid={!!errors.fullName}
               aria-describedby={errors.fullName ? 'fullName-error' : undefined}
-              placeholder="e.g. Aarav Sharma"
+              placeholder="Aarav Sharma"
               value={formData.fullName}
               onChange={(e) => handleInputChange('fullName', e.target.value)}
               onBlur={() => handleBlur('fullName')}
@@ -412,7 +393,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
               aria-required="true"
               aria-invalid={!!errors.emailAddress}
               aria-describedby={errors.emailAddress ? 'emailAddress-error' : undefined}
-              placeholder="e.g. aarav@example.com"
+              placeholder="aarav@example.com"
               value={formData.emailAddress}
               onChange={(e) => handleInputChange('emailAddress', e.target.value)}
               onBlur={() => handleBlur('emailAddress')}
@@ -441,13 +422,13 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
               disabled={isSubmitting}
               className="w-full py-3.5 px-6 rounded-full bg-[#1A1A1A] text-white hover:bg-[#AB8850] active:scale-[0.99] font-montserrat font-bold text-xs tracking-[0.16em] uppercase transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer shadow-xs disabled:opacity-70"
             >
-              <span>{isSubmitting ? 'PROCESSING...' : 'GET MY ACCESS'}</span>
+              <span>{isSubmitting ? 'PROCESSING...' : 'GET MY FREE ACCESS'}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
           </div>
 
           <p className="text-center font-montserrat text-xs text-[#1A1A1A]/70 font-medium pt-1 tracking-wide">
-            Join HOY and start styling from your own wardrobe.
+            Your first step towards a wardrobe that works harder for you.
           </p>
         </form>
       )}

@@ -63,7 +63,7 @@ export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) 
 
             {/* Sub-headline with highlight */}
             <p className="mt-3 sm:mt-4 font-montserrat font-extrabold text-base sm:text-lg text-[#C07A61] leading-snug uppercase">
-              MAKE MORE OF WHAT YOU OWN.
+              START WITH WHAT YOU ALREADY OWN.
             </p>
 
             {/* Supporting Text */}

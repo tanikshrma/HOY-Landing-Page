@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserCheck, Ruler, Shirt, ShoppingBag, MessageSquare, Compass, ArrowUpRight } from 'lucide-react';
+import { UserCheck, Ruler, Shirt, ShoppingBag, Globe, Compass, ArrowUpRight } from 'lucide-react';
 
 export const ValuePropSection: React.FC = () => {
   const cards = [
@@ -35,7 +35,7 @@ export const ValuePropSection: React.FC = () => {
       id: '05',
       title: 'MADE FOR INDIA',
       body: 'Style that understands both your Western and Indian wardrobe.',
-      icon: MessageSquare,
+      icon: Globe,
       editorialNum: 'V',
     },
   ];

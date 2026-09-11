@@ -33,50 +33,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-montserrat font-black text-3xl sm:text-5xl lg:text-[3.6rem] xl:text-[4.2rem] tracking-tight leading-[0.95] sm:leading-[0.93] uppercase">
-                <span className="text-[#1A1A1A] block">YOUR STYLE.</span>
-                <span className="text-[#C07A61] block mt-1">SORTED.</span>
+              <h1 className="font-montserrat font-black text-3xl sm:text-4xl lg:text-[3.2rem] xl:text-[3.8rem] tracking-tight leading-[0.96] uppercase">
+                <span className="text-[#1A1A1A] block">NOTHING TO WEAR?</span>
+                <span className="text-[#C07A61] block mt-1">YOU PROBABLY HAVE PLENTY.</span>
               </h1>
 
               {/* Supporting Headline */}
-              <p className="mt-3.5 sm:mt-5 font-montserrat font-extrabold text-sm sm:text-lg lg:text-xl text-[#1A1A1A] uppercase tracking-tight leading-snug">
-                PERSONAL STYLING, MADE PERSONAL.
+              <p className="mt-3.5 sm:mt-5 font-montserrat font-extrabold text-xs sm:text-base lg:text-lg text-[#1A1A1A] uppercase tracking-tight leading-snug">
+                YOUR PERSONAL STYLIST, IN YOUR HAND.
               </p>
 
               {/* Body Copy */}
-              <p className="mt-3 sm:mt-4 font-montserrat text-xs sm:text-sm md:text-base text-[#1A1A1A]/75 leading-relaxed font-normal">
-                Your wardrobe. Your style. Your plans. HOY brings them together to help you put together complete looks that actually feel like you.
+              <p className="mt-3 sm:mt-4 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/80 leading-relaxed font-normal">
+                Tell HOY what you have. Tell us where you're going. We'll help you figure out what to wear.
               </p>
               
-              <p className="mt-2 font-montserrat font-medium text-xs sm:text-sm text-[#AB8850]">
-                Personal styling, built around your real wardrobe.
+              <p className="mt-3.5 font-montserrat font-bold text-xs sm:text-sm text-[#C07A61] uppercase tracking-wide">
+                BE ONE OF OUR FIRST 20 USERS AND GET FREE ACCESS.
               </p>
 
-              {/* Desktop Actions (Rendered inside Left Column for desktop) */}
-              <div className="hidden lg:block mt-8 space-y-3.5">
+              {/* Desktop Actions */}
+              <div className="hidden lg:block mt-7 space-y-3">
                 <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-3">
                   <button
                     id="hero-primary-cta"
                     onClick={onCtaClick}
                     className="px-7 py-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#AB8850] text-white font-montserrat font-bold text-xs tracking-[0.18em] uppercase transition-all duration-300 shadow-xs cursor-pointer active:scale-[0.99] text-center"
                   >
-                    {slots.isSoldOut ? 'VIEW ACCESS PROFILE' : 'GET MY ACCESS'}
+                    {slots.isSoldOut ? 'CHECK ACCESS FORM' : 'GET MY FREE ACCESS'}
                   </button>
-
-                  <div className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#AB8850]/10 border border-[#AB8850]/35 text-[#1A1A1A]">
-                    <Users className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
-                    <span className="font-montserrat font-bold text-[10px] tracking-[0.14em] uppercase text-[#1A1A1A] whitespace-nowrap">
-                      {slots.isSoldOut ? 'SOLD OUT FOR TODAY' : `${slots.remainingSlots} SLOTS LEFT TODAY`}
-                    </span>
-                  </div>
                 </div>
 
-                <p className="font-montserrat text-xs text-[#1A1A1A]/50 tracking-wide font-medium pl-1">
-                  {slots.bookedCount} / {slots.maxCapacity} passes claimed today.
-                </p>
-
                 {/* Subtle Editorial Marker */}
-                <div className="pt-8 mt-6 border-t border-[#1A1A1A]/10 flex items-center justify-between text-xs font-montserrat text-[#1A1A1A]/50">
+                <div className="pt-6 mt-4 border-t border-[#1A1A1A]/10 flex items-center justify-between text-xs font-montserrat text-[#1A1A1A]/50">
                   <span className="font-cinzel text-[#AB8850] text-xs font-bold tracking-widest">EDITION 2026</span>
                   <span className="tracking-wider uppercase text-[10px] text-[#1A1A1A]/60 font-medium">Curated In India</span>
                 </div>
