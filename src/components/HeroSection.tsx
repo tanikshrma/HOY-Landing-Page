@@ -81,7 +81,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {/* Mobile Quick Action Link */}
-              <div className="lg:hidden mt-[30px]">
+              <div className="lg:hidden mt-[30px] mb-[30px]">
                 <button
                   onClick={onCtaClick}
                   className="w-full py-3.5 px-6 rounded-full bg-[#1A1A1A] hover:bg-[#AB8850] active:bg-[#AB8850] text-white font-montserrat font-bold text-xs xs:text-sm tracking-[0.18em] uppercase transition-all duration-300 shadow-md flex items-center justify-center gap-2 cursor-pointer active:scale-[0.99]"
@@ -93,7 +93,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Bottom Subtle Editorial Marker */}
-            <div className="pt-3 pb-1 border-t border-[#1A1A1A]/10 flex items-center justify-between text-xs font-montserrat text-[#1A1A1A]/60 max-w-xl shrink-0 mt-4 lg:mt-6">
+            <div className="pt-[30px] lg:pt-3 pb-1 border-t border-[#1A1A1A]/10 flex items-center justify-between text-xs font-montserrat text-[#1A1A1A]/60 max-w-xl shrink-0 mt-4 lg:mt-6">
               <span className="font-cinzel text-[#AB8850] text-xs font-bold tracking-widest">EDITION 2026</span>
               <span className="tracking-wider uppercase text-[10px] sm:text-xs text-[#1A1A1A]/70 font-semibold">CURATED IN INDIA</span>
             </div>

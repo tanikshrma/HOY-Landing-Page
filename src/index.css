@@ -67,7 +67,7 @@ input:focus, button:focus {
 .animate-marquee-infinite {
   display: flex;
   width: max-content;
-  animation: marquee-scroll 16s linear infinite;
+  animation: marquee-scroll 24s linear infinite;
   will-change: transform;
 }
 
