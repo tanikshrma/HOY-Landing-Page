@@ -72,14 +72,14 @@ export const PROMPTS = [
       `${CRAFT} ${NEGATIVE}`,
   },
   {
-    key: 'step-preferences',
+    key: 'step-measure',
     aspect: '4:3',
     prompt:
-      `${ANCHOR} A 28-year-old Indian man sits on the edge of a low bed in a bright, minimal Bengaluru ` +
-      'apartment, leaning forward with elbows on knees, absorbed in something on his phone with a ' +
-      'faint smile. He wears a clean grey t-shirt and lounge shorts, hair slightly damp. A plant and ' +
-      'a stack of books sit by the window. Warm late-afternoon daylight across the floor. ' +
-      'Shot from across the room on a 35mm lens, he occupies the left of the frame. ' +
+      `${ANCHOR} A 29-year-old Indian woman stands in her bright, tidy bedroom holding a soft yellow ` +
+      'measuring tape across her shoulders, looking down to read the measurement with a ' +
+      'small focused smile. She wears a simple fitted grey top and jeans. A phone lies screen-up on ' +
+      'the neatly made bed beside a notebook. Large window on the left, soft daylight. ' +
+      'Three-quarter shot from mid-thigh up on a 50mm lens, she is slightly right of centre. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
   {

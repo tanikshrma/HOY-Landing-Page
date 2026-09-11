@@ -30,8 +30,9 @@ export function Rewear({ onCta }: { onCta: () => void }) {
               again under a Nehru vest.
             </p>
             <p className="mt-4 max-w-lg text-[0.9375rem] leading-relaxed text-ink-50">
-              HOY finds those combinations for you, so the things you already paid for
-              finally earn their place.
+              Which of those actually works depends on your proportions — where the hem
+              falls, how the shoulder sits, whether the break at the ankle is right. That is
+              what your measurements are for. We do the pairing; you just get dressed.
             </p>
 
             <button

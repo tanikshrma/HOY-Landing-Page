@@ -18,15 +18,19 @@ export const FAQS = [
   },
   {
     q: 'What happens after I sign up?',
-    a: 'You get a WhatsApp message from us within 24 hours to set up your profile. That conversation takes about ten minutes. There is nothing to download or install first.',
+    a: 'You get a WhatsApp message from us within 24 hours. We walk you through photographing your wardrobe and taking your measurements, then start sending you outfits built from your own clothes. There is nothing to download or install first.',
+  },
+  {
+    q: 'Do I have to measure myself?',
+    a: 'Yes, and it is the part that makes the difference. We walk you through it on WhatsApp — height, shoulders, chest, waist and inseam, with an ordinary tape measure. It takes about ten minutes and you only do it once. Without it we would be guessing like everyone else.',
   },
   {
     q: 'Do I have to photograph my entire wardrobe?',
-    a: 'No. Start with the 15 to 20 pieces you reach for most — that is enough to build real outfits from. You can add more whenever you feel like it, or never.',
+    a: 'No. Start with the 15 to 20 pieces you reach for most — that is enough to build real combinations from. Add more whenever you feel like it, or never.',
   },
   {
     q: 'Will you push me to buy things?',
-    a: 'Only when there is a genuine gap, and we will say what it unlocks. Most of what we suggest is something you already own. We are not paid by brands to place products.',
+    a: 'No. The whole point is combinations from clothes you already have. If a single piece would genuinely unlock ten more outfits we will say so and tell you why, but we are not paid by brands to place products.',
   },
   {
     q: 'Is this for men as well?',

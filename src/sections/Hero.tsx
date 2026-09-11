@@ -33,8 +33,9 @@ export function Hero({ onSuccess }: HeroProps) {
             </h1>
 
             <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-ink-70 sm:text-lg">
-              HOY works with the wardrobe you already own and tells you exactly what to put
-              on — for the office, a wedding, a first date, or an ordinary Tuesday.
+              We go through your wardrobe, take your measurements, and turn what you already
+              own into outfits that actually fit you — for work, a wedding, or an ordinary
+              Tuesday.
             </p>
 
             <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2.5">

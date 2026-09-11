@@ -32,17 +32,6 @@
     "height": 1792,
     "lqip": "data:image/webp;base64,UklGRqQAAABXRUJQVlA4IJgAAABQBQCdASoYABIAPzmUwVmvKicjqAgB4CcJQBdiP/wDwYezE5Od9XanJKEZBIz+INbdKAAA/DNCxJsAt0seCjaiPgVmXFAxGJhkUBiFZNovvAFmRUO3dSnrBJuqjzcLI8GTBnsc8Jdj8MgZ2x0DtkSqqhAApReBkLIA1UFdTKVPp5QqkWThFJFhL2ZgKxjDujmQI3KFLMAAAA=="
   },
-  "step-preferences": {
-    "key": "step-preferences",
-    "widths": [
-      480,
-      800,
-      1200
-    ],
-    "width": 2400,
-    "height": 1792,
-    "lqip": "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAwBQCdASoYABIAPzmUwVmvKicjqAgB4CcJQBdgAkaHHXt35bzOegSf7BECeGjVEfgmwAD3nJFcTVu+sAZVDDEHtMHXmxj8RXidDuzGcFR8CMLH1R1czkb8fvZkY+qkO/VaGXoloT3a9jQ7QQnra4mjruzVGyJACPLJY7Fy0g5xeNbe+m3+vIuRURsf5fRvq3AAAA=="
-  },
   "step-outfit": {
     "key": "step-outfit",
     "widths": [
@@ -95,5 +84,16 @@
     "width": 2752,
     "height": 1536,
     "lqip": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAACwAwCdASoYAA0APzleyV8vI6qmGAHgJwliALDsXSse7t7TuOr14AD+l9jcxaMY2y8etJMGWV1e8kA+Md7sBWFo4Ctwu0NHBvc1+v8RGodpjWBtTfl/4au+kbqhMkuIGA44AAAA"
+  },
+  "step-measure": {
+    "key": "step-measure",
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "width": 2400,
+    "height": 1792,
+    "lqip": "data:image/webp;base64,UklGRpwAAABXRUJQVlA4IJAAAADwBACdASoYABIAPzmQvlgvKaYjqAqp4CcJYwDMHAx8NhfnkpJQLC5HlTBUY+TE1QAA/t75/NANRNaTyoVJu5o9Gjs881uA9ffm/C1/rTHQIYycsLQTtTyoM0kHMPgV2s5Vm98j0pf4iPu8hpVcvXths5nzK7CKJCDvX8QAk05mvznRPTQUghgq8UXx70c24AA="
   }
 }

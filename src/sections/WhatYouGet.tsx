@@ -1,4 +1,4 @@
-import { CalendarDays, Footprints, MessageCircle, Shirt, Sparkle, Wallet } from 'lucide-react';
+import { CalendarDays, MessageCircle, Ruler, Shirt, Sparkle, Wallet } from 'lucide-react';
 import { Reveal } from '../components/ui/Reveal';
 import { Photo } from '../components/ui/Photo';
 
@@ -10,8 +10,8 @@ const ITEMS = [
   },
   {
     icon: Sparkle,
-    title: 'Your own clothes first',
-    body: 'Every look starts from what is already hanging in your wardrobe.',
+    title: 'Only clothes you already own',
+    body: 'Every combination comes out of your own cupboard. Nothing to buy to get started.',
   },
   {
     icon: CalendarDays,
@@ -19,9 +19,9 @@ const ITEMS = [
     body: 'A sangeet, a client meeting, Diwali at home and Sunday brunch are not the same brief.',
   },
   {
-    icon: Footprints,
-    title: 'Fit and proportion that suit you',
-    body: 'Recommendations account for your body, not a generic size chart.',
+    icon: Ruler,
+    title: 'Cut to your actual measurements',
+    body: 'Your height, shoulders and build decide what gets paired with what. Not a size chart, not a guess.',
   },
   {
     icon: Wallet,

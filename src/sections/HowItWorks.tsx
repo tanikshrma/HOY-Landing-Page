@@ -4,25 +4,25 @@ import { Reveal } from '../components/ui/Reveal';
 const STEPS: { n: string; title: string; body: string; aside: string; image: PhotoKey; alt: string }[] = [
   {
     n: '01',
-    title: 'Show us your wardrobe',
-    body: 'Photograph the pieces you actually wear. Hangers, folded, on the bed — however they are.',
+    title: 'We go through your wardrobe',
+    body: 'Photograph the pieces you actually wear. Hangers, folded, on the bed — however they are. We catalogue every one.',
     aside: 'About ten minutes, once',
     image: 'step-capture',
     alt: 'Photographing a folded block-print kurta with a phone',
   },
   {
     n: '02',
-    title: 'Tell us about you',
-    body: 'Your size and fit, where you work, the places you actually go, and the things you would never wear.',
-    aside: 'A few questions',
-    image: 'step-preferences',
-    alt: 'A man sitting on his bed setting up his style profile on his phone',
+    title: 'We take your measurements',
+    body: 'Height, shoulders, chest, waist, inseam — the numbers a tailor would take. This is the part everyone else skips.',
+    aside: 'One tape measure, ten minutes',
+    image: 'step-measure',
+    alt: 'A woman measuring across her shoulders with a tape measure at home',
   },
   {
     n: '03',
-    title: 'Get dressed',
-    body: 'Say where you’re going. Get a complete outfit — top, bottom, shoes, layers — built from what you own.',
-    aside: 'Every morning, in seconds',
+    title: 'You wear what you already own',
+    body: 'We put your own clothes into combinations that suit your proportions — top, bottom, shoes, layers — for wherever you’re going.',
+    aside: 'A new look, no new clothes',
     image: 'step-outfit',
     alt: 'A man leaving his flat dressed in an olive overshirt, grey tee and dark jeans',
   },
@@ -35,8 +35,12 @@ export function HowItWorks() {
         <Reveal className="max-w-2xl">
           <p className="eyebrow">How it works</p>
           <h2 className="mt-3 text-[1.75rem] leading-tight font-semibold sm:text-4xl">
-            Three steps, then you stop thinking about it.
+            Your wardrobe, your measurements, and the combinations in between.
           </h2>
+          <p className="mt-4 text-[1.0625rem] leading-relaxed text-ink-70">
+            Styling advice usually stops at “wear more beige”. We start with what is
+            physically hanging in your cupboard and the actual shape of you.
+          </p>
         </Reveal>
 
         <ol className="mt-10 grid gap-6 sm:mt-14 sm:gap-7 md:grid-cols-3">

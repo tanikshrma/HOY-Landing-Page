@@ -1,8 +1,17 @@
 # HOY — landing page
 
 Lead-capture landing page for HOY (House of You), a personal styling service in
-India. Free access is capped at **20 people per day**, and that cap is real —
-it is enforced server-side and the counter on the page reads from it.
+India.
+
+The service itself is the thing the page has to communicate: HOY catalogues
+the clothes already in your wardrobe, takes your body measurements, and puts
+your own pieces into combinations that suit your proportions. No shopping
+required. The measurement step is the differentiator — it is what separates
+this from generic styling advice — so it gets its own step, its own
+photograph, and its own FAQ entry. Keep it prominent in any rewrite.
+
+Free access is capped at **20 people per day**, and that cap is real — it is
+enforced server-side and the counter on the page reads from it.
 
 React 19 + Vite + Tailwind v4 on the front, Express on the back.
 
