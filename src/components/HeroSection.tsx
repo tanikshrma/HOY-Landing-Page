@@ -41,10 +41,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
           
-          {/* 1. LEFT COLUMN: Editorial Headline, Subtitle, Copy & Metadata - 85-100vh mobile composition */}
-          <div className="lg:col-span-7 xl:col-span-7 min-h-[85vh] max-h-[96vh] sm:min-h-[88vh] lg:min-h-0 lg:max-h-none lg:h-auto flex flex-col justify-between pt-2 pb-2 sm:py-4 lg:py-0">
+          {/* 1. LEFT COLUMN: Editorial Headline, Subtitle, Copy & Metadata */}
+          <div className="lg:col-span-7 xl:col-span-7 flex flex-col pt-2 pb-2 sm:py-4 lg:py-0">
             {/* Top / Main Content Cluster */}
-            <div className="flex flex-col justify-center my-auto lg:my-0">
+            <div className="flex flex-col">
               {/* Eyebrow */}
               <div className="inline-flex items-center gap-1.5 mb-2.5 sm:mb-3 lg:mb-5">
                 <Crown className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
@@ -100,7 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* 2. RIGHT COLUMN: Refined Lead Generation Form Card */}
-          <div className="lg:col-span-5 xl:col-span-5 w-full max-w-lg mx-auto lg:max-w-none pt-8 sm:pt-10 lg:pt-0">
+          <div className="lg:col-span-5 xl:col-span-5 w-full max-w-lg mx-auto lg:max-w-none pt-2 sm:pt-4 lg:pt-0">
             <LeadFormCard
               id="hero-lead-form"
               onSuccess={onLeadSuccess}
