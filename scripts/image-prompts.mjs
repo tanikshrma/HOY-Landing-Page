@@ -95,15 +95,21 @@ export const PROMPTS = [
       `${CRAFT} ${NEGATIVE}`,
   },
   {
+    /*
+     * Must match the three look-* photographs exactly: same striped shirt,
+     * and the same three sets of things it is worn with. A flat lay showing
+     * different garments makes the section's whole claim untrue.
+     */
     key: 'rewear',
     aspect: '4:3',
     prompt:
       `${ANCHOR} Overhead flat lay on a clean, lightly creased white bedsheet in an Indian home: one ` +
-      'blue-and-white striped cotton shirt laid in the centre, with three different sets of things it ' +
-      'could be worn with arranged loosely around it — dark indigo jeans with white sneakers; ' +
-      'beige linen trousers with tan leather sandals; and a black Nehru-collar layering vest with ' +
-      'brown juttis. Everything is worn-in rather than brand new. Bright soft daylight from the left. ' +
-      'Shot from directly overhead, 35mm lens, arrangement slightly off-centre. ' +
+      'blue-and-white fine-striped cotton shirt laid in the centre, with three different sets of ' +
+      'things it could be worn with arranged loosely around it — charcoal high-waisted wide-leg ' +
+      'trousers with pointed tan leather loafers; straight-leg mid-blue jeans with off-white canvas ' +
+      'sneakers; and a deep teal block-print silk midi skirt with tan embroidered juttis and a pair ' +
+      'of gold jhumka earrings. Everything is worn-in rather than brand new. Bright soft daylight ' +
+      'from the left. Shot from directly overhead, 35mm lens, arrangement slightly off-centre. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
   /*
@@ -116,11 +122,13 @@ export const PROMPTS = [
     key: 'look-office',
     aspect: '3:4',
     prompt:
-      `${ANCHOR} Full-length vertical portrait of a 29-year-old Indian man standing against a plain ` +
-      'white interior wall, dressed for the office: a blue-and-white fine-striped cotton shirt tucked ' +
-      'into charcoal tailored trousers, brown leather belt, dark brown derby shoes, sleeves buttoned. ' +
-      'Relaxed posture, hands loose at his sides, a calm half-smile, looking slightly off camera. ' +
-      'Soft even daylight from the left. Shot head to toe on a 50mm lens with room above and below. ' +
+      `${ANCHOR} Full-length vertical fashion portrait of a poised, elegant 28-year-old Indian woman ` +
+      'standing against a plain white interior wall, dressed for the office: a crisp blue-and-white ' +
+      'fine-striped cotton shirt tucked into charcoal high-waisted wide-leg trousers, slim tan belt, ' +
+      'pointed tan leather loafers. Long dark hair loose over one shoulder, small gold hoop earrings, ' +
+      'minimal natural makeup. Confident relaxed stance, weight on one hip, a calm half-smile, ' +
+      'looking just off camera. Soft even daylight from the left. Head to toe on an 85mm lens with ' +
+      'clear room above and below her. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
   {
@@ -128,11 +136,11 @@ export const PROMPTS = [
     ref: 'look-office',
     aspect: '3:4',
     prompt:
-      'Keep the same man, the same face, the same blue-and-white fine-striped cotton shirt and the same ' +
-      'plain white wall, lighting and camera position as the reference image. Change only how the shirt ' +
-      'is worn: now it hangs open and untucked over a plain white crew-neck t-shirt, with sleeves rolled ' +
-      'to the elbow, mid-blue jeans and off-white canvas sneakers. Same relaxed stance, full length, ' +
-      'same framing. ' +
+      'Keep the same woman, the same face, the same hair, the same blue-and-white fine-striped cotton ' +
+      'shirt, and the same plain white wall, lighting and camera position as the reference image. ' +
+      'Change only how the shirt is worn: now it hangs open and untucked over a plain white ribbed ' +
+      'tank top, sleeves rolled to the elbow, with straight-leg mid-blue jeans and off-white canvas ' +
+      'sneakers. Same relaxed stance, same full-length framing. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
   {
@@ -140,11 +148,11 @@ export const PROMPTS = [
     ref: 'look-office',
     aspect: '3:4',
     prompt:
-      'Keep the same man, the same face, the same blue-and-white fine-striped cotton shirt and the same ' +
-      'plain white wall, lighting and camera position as the reference image. Change only the layering: ' +
-      'the striped shirt is now worn tucked in under a black Nehru-collar sleeveless jacket, with ' +
-      'cream cotton trousers and tan leather juttis, dressed for a family celebration. Same relaxed ' +
-      'stance, full length, same framing. ' +
+      'Keep the same woman, the same face, the same hair, the same blue-and-white fine-striped cotton ' +
+      'shirt, and the same plain white wall, lighting and camera position as the reference image. ' +
+      'Change only the styling around it: the striped shirt is now tucked into a deep teal silk ' +
+      'block-print midi skirt, with tan embroidered juttis and gold jhumka earrings, dressed for a ' +
+      'family celebration. Same relaxed stance, same full-length framing. ' +
       `${CRAFT} ${NEGATIVE}`,
   },
   {

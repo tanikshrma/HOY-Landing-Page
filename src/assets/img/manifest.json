@@ -52,7 +52,7 @@
     ],
     "width": 2400,
     "height": 1792,
-    "lqip": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABQBQCdASoYABIAPzmQu1gvKaWjqAqp4CcJYwDLpywTkAXnPs4RaeZThw2Zxgn8zuGq2ZgA/sOYivGSivt6mdjYmPSL+D5LE9DqIo7FdDOQLYlHM2RHt6MQCmfRcb2YTImgSORD6CFDWpaulphG2Tqil0fC28Ze49TrjcoPtIrdOAGRsGc0R1zS/sYxfGpSTUUCmWzu+cUrC6xLWg8rvkdtk/kGv3hMMAAAAA=="
+    "lqip": "data:image/webp;base64,UklGRrwAAABXRUJQVlA4ILAAAABQBQCdASoYABIAPzmSv1mvKaajqAgB4CcJYxeAAib4M7BfqMYM+QITL0vpGLzCygAC6wAA/tOjyk+9bnZ2pdP1rDe/9bH6ba4bOrARAG4EWHugd5YcfKxz11VVQ5I1tVZ6ae6jYltmP3i4Db3SQQoFpn0K1P/sm0h08hjwy2UWIseqDnUhLGzxrd1wGP5pbzIQiju8cq8mM6FmluKbBXPEs5ikyyRgYgQ1py2SfIAAAA=="
   },
   "occasion": {
     "key": "occasion",
@@ -105,7 +105,7 @@
     ],
     "width": 1792,
     "height": 2400,
-    "lqip": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwBACdASoYACAAPzmMvFYvKaYjsBgIAeAnCWMAAI90z8mbcKfIP573FMAA/tYD99nHwSocpbgQCs/K5Rusm6tz7aPUQNfJgRag4vqXPLRdWexSFxqSX0UcCPTrMDSXmPlLzKgVKicyb4mV1xYV5aDcR/BD++FMTTZsAA=="
+    "lqip": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAAAQBQCdASoYACAAPzmQvlevKaYjqAqp4CcJZQAAj/W611Nac8WVbMAjWEeHxoM7CLGAAP7nRCeZlaNgkEIpF5m6zgo9TbkZXF8tb8c8yNQ9cDBz4lxGmf6EGCimuid/65p/zpwO4LPXqiO+lScH2zagEXemUkmUwglkIAAA"
   },
   "look-weekend": {
     "key": "look-weekend",
@@ -116,7 +116,7 @@
     ],
     "width": 1792,
     "height": 2400,
-    "lqip": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAACQBACdASoYACAAPzmGvFavKCYjsBgIAeAnCWUAAI90nQFknga/gfNAmaMXOWAA/tYEMtoH+wVWb/ILMHFvr5rMjq8Wz/7GiTIvjISfFK/VqZoXx1/Ct7eKr788vtu6BgmL8V/qTMQpET4lZBO3ZUcAAAA="
+    "lqip": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAQBQCdASoYACAAPzmMulYvKSWjqA1R4CcJZQDNhEKRPHEYxhGLOjFJZVx1khj+aVxEAP7rFXgXV0Dsr3TqZENjARftfJpLzbm6QcEn1XmxjYQmqHGvOEbI5RE+R4HxjIP979oJ0d+vvWJN2U121LxiO9Mp9M9X4hThIF8zk+V2suEAAAA="
   },
   "look-festive": {
     "key": "look-festive",
@@ -127,7 +127,7 @@
     ],
     "width": 1792,
     "height": 2400,
-    "lqip": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAACQBACdASoYACAAPzmMu1QvKiYjMAgB4CcJZQAAYf/upAL16orOahhBr5zul4AA/sc/9E/VJL+VPgJgubIp6PYCd3AbdHH3LUYrWx/+8uvoeLgc4OIx5+Jrt/Q6N2QNguXrt9ruvpI3AVxVMhAAAA=="
+    "lqip": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAADwBACdASoYACAAPzmMulavKSUjqA1R4CcJZQDM0EXf49HqK/EqbMAgVCJromSieiAA/uqZ0PZcpa8cAJ2N9UJu/9dr1ypy1/lvgcKCFCej00BjeUmvlDhOSjhHzEQJqnqWg4GuejwucdRF0w9/HZow1/dCT1OEn10/VonsyCcAAAAA"
   },
   "band-rail": {
     "key": "band-rail",

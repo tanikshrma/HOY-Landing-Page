@@ -7,20 +7,20 @@ const LOOKS: { image: PhotoKey; where: string; how: string; alt: string }[] = [
   {
     image: 'look-office',
     where: 'Monday, office',
-    how: 'Tucked, charcoal trousers, brown derbys.',
-    alt: 'The striped shirt tucked into charcoal trousers with brown leather shoes',
+    how: 'Tucked into wide-leg trousers, tan loafers.',
+    alt: 'The striped shirt tucked into charcoal wide-leg trousers with tan loafers',
   },
   {
     image: 'look-weekend',
     where: 'Saturday, out',
-    how: 'Open over a white tee, sleeves rolled, jeans.',
-    alt: 'The same striped shirt worn open over a white t-shirt with jeans and canvas sneakers',
+    how: 'Open over a tank, sleeves rolled, jeans.',
+    alt: 'The same striped shirt worn open over a white tank top with jeans and canvas sneakers',
   },
   {
     image: 'look-festive',
     where: 'Family dinner',
-    how: 'Under a black Nehru jacket, cream trousers, juttis.',
-    alt: 'The same striped shirt under a black Nehru-collar jacket with cream trousers and juttis',
+    how: 'Tucked into a block-print skirt, juttis.',
+    alt: 'The same striped shirt tucked into a teal block-print midi skirt with embroidered juttis',
   },
 ];
 
