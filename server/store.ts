@@ -3,6 +3,7 @@ import fsp from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { DAILY_CAPACITY, TIMEZONE } from './config.js';
+import { kv, kvEnabled } from './kv.js';
 
 export interface Lead {
   id: string;
@@ -14,14 +15,82 @@ export interface Lead {
   /** 1-based position within that day, so you can see who was #1 vs #20. */
   slotNumber: number;
   createdAt: string;
-  source: {
-    /** utm_source / utm_medium / utm_campaign / utm_content / utm_term / fbclid / gclid */
-    [k: string]: string | undefined;
-  };
+  source: { [k: string]: string | undefined };
   referrer: string;
   userAgent: string;
   ipHash: string;
 }
+
+export interface Availability {
+  day: string;
+  capacity: number;
+  claimed: number;
+  remaining: number;
+  soldOut: boolean;
+  resetsInMs: number;
+}
+
+export interface ClaimInput {
+  fullName: string;
+  phone: string;
+  email: string;
+  source: Record<string, string | undefined>;
+  referrer: string;
+  userAgent: string;
+  ipHash: string;
+}
+
+export type ClaimResult =
+  | { status: 'created'; lead: Lead; availability: Availability }
+  | { status: 'duplicate'; lead: Lead | null; availability: Availability }
+  | { status: 'sold_out'; availability: Availability };
+
+/** Which backend is live. Surfaced on /api/health so a bad deploy is obvious. */
+export const backend: 'redis' | 'filesystem' = kvEnabled ? 'redis' : 'filesystem';
+
+/* ------------------------------------------------------------------ *
+ * Time helpers
+ * ------------------------------------------------------------------ */
+
+/** Today's date as YYYY-MM-DD in the configured timezone (en-CA formats that way). */
+export function today(): string {
+  return new Intl.DateTimeFormat('en-CA', {
+    timeZone: TIMEZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).format(new Date());
+}
+
+/** Milliseconds until the counter resets, for the countdown in the UI. */
+export function msUntilReset(): number {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: TIMEZONE,
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  }).formatToParts(new Date());
+  const get = (t: string) => Number(parts.find((p) => p.type === t)?.value ?? 0);
+  const elapsed = get('hour') * 3600 + get('minute') * 60 + get('second');
+  return (86400 - elapsed) * 1000;
+}
+
+function summarise(day: string, claimed: number): Availability {
+  const capped = Math.min(claimed, DAILY_CAPACITY);
+  return {
+    day,
+    capacity: DAILY_CAPACITY,
+    claimed: capped,
+    remaining: Math.max(0, DAILY_CAPACITY - capped),
+    soldOut: capped >= DAILY_CAPACITY,
+    resetsInMs: msUntilReset(),
+  };
+}
+
+/* ------------------------------------------------------------------ *
+ * Filesystem backend — for a VM or container with a persistent volume.
+ * ------------------------------------------------------------------ */
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
@@ -72,71 +141,12 @@ async function persist(leads: Lead[]): Promise<void> {
   cache = leads;
 }
 
-/** Today's date as YYYY-MM-DD in the configured timezone. */
-export function today(): string {
-  // en-CA formats as YYYY-MM-DD, which is exactly the shape we want.
-  return new Intl.DateTimeFormat('en-CA', {
-    timeZone: TIMEZONE,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(new Date());
-}
-
-/** Milliseconds until the counter resets, for the countdown in the UI. */
-export function msUntilReset(): number {
-  const now = new Date();
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    timeZone: TIMEZONE,
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  }).formatToParts(now);
-  const get = (t: string) => Number(parts.find((p) => p.type === t)?.value ?? 0);
-  const elapsed = get('hour') * 3600 + get('minute') * 60 + get('second');
-  return (86400 - elapsed) * 1000;
-}
-
-export interface Availability {
-  day: string;
-  capacity: number;
-  claimed: number;
-  remaining: number;
-  soldOut: boolean;
-  resetsInMs: number;
-}
-
-export function availability(): Availability {
+function fsAvailability(): Availability {
   const day = today();
-  const claimed = readSync().filter((l) => l.day === day).length;
-  const remaining = Math.max(0, DAILY_CAPACITY - claimed);
-  return {
-    day,
-    capacity: DAILY_CAPACITY,
-    claimed,
-    remaining,
-    soldOut: remaining <= 0,
-    resetsInMs: msUntilReset(),
-  };
+  return summarise(day, readSync().filter((l) => l.day === day).length);
 }
 
-export type ClaimResult =
-  | { status: 'created'; lead: Lead; availability: Availability }
-  | { status: 'duplicate'; lead: Lead; availability: Availability }
-  | { status: 'sold_out'; availability: Availability };
-
-export interface ClaimInput {
-  fullName: string;
-  phone: string;
-  email: string;
-  source: Record<string, string | undefined>;
-  referrer: string;
-  userAgent: string;
-  ipHash: string;
-}
-
-export function claim(input: ClaimInput): Promise<ClaimResult> {
+function fsClaim(input: ClaimInput): Promise<ClaimResult> {
   return exclusive(async () => {
     const leads = [...readSync()];
     const day = today();
@@ -148,34 +158,115 @@ export function claim(input: ClaimInput): Promise<ClaimResult> {
       (l) => l.email === input.email || l.phone === input.phone,
     );
     if (existing) {
-      return { status: 'duplicate' as const, lead: existing, availability: availability() };
+      return { status: 'duplicate' as const, lead: existing, availability: fsAvailability() };
     }
 
     if (todays.length >= DAILY_CAPACITY) {
-      return { status: 'sold_out' as const, availability: availability() };
+      return { status: 'sold_out' as const, availability: fsAvailability() };
     }
 
-    const lead: Lead = {
-      id: crypto.randomUUID(),
-      fullName: input.fullName,
-      phone: input.phone,
-      email: input.email,
-      day,
-      slotNumber: todays.length + 1,
-      createdAt: new Date().toISOString(),
-      source: input.source,
-      referrer: input.referrer,
-      userAgent: input.userAgent,
-      ipHash: input.ipHash,
-    };
-
+    const lead = buildLead(input, day, todays.length + 1);
     leads.push(lead);
     await persist(leads);
-
-    return { status: 'created' as const, lead, availability: availability() };
+    return { status: 'created' as const, lead, availability: fsAvailability() };
   });
 }
 
-export function allLeads(): Lead[] {
-  return readSync();
+/* ------------------------------------------------------------------ *
+ * Redis backend — for serverless, where there is no shared disk.
+ * ------------------------------------------------------------------ */
+
+const DAY_TTL = 60 * 60 * 24 * 400; // keep a day's keys well past the day itself
+const kCount = (d: string) => `hoy:count:${d}`;
+const kLeads = (d: string) => `hoy:leads:${d}`;
+const kSeen = (d: string) => `hoy:seen:${d}`;
+
+async function kvAvailability(): Promise<Availability> {
+  const day = today();
+  const raw = await kv.get(kCount(day));
+  return summarise(day, Number(raw ?? 0));
+}
+
+async function kvClaim(input: ClaimInput): Promise<ClaimResult> {
+  const day = today();
+
+  // Dedupe on either identifier before taking a slot.
+  for (const id of [`e:${input.email}`, `p:${input.phone}`]) {
+    if ((await kv.sismember(kSeen(day), id)) === 1) {
+      return { status: 'duplicate', lead: null, availability: await kvAvailability() };
+    }
+  }
+
+  // INCR is atomic, so two simultaneous claims get distinct numbers and only
+  // one of them can be the twentieth. Overshoot is handed back with DECR.
+  const slotNumber = await kv.incr(kCount(day));
+  if (slotNumber === 1) await kv.expire(kCount(day), DAY_TTL);
+
+  if (slotNumber > DAILY_CAPACITY) {
+    await kv.decr(kCount(day));
+    return { status: 'sold_out', availability: await kvAvailability() };
+  }
+
+  const lead = buildLead(input, day, slotNumber);
+  await kv.rpush(kLeads(day), JSON.stringify(lead));
+  await kv.expire(kLeads(day), DAY_TTL);
+  await kv.sadd(kSeen(day), `e:${input.email}`);
+  await kv.sadd(kSeen(day), `p:${input.phone}`);
+  await kv.expire(kSeen(day), DAY_TTL);
+
+  return { status: 'created', lead, availability: await kvAvailability() };
+}
+
+/* ------------------------------------------------------------------ *
+ * Shared
+ * ------------------------------------------------------------------ */
+
+function buildLead(input: ClaimInput, day: string, slotNumber: number): Lead {
+  return {
+    id: crypto.randomUUID(),
+    fullName: input.fullName,
+    phone: input.phone,
+    email: input.email,
+    day,
+    slotNumber,
+    createdAt: new Date().toISOString(),
+    source: input.source,
+    referrer: input.referrer,
+    userAgent: input.userAgent,
+    ipHash: input.ipHash,
+  };
+}
+
+export async function availability(): Promise<Availability> {
+  if (!kvEnabled) return fsAvailability();
+  try {
+    return await kvAvailability();
+  } catch (err) {
+    // Never fail the page because the counter is unreachable — show the
+    // filesystem's view rather than a broken widget.
+    console.error('[store] availability via redis failed:', err);
+    return fsAvailability();
+  }
+}
+
+export function claim(input: ClaimInput): Promise<ClaimResult> {
+  return kvEnabled ? kvClaim(input) : fsClaim(input);
+}
+
+/** Every lead, newest day last. Used by the CSV export. */
+export async function allLeads(): Promise<Lead[]> {
+  if (!kvEnabled) return readSync();
+
+  const keys = await kv.keys('hoy:leads:*');
+  const out: Lead[] = [];
+  for (const key of keys.sort()) {
+    for (const raw of await kv.lrange(key, 0, -1)) {
+      try {
+        out.push(typeof raw === 'string' ? JSON.parse(raw) : (raw as Lead));
+      } catch {
+        /* skip an unparseable row rather than failing the whole export */
+      }
+    }
+  }
+  return out;
 }
