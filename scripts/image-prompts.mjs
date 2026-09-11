@@ -132,26 +132,27 @@ export const PROMPTS = [
     aspect: '16:9',
     size: '4K',
     prompt:
-      'One single continuous photograph, no borders or dividing lines: the SAME Indian woman ' +
-      'photographed three times, standing side by side against the SAME continuous plain white ' +
-      'wall, in the SAME soft daylight from the left, same camera height, same full-length framing ' +
-      'head to toe, evenly spaced with space between them.\n\n' +
+      'One single continuous photograph, no borders or dividing lines, of the SAME Indian woman ' +
+      'appearing three times in the SAME room — a bright, warm bedroom in a contemporary Indian ' +
+      'home with white walls, a wooden floor, a large window with a sheer curtain on the left, and ' +
+      'a leafy plant in the corner. Soft natural morning light throughout. She stands in three ' +
+      'different spots across the room, full length, evenly spaced.\n\n' +
       'CRITICAL: in all three she wears the IDENTICAL SAME blue-and-white striped cotton shirt — ' +
       'the exact same garment, identical narrow stripe width, identical collar, identical buttons. ' +
-      'Only what is worn WITH it changes.\n\n' +
-      'LEFT: shirt buttoned and tucked into charcoal high-waisted wide-leg trousers, slim tan belt, ' +
-      'pointed tan leather loafers.\n' +
-      'CENTRE: the very same shirt unbuttoned, hanging open and untucked over a plain white ribbed ' +
-      'tank, sleeves rolled to the elbow, straight-leg mid-blue jeans, off-white canvas sneakers.\n' +
-      'RIGHT: the very same shirt worn as the blouse under a saree — slim-fit shirt tucked into the ' +
-      'petticoat, a deep teal silk saree with a fine gold zari border draped over it, pleats falling ' +
-      'clean, the pallu left loose over the left shoulder rather than pinned flat against the collar, ' +
-      'a slim tan belt over the shirt at the waist to define the drape, tan embroidered juttis and ' +
-      'gold jhumka earrings.\n\n' +
-      'Indian woman, late twenties, South Asian features, brown skin, long dark hair loose, minimal ' +
-      'natural makeup, same calm half-smile and relaxed stance in each. ' +
-      `${CRAFT} Avoid: three different shirts, varying stripe widths, different walls or lighting ` +
-      `between the three. ${NEGATIVE}`,
+      'Only what is worn with it, and what she is doing, changes.\n\n' +
+      'LEFT: shirt tucked into charcoal high-waisted wide-leg trousers with tan loafers. She is ' +
+      'standing near the window fastening one shirt cuff, head tilted down towards her wrist.\n' +
+      'CENTRE: the same shirt unbuttoned and untucked over a white ribbed tank, sleeves rolled, ' +
+      'straight-leg jeans, bare feet. She leans one shoulder against the wall, hands loose, ' +
+      'laughing softly at something off camera.\n' +
+      'RIGHT: the same shirt worn as the blouse under a deep teal silk saree with a fine gold zari ' +
+      'border, tucked into the petticoat with the saree draped over it, tan juttis, gold jhumkas. ' +
+      'She is mid-motion lifting the pallu up over her left shoulder, looking towards it.\n\n' +
+      'Indian woman, late twenties, South Asian features, brown skin, long dark hair worn loose, ' +
+      'minimal natural makeup. Three natural candid moments, NOT three identical straight-on poses. ' +
+      `${CRAFT} Avoid: three different shirts, varying stripe widths, a plain white studio ` +
+      'backdrop, a flat e-commerce catalogue look, identical repeated poses, arms hanging stiffly ' +
+      `at the sides, direct eye contact with the camera. ${NEGATIVE}`,
   },
   {
     key: 'measure-form',

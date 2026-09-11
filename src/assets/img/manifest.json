@@ -105,7 +105,7 @@
     ],
     "width": 1829,
     "height": 3072,
-    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAADQBQCdASoYACgAPzmKtlQvKaSjKq354CcJZQDSrBRPndtVfBjHlSLmDRmGgK78ZWdEr2WnB8gAAP7JEICZ3IsaMltt2iM52rG58uCx3eiU2PoXLn/BXffFJG7X7nBazZB/gos8z0FBentVFFlYg9bRok/DhQ5dfpMHqQ170Z0zvUGHgp1KfnM7q2IXOzYI2aAAc85SroT4l9GMKpyk0lvGCgHJLRxjFOjl09Lq69wiAAAA"
+    "lqip": "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAACQBgCdASoYACgAPzmMuFWvKSUjKqwB4CcJQBgbiLGmJ6emoJO/ERmyyT0HfZXGVems0RAKivXgg7sZt71gAP7uLMnG0V1R8CZN7cHXq4JK2DacKIcjxR9vEQRyGY04hnwN5FZ6dweAQ2RpyWmPXvVPiP99bxGCKbzAG6nkmt/Ersvwqe/FlJPV2lVZbo48Egdm6IB9xswqPsxAo4vv6QANqoXkxboYavYZ7MqJqe0sonLSMoU17CzULh4IfjyqiyJOgQI4mfg6YXRmBkzV/trBA5RORCIX4AA="
   },
   "look-weekend": {
     "key": "look-weekend",
@@ -116,7 +116,7 @@
     ],
     "width": 1822,
     "height": 3072,
-    "lqip": "data:image/webp;base64,UklGRpoAAABXRUJQVlA4II4AAABwBQCdASoYACkAPzmEvVevJ6YkqrgMAeAnCUAZTwRW0rsRN+yxGgM7av/WUBs63sfItJVoAP7eYU8QKmXb3bb5K1vYZzHbI8Wu2SC8yJfPDlDkuh4z0zpKM6JcKNXwQ4C7iCuag0OwfIUOdrv0JKw90f5pvYaGKISwqyvLlfOBYt2fGB0R3Z546lgyAAAA"
+    "lqip": "data:image/webp;base64,UklGRr4AAABXRUJQVlA4ILIAAACwBQCdASoYACkAPzmQvVYvKiajqqoB4CcJQBidP/wNMsXa2il5FywP6S2pOekY4723F2RXwAAA/ucMa6zYGoa0se7QsVG+zXEBFNMcALdsnu8MeNqxq3txEh4DXVqENBYcB49aewm58kBJt1x1E95tz+w5ninTeXutX/EJCyQ37523ASemqSFh2CZSalas4JcspXUqGQLhCaIfpWmyj/+CYPriw9qlSmvnETVKB39LKWwA"
   },
   "look-festive": {
     "key": "look-festive",
@@ -127,7 +127,7 @@
     ],
     "width": 1829,
     "height": 3072,
-    "lqip": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAAAwBQCdASoYACgAPzmGuVUvKKWkMBqoAeAnCWMAyJgWikfCEBZDZ6xWK1iySLtRejxtAAD+wzyVbHm4sUMWIBmx3c4gaGUtGVpVtyI3ai7+dd85YdIhVu/bNNuedbkyuj/QZF0VYe6AxEqm8oB9kHu+F/sP2r2tnzRW4et0HkMlPGsEsyTSsYl+DtjgDRmAX2ImwAAA"
+    "lqip": "data:image/webp;base64,UklGRvAAAABXRUJQVlA4IOQAAADQBgCdASoYACgAPzmUv1evKqajqrgKAeAnCWIAwcwitZwy29XJn1ZohUEZCPa3p2ZQCn06DqrHf5YWJFJt6aAA/tMP72C7ZUKafR1rsCWtashhGdU9bQu5ChNYSLq9w9qJlLSxuMEvpOKhTXP9YeI61gjyWVryDckT5sQ/IWggbkLmFrQN9+sYevsKzlzoZhvy37nOY9wnpg+N306uWP1ldnwW9T9pZpoYqq8IYMxPVCixEXJMFIL0XnPiKdUTn5hSR3LFtq8S2sIeh0zP4vewOIN2b8lZTa2DcOacqctG9nXYAAA="
   },
   "band-rail": {
     "key": "band-rail",
