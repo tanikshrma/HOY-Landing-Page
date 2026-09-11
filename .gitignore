@@ -1,8 +1,17 @@
 node_modules/
-build/
 dist/
+dist-server/
 coverage/
 .DS_Store
 *.log
+
+# Lead data never belongs in git.
+data/
+
+# Full-size model output. Large, and regenerable with `npm run images --force`
+# given an API key. The served derivatives in src/assets/img ARE committed, so
+# a fresh clone builds without needing a key.
+scripts/.raw/
+
 .env*
 !.env.example

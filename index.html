@@ -1,21 +1,152 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HOY | Personal Styling Platform - Your Style. Sorted.</title>
-    <meta name="description" content="HOY is a digital personal styling platform offering personalised styling, head-to-toe outfit recommendations, and wardrobe intelligence for Indian men and women." />
-    <meta property="og:title" content="HOY | Personal Styling Platform - Your Style. Sorted." />
-    <meta property="og:description" content="HOY is a digital personal styling platform offering personalised styling, head-to-toe outfit recommendations, and wardrobe intelligence for Indian men and women." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf8f5" />
+
+    <title>HOY — Personal styling that starts with the wardrobe you own</title>
+    <meta
+      name="description"
+      content="HOY builds complete outfits from the clothes you already own — for work, weddings and everything in between. Free access for 20 people a day. Made for India."
+    />
+    <link rel="canonical" href="https://houseofyou.in/" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="HOY — House of You" />
+    <meta property="og:title" content="You don't need more clothes. You need to know what to wear." />
+    <meta
+      property="og:description"
+      content="HOY builds complete outfits from the clothes you already own. Free access for 20 people a day."
+    />
+    <meta property="og:url" content="https://houseofyou.in/" />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="670" />
+    <meta property="og:locale" content="en_IN" />
+
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="You don't need more clothes. You need to know what to wear." />
+    <meta
+      name="twitter:description"
+      content="HOY builds complete outfits from the clothes you already own. Free access for 20 people a day."
+    />
+    <meta name="twitter:image" content="/og-image.jpg" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!--
+      Only the weights actually used, and loaded without blocking the first
+      paint: the media="print" swap makes the browser fetch the stylesheet at
+      low priority and apply it on load. font-display:swap then paints text in
+      the fallback stack immediately, which is what keeps LCP off the
+      font round-trip.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all';this.onload=null"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap"
+      />
+    </noscript>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://houseofyou.in/#org",
+            "name": "HOY — House of You",
+            "url": "https://houseofyou.in/",
+            "description": "Personal styling that starts with the wardrobe you already own.",
+            "areaServed": "IN",
+            "email": "hello@houseofyou.in"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://houseofyou.in/#site",
+            "url": "https://houseofyou.in/",
+            "name": "HOY — House of You",
+            "inLanguage": "en-IN",
+            "publisher": { "@id": "https://houseofyou.in/#org" }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Is it actually free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Free for the first 20 people who sign up each day, with no card and no trial that starts charging later."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What happens after I sign up?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You get a WhatsApp message from us within 24 hours to set up your profile. That conversation takes about ten minutes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I have to photograph my entire wardrobe?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Start with the 15 to 20 pieces you reach for most — that is enough to build real outfits from."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is this for men as well?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. HOY works for men and women, and for both Indian and Western wardrobes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Why only 20 people a day?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Because setting up a profile properly takes real attention. The counter resets at midnight IST."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
-  <body class="bg-white text-[#1A1A1A] font-sans antialiased selection:bg-[#AB8850] selection:text-white">
+
+  <body>
     <div id="root"></div>
+    <noscript>
+      <div style="max-width: 34rem; margin: 4rem auto; padding: 0 1.25rem; font-family: system-ui, sans-serif; line-height: 1.6;">
+        <h1 style="font-size: 1.5rem;">HOY — House of You</h1>
+        <p>
+          Personal styling that starts with the wardrobe you already own. This page needs
+          JavaScript to sign up. Email
+          <a href="mailto:hello@houseofyou.in">hello@houseofyou.in</a> and we will set you up
+          by hand.
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

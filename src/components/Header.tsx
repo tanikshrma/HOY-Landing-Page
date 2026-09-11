@@ -1,87 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { HoyLogo } from './HoyLogo';
+import { useEffect, useState } from 'react';
+import { Wordmark } from './ui/Wordmark';
+import { track } from '../lib/analytics';
 
-interface HeaderProps {
-  onGetAccessClick: () => void;
-}
+const NAV = [
+  { label: 'How it works', href: '#how-it-works' },
+  { label: 'What you get', href: '#what-you-get' },
+  { label: 'Questions', href: '#faq' },
+];
 
-export const Header: React.FC<HeaderProps> = ({ onGetAccessClick }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
+export function Header({ onCta }: { onCta: () => void }) {
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
-
-  const navItems = [
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Why HOY', href: '#why-hoy' },
-    { label: 'Your Wardrobe', href: '#your-wardrobe' },
-  ];
-
-  const handleNavClick = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const header = document.getElementById('main-header');
-      const headerHeight = header ? header.getBoundingClientRect().height : 75;
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = Math.max(0, elementPosition - headerHeight - 12);
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
 
   return (
     <header
-      id="main-header"
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-[#1A1A1A]/10 py-2.5 sm:py-3.5 shadow-xs'
-          : 'bg-transparent border-b border-transparent py-3 sm:py-4 md:py-6 shadow-none'
+      className={`sticky top-0 z-40 transition-colors duration-300 ${
+        scrolled ? 'border-b border-line bg-paper/85 backdrop-blur-md' : 'border-b border-transparent'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Left: HOY logo */}
-          <a
-            href="#"
-            className="group focus:outline-none"
-            aria-label="HOY - House of You Home"
-          >
-            <HoyLogo showSubtitle={true} />
-          </a>
+      <div className="container-page flex h-16 items-center justify-between gap-4 sm:h-[4.5rem]">
+        <a href="#top" aria-label="HOY — House of You, back to top" className="shrink-0">
+          <Wordmark />
+        </a>
 
-          {/* Center Navigation: Desktop only */}
-          <nav className="hidden md:flex items-center space-x-9">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => handleNavClick(item.href)}
-                className="font-montserrat font-medium text-xs uppercase tracking-[0.18em] text-[#1A1A1A]/80 hover:text-[#AB8850] transition-colors cursor-pointer"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
-          {/* Right CTA */}
-          <div className="flex items-center">
-            <button
-              id="header-cta-btn"
-              onClick={onGetAccessClick}
-              className="px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-[#1A1A1A] bg-[#1A1A1A] hover:bg-[#AB8850] hover:border-[#AB8850] text-white font-montserrat font-bold text-[11px] sm:text-xs tracking-[0.16em] uppercase transition-all duration-300 cursor-pointer shadow-xs active:scale-[0.98]"
+        <nav aria-label="Primary" className="hidden items-center gap-8 md:flex">
+          {NAV.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-ink-70 transition-colors hover:text-ink"
             >
-              GET ACCESS
-            </button>
-          </div>
-        </div>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+
+        <button
+          type="button"
+          onClick={() => {
+            track('cta_click', { location: 'header' });
+            onCta();
+          }}
+          className="shrink-0 rounded-full bg-ink px-4 py-2.5 font-display text-[0.8125rem] font-semibold
+            text-paper transition-colors hover:bg-gold-dark sm:px-5"
+        >
+          Get free access
+        </button>
       </div>
     </header>
   );
-};
+}

@@ -1,78 +1,195 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+/* ------------------------------------------------------------------ *
+ * Design tokens
+ *
+ * Warm neutrals rather than pure grey — a fashion brand shot on film
+ * looks wrong against #FFFFFF / #000000. Gold and clay are the brand
+ * accents, used sparingly so the CTA stays the loudest thing on screen.
+ * ------------------------------------------------------------------ */
 @theme {
-  --font-sans: 'Montserrat', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
-  --font-editorial: 'Cinzel', serif;
-  --font-cinzel: 'Cinzel', serif;
+  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --color-mustard: #AB8850;
-  --color-terracotta: #C07A61;
-  --color-core-black: #1A1A1A;
-  --color-white: #FFFFFF;
-}
+  --color-ink: #14110f;
+  --color-ink-70: #4b443f;
+  --color-ink-50: #7a716a;
+  --color-ink-30: #a9a29b;
 
-:root {
-  font-family: 'Montserrat', sans-serif;
-  color: #1A1A1A;
-  background-color: #FFFFFF;
-}
+  --color-paper: #faf8f5;
+  --color-paper-2: #f2eee8;
+  --color-line: #e4ded5;
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #FFFFFF;
-}
-::-webkit-scrollbar-thumb {
-  background: #AB8850;
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #8e6f3d;
+  --color-gold: #ab8850;
+  --color-gold-dark: #8d6e3c;
+  --color-gold-tint: #f5eddf;
+  --color-clay: #c07a61;
+  --color-clay-tint: #f7e9e3;
+
+  --color-positive: #2f7d5b;
+  --color-negative: #b4453a;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Smooth focus styles without neon */
-input:focus, button:focus {
-  outline: none;
+/* ------------------------------------------------------------------ *
+ * Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headlines are set tight and optically aligned; the default tracking on
+     Outfit is too loose at display sizes. */
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* One consistent focus ring everywhere, visible on both paper and ink. */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: #fff;
+  }
+
+  /* iOS zooms the page when a focused input is under 16px. */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-paper-2);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-ink-30);
+    border: 3px solid var(--color-paper-2);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-ink-50);
+  }
 }
 
-/* Infinite smooth horizontal scroll animation */
-@keyframes infinite-scroll {
+/* ------------------------------------------------------------------ *
+ * Utilities
+ * ------------------------------------------------------------------ */
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/** Small all-caps label used above section headings. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-50);
+}
+
+/* Hide a horizontal scroller's scrollbar without disabling the scrolling. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion
+ *
+ * Entrances are driven by IntersectionObserver toggling [data-visible].
+ * Keeping it in CSS means no animation library on the critical path.
+ * ------------------------------------------------------------------ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.7s var(--ease-out-soft),
+    transform 0.7s var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal][data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+@keyframes hoy-marquee {
   from {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-50% - 0.5rem));
-  }
-}
-
-@keyframes marquee-scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
     transform: translateX(-50%);
   }
 }
 
-.animate-infinite-scroll {
+.marquee-track {
   display: flex;
   width: max-content;
-  animation: infinite-scroll 24s linear infinite;
+  animation: hoy-marquee 40s linear infinite;
 }
 
-.animate-marquee-infinite {
-  display: flex;
-  width: max-content;
-  animation: marquee-scroll 24s linear infinite;
-  will-change: transform;
-}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-.animate-infinite-scroll:hover,
-.animate-marquee-infinite:hover,
-.animate-infinite-scroll-paused {
-  animation-play-state: paused !important;
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }

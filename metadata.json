@@ -1,7 +1,0 @@
-{
-  "name": "HOY — House of You",
-  "description": "HOY is a digital personal styling platform offering personalised styling, head-to-toe outfit recommendations, and wardrobe intelligence for Indian men and women. Your Style. Sorted.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
-
