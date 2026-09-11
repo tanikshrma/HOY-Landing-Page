@@ -8,9 +8,9 @@ interface WardrobeSectionProps {
 
 export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) => {
   return (
-    <section id="your-wardrobe" className="py-14 sm:py-20 lg:py-24 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
+    <section id="your-wardrobe" className="py-16 sm:py-20 lg:py-24 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Visual Representation of Wardrobe Versatility */}
           <div className="lg:col-span-6 relative">
@@ -49,7 +49,7 @@ export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) 
 
           {/* Right Column: Copy & CTA */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 mb-2 sm:mb-3">
+            <div className="inline-flex items-center gap-2 mb-2.5 sm:mb-3">
               <RotateCcw className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
               <span className="font-montserrat font-semibold text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[#1A1A1A]/70">
                 MORE WAYS TO WEAR
@@ -67,7 +67,7 @@ export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) 
             </p>
 
             {/* Supporting Text */}
-            <div className="mt-3 sm:mt-4 space-y-2 max-w-xl">
+            <div className="mt-3.5 sm:mt-4 space-y-3 max-w-xl">
               <p className="font-montserrat font-medium text-xs sm:text-sm text-[#1A1A1A]">
                 That shirt you've worn a hundred times? It might have more looks in it.
               </p>
@@ -78,11 +78,11 @@ export const WardrobeSection: React.FC<WardrobeSectionProps> = ({ onCtaClick }) 
             </div>
 
             {/* Single CTA */}
-            <div className="mt-6 sm:mt-8">
+            <div className="mt-7 sm:mt-8">
               <button
                 id="wardrobe-cta-btn"
                 onClick={onCtaClick}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#AB8850] text-white font-montserrat font-bold text-xs tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer shadow-xs active:scale-98"
+                className="w-full sm:w-auto px-8 py-4 sm:py-3.5 rounded-full bg-[#1A1A1A] hover:bg-[#AB8850] text-white font-montserrat font-bold text-xs tracking-[0.18em] uppercase transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer shadow-xs active:scale-98"
               >
                 <span>EXPLORE YOUR STYLE</span>
                 <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

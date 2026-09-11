@@ -8,11 +8,29 @@ interface StickyMobileCtaProps {
 
 export const StickyMobileCta: React.FC<StickyMobileCtaProps> = ({ onCtaClick }) => {
   const { slots } = useSlots();
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      // Reveal sticky bottom CTA as soon as scrolling starts (> 20px)
+      setIsVisible(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Check initial state in case page was reloaded when scrolled
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div
       id="sticky-mobile-cta"
-      className="md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-[#1A1A1A]/12 px-4 py-2.5 shadow-[0_-10px_25px_rgba(0,0,0,0.08)] transition-all"
+      className={`md:hidden fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-[#1A1A1A]/12 px-4 py-2.5 shadow-[0_-10px_25px_rgba(0,0,0,0.08)] transition-all duration-300 transform ease-in-out ${
+        isVisible
+          ? 'translate-y-0 opacity-100 pointer-events-auto'
+          : 'translate-y-full opacity-0 pointer-events-none'
+      }`}
+      aria-hidden={!isVisible}
     >
       <div className="flex items-center justify-between gap-2 max-w-md mx-auto">
         <div className="flex flex-col justify-center min-w-0 pr-1">
@@ -27,6 +45,7 @@ export const StickyMobileCta: React.FC<StickyMobileCtaProps> = ({ onCtaClick }) 
         <button
           id="sticky-mobile-cta-btn"
           onClick={onCtaClick}
+          tabIndex={isVisible ? 0 : -1}
           className="px-4 sm:px-5 py-2.5 rounded-full bg-[#1A1A1A] active:bg-[#AB8850] text-white font-montserrat font-bold text-xs tracking-[0.14em] uppercase transition-all duration-200 flex items-center gap-1.5 shrink-0 cursor-pointer shadow-sm active:scale-95 whitespace-nowrap"
         >
           <span>{slots.isSoldOut ? 'VIEW FORM' : 'GET ACCESS'}</span>

@@ -56,12 +56,12 @@ export const HowItWorksSection: React.FC = () => {
   };
 
   return (
-    <section id="how-it-works" className="py-14 sm:py-20 lg:py-24 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
+    <section id="how-it-works" className="py-16 sm:py-20 lg:py-24 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 lg:mb-14 gap-3 sm:gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 lg:mb-14 gap-3 sm:gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 mb-2 sm:mb-2.5">
+            <div className="inline-flex items-center gap-2 mb-2.5 sm:mb-3">
               <Workflow className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
               <span className="font-montserrat font-semibold text-[11px] sm:text-xs tracking-[0.22em] uppercase text-[#1A1A1A]/70">
                 HOW HOY WORKS
@@ -86,17 +86,17 @@ export const HowItWorksSection: React.FC = () => {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="-mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-x-visible pb-4 pt-1 snap-x snap-mandatory scroll-smooth gap-4 sm:gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="-mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 flex md:grid md:grid-cols-3 overflow-x-auto md:overflow-x-visible pb-4 pt-1 snap-x snap-mandatory scroll-smooth gap-5 sm:gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
         >
           {steps.map((step, idx) => {
             const StepIcon = step.icon;
             return (
               <div
                 key={step.number}
-                className="group flex flex-col bg-white rounded-xl sm:rounded-2xl border border-[#1A1A1A]/10 overflow-hidden transition-all duration-300 hover:border-[#AB8850]/60 hover:shadow-md w-[82vw] sm:w-[62vw] max-w-[330px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink"
+                className="group flex flex-col bg-white rounded-xl sm:rounded-2xl border border-[#1A1A1A]/10 overflow-hidden transition-all duration-300 hover:border-[#AB8850]/60 hover:shadow-md w-[84vw] sm:w-[62vw] max-w-[340px] shrink-0 snap-center md:w-auto md:max-w-none md:shrink"
               >
                 {/* Visual Card Image */}
-                <div className="relative aspect-[4/3.6] overflow-hidden bg-[#1A1A1A]">
+                <div className="relative aspect-[4/3.5] overflow-hidden bg-[#1A1A1A]">
                   <img
                     src={step.image}
                     alt={step.alt}
@@ -121,9 +121,9 @@ export const HowItWorksSection: React.FC = () => {
                 </div>
 
                 {/* Card Content */}
-                <div className="p-5 sm:p-6 flex flex-col justify-between grow">
+                <div className="p-6 sm:p-7 flex flex-col justify-between grow">
                   <div>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center justify-between mb-2.5">
                       <h3 className="font-montserrat font-extrabold text-base sm:text-lg tracking-tight text-[#1A1A1A] uppercase">
                         {step.title}
                       </h3>

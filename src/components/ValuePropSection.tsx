@@ -132,12 +132,12 @@ export const ValuePropSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="why-hoy" className="py-14 sm:py-20 lg:py-24 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24 overflow-hidden">
+    <section ref={sectionRef} id="why-hoy" className="py-16 sm:py-20 lg:py-24 bg-[#FFFFFF] border-b border-[#1A1A1A]/10 scroll-mt-20 sm:scroll-mt-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 lg:mb-14 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 lg:mb-14 gap-4">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 mb-2 sm:mb-2.5">
+            <div className="inline-flex items-center gap-2 mb-2.5 sm:mb-3">
               <Compass className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
               <span className="font-montserrat font-semibold text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[#1A1A1A]/70">
                 WHY HOY
@@ -149,7 +149,7 @@ export const ValuePropSection: React.FC = () => {
             <p className="mt-3 sm:mt-3.5 font-montserrat font-semibold text-sm sm:text-base text-[#1A1A1A] max-w-2xl leading-snug">
               You already have clothes. The hard part is knowing what to wear.
             </p>
-            <p className="mt-2 sm:mt-2.5 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 max-w-2xl leading-relaxed font-normal">
+            <p className="mt-2.5 sm:mt-3 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/75 max-w-2xl leading-relaxed font-normal">
               HOY helps you make better use of your wardrobe, discover combinations you may not have thought of and find something new only when you actually need it.
             </p>
           </div>
@@ -187,7 +187,7 @@ export const ValuePropSection: React.FC = () => {
             onScroll={handleScroll}
             onTouchStart={triggerUserPause}
             onMouseDown={triggerUserPause}
-            className="-mx-4 px-4 sm:-mx-6 sm:px-6 flex overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scroll-smooth gap-4 sm:gap-5 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="-mx-4 px-4 sm:-mx-6 sm:px-6 flex overflow-x-auto pb-4 pt-1 snap-x snap-mandatory scroll-smooth gap-5 sm:gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {cards.map((card) => {
               const Icon = card.icon;
@@ -195,11 +195,11 @@ export const ValuePropSection: React.FC = () => {
               return (
                 <div
                   key={card.id}
-                  className="group relative p-5 sm:p-6 rounded-xl sm:rounded-2xl border bg-white border-[#1A1A1A]/10 hover:border-[#AB8850] hover:shadow-md flex flex-col justify-between w-[80vw] sm:w-[50vw] max-w-[300px] shrink-0 snap-center select-none"
+                  className="group relative p-6 sm:p-7 rounded-xl sm:rounded-2xl border bg-white border-[#1A1A1A]/10 hover:border-[#AB8850] hover:shadow-md flex flex-col justify-between w-[82vw] sm:w-[52vw] max-w-[310px] shrink-0 snap-center select-none"
                 >
                   <div>
                     {/* Top Meta: Roman Numeral + Clean Icon */}
-                    <div className="flex items-center justify-between mb-4 sm:mb-5">
+                    <div className="flex items-center justify-between mb-5">
                       <span className="font-cinzel text-xs text-[#AB8850] font-semibold tracking-widest">
                         {card.editorialNum}
                       </span>
@@ -214,13 +214,13 @@ export const ValuePropSection: React.FC = () => {
                     </h3>
 
                     {/* Body */}
-                    <p className="mt-2 sm:mt-2.5 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
+                    <p className="mt-2.5 sm:mt-3 font-montserrat text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
                       {card.body}
                     </p>
                   </div>
 
                   {/* Bottom Pill Indicator */}
-                  <div className="mt-5 pt-3.5 border-t border-[#1A1A1A]/5 flex items-center justify-between">
+                  <div className="mt-6 pt-4 border-t border-[#1A1A1A]/5 flex items-center justify-between">
                     <span className="font-montserrat text-[9px] sm:text-[10px] tracking-[0.2em] uppercase text-[#1A1A1A]/40 group-hover:text-[#AB8850] transition-colors font-semibold">
                       HOY PILLAR
                     </span>

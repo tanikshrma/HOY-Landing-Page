@@ -187,10 +187,10 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
   return (
     <div
       id={id}
-      className={`relative bg-white text-[#1A1A1A] rounded-2xl border border-[#1A1A1A]/10 shadow-[0_15px_35px_-10px_rgba(26,26,26,0.06)] p-6 sm:p-7 xl:p-8 scroll-mt-24 sm:scroll-mt-28 transition-all duration-300 ${className}`}
+      className={`relative bg-white text-[#1A1A1A] rounded-2xl border border-[#1A1A1A]/10 shadow-[0_15px_35px_-10px_rgba(26,26,26,0.06)] p-6 sm:p-8 xl:p-9 scroll-mt-24 sm:scroll-mt-28 transition-all duration-300 ${className}`}
     >
       {/* Top small label */}
-      <div className="flex items-center justify-between gap-2 mb-5">
+      <div className="flex items-center justify-between gap-2 mb-6">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1A1A1A]/5 border border-[#1A1A1A]/10">
           <ShieldCheck className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
           <span className="font-montserrat font-bold text-[10px] tracking-[0.2em] uppercase text-[#1A1A1A]/80">
@@ -202,14 +202,14 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
         </span>
       </div>
 
-      <div className="mb-5">
-        <h3 className="font-montserrat font-extrabold text-2xl tracking-tight text-[#1A1A1A] uppercase">
+      <div className="mb-6 space-y-2">
+        <h3 className="font-montserrat font-extrabold text-2xl sm:text-3xl tracking-tight text-[#1A1A1A] uppercase">
           MAKE IT YOURS.
         </h3>
-        <p className="mt-1.5 text-xs sm:text-sm text-[#1A1A1A]/80 leading-relaxed font-normal">
+        <p className="text-xs sm:text-sm text-[#1A1A1A]/80 leading-relaxed font-normal">
           Be one of the first 20 users to experience HOY free of charge.
         </p>
-        <p className="mt-1 text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
+        <p className="text-xs sm:text-sm text-[#1A1A1A]/70 leading-relaxed font-normal">
           Tell us a little about yourself, upload your wardrobe and let HOY start styling around you.
         </p>
       </div>
@@ -280,10 +280,10 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
           </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="space-y-4">
+        <form onSubmit={handleSubmit} noValidate className="space-y-5">
           {/* Full Name */}
           <div>
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="flex items-center justify-between mb-2">
               <label
                 htmlFor="fullName"
                 className="flex items-center gap-1.5 font-montserrat text-[11px] font-bold uppercase tracking-[0.14em] text-[#1A1A1A]/80"
@@ -309,7 +309,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
               value={formData.fullName}
               onChange={(e) => handleInputChange('fullName', e.target.value)}
               onBlur={() => handleBlur('fullName')}
-              className={`w-full px-4 py-3 rounded-xl text-sm font-montserrat text-[#1A1A1A] bg-white border ${
+              className={`w-full px-4 py-3.5 rounded-xl text-sm font-montserrat text-[#1A1A1A] bg-white border ${
                 errors.fullName
                   ? 'border-[#C07A61] bg-[#C07A61]/5 focus:border-[#C07A61] focus:ring-1 focus:ring-[#C07A61]'
                   : 'border-[#1A1A1A]/15 hover:border-[#1A1A1A]/40 focus:border-[#1A1A1A] focus:ring-1 focus:ring-[#1A1A1A]'
@@ -329,7 +329,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
 
           {/* Phone Number */}
           <div>
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="flex items-center justify-between mb-2">
               <label
                 htmlFor="phoneNumber"
                 className="flex items-center gap-1.5 font-montserrat text-[11px] font-bold uppercase tracking-[0.14em] text-[#1A1A1A]/80"
@@ -355,7 +355,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
               value={formData.phoneNumber}
               onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
               onBlur={() => handleBlur('phoneNumber')}
-              className={`w-full px-4 py-3 rounded-xl text-sm font-montserrat text-[#1A1A1A] bg-white border ${
+              className={`w-full px-4 py-3.5 rounded-xl text-sm font-montserrat text-[#1A1A1A] bg-white border ${
                 errors.phoneNumber
                   ? 'border-[#C07A61] bg-[#C07A61]/5 focus:border-[#C07A61] focus:ring-1 focus:ring-[#C07A61]'
                   : 'border-[#1A1A1A]/15 hover:border-[#1A1A1A]/40 focus:border-[#1A1A1A] focus:ring-1 focus:ring-[#1A1A1A]'
@@ -375,7 +375,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
 
           {/* Email Address */}
           <div>
-            <div className="flex items-center justify-between mb-1.5">
+            <div className="flex items-center justify-between mb-2">
               <label
                 htmlFor="emailAddress"
                 className="flex items-center gap-1.5 font-montserrat text-[11px] font-bold uppercase tracking-[0.14em] text-[#1A1A1A]/80"
@@ -401,7 +401,7 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
               value={formData.emailAddress}
               onChange={(e) => handleInputChange('emailAddress', e.target.value)}
               onBlur={() => handleBlur('emailAddress')}
-              className={`w-full px-4 py-3 rounded-xl text-sm font-montserrat text-[#1A1A1A] bg-white border ${
+              className={`w-full px-4 py-3.5 rounded-xl text-sm font-montserrat text-[#1A1A1A] bg-white border ${
                 errors.emailAddress
                   ? 'border-[#C07A61] bg-[#C07A61]/5 focus:border-[#C07A61] focus:ring-1 focus:ring-[#C07A61]'
                   : 'border-[#1A1A1A]/15 hover:border-[#1A1A1A]/40 focus:border-[#1A1A1A] focus:ring-1 focus:ring-[#1A1A1A]'
@@ -419,12 +419,12 @@ export const LeadFormCard: React.FC<LeadFormCardProps> = ({
             )}
           </div>
 
-          <div className="pt-2">
+          <div className="pt-3">
             <button
               id="lead-form-submit-btn"
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 px-6 rounded-full bg-[#1A1A1A] text-white hover:bg-[#AB8850] active:scale-[0.99] font-montserrat font-bold text-xs tracking-[0.16em] uppercase transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer shadow-xs disabled:opacity-70"
+              className="w-full py-4 px-6 rounded-full bg-[#1A1A1A] text-white hover:bg-[#AB8850] active:scale-[0.99] font-montserrat font-bold text-xs tracking-[0.16em] uppercase transition-all duration-300 flex items-center justify-center gap-2 group cursor-pointer shadow-xs disabled:opacity-70"
             >
               <span>{isSubmitting ? 'PROCESSING...' : 'GET MY FREE ACCESS'}</span>
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
