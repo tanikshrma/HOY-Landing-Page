@@ -46,7 +46,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             {/* Top / Main Content Cluster */}
             <div className="flex flex-col">
               {/* Eyebrow */}
-              <div className="inline-flex items-center gap-1.5 mb-2.5 sm:mb-3 lg:mb-5">
+              <div className="inline-flex items-center gap-1.5 mt-[30px] mb-2.5 sm:mb-3 lg:mb-5">
                 <Crown className="w-3.5 h-3.5 text-[#AB8850]" strokeWidth={2} />
                 <span className="font-montserrat font-bold text-[11px] sm:text-xs tracking-[0.24em] uppercase text-[#1A1A1A]">
                   HOUSE OF YOU
