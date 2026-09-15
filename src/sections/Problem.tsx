@@ -26,7 +26,7 @@ export function Problem() {
           </h2>
         </Reveal>
 
-        <ul className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-12 md:grid-cols-3">
+        <ul className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {SYMPTOMS.map((item, i) => (
             <Reveal
               key={item.line}

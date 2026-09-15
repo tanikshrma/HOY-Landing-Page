@@ -4,8 +4,8 @@ import { track } from '../lib/analytics';
 
 const NAV = [
   { label: 'How it works', href: '#how-it-works' },
-  { label: 'What you get', href: '#what-you-get' },
-  { label: 'Questions', href: '#faq' },
+  { label: 'Why HOY', href: '#why-hoy' },
+  { label: 'Digital Wardrobe', href: '#digital-wardrobe' },
 ];
 
 export function Header({ onCta }: { onCta: () => void }) {
@@ -50,7 +50,7 @@ export function Header({ onCta }: { onCta: () => void }) {
           className="shrink-0 rounded-full bg-ink px-4 py-2.5 font-display text-[0.8125rem] font-semibold
             text-paper transition-colors hover:bg-gold-dark sm:px-5"
         >
-          Get free access
+          Get access
         </button>
       </div>
     </header>

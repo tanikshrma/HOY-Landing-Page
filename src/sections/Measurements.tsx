@@ -9,27 +9,26 @@ import { Photo } from '../components/ui/Photo';
  * list says the same thing without the cartoon.
  */
 const MEASUREMENTS = [
-  { n: '01', k: 'Height', v: 'Sets the proportion everything else is judged against.' },
-  { n: '02', k: 'Shoulders', v: 'Decides whether a jacket or a structured shirt sits right, or pulls across your back.' },
-  { n: '03', k: 'Chest', v: 'Where a shirt strains or billows, and how much room a layer needs.' },
-  { n: '04', k: 'Waist', v: 'The drop from chest to waist is what makes a shirt look tailored rather than boxy.' },
-  { n: '05', k: 'Inseam', v: 'Where a hem should break, and how much leg a kurta or a jacket should leave showing.' },
+  { n: 'I', k: 'Your Digital Wardrobe', v: 'Keep your wardrobe organised digitally and see the possibilities in what you already own.' },
+   { n: 'II', k: 'Personalised to You', v: 'Recommendations shaped by your body type, skin tone, style preferences and what you actually like wearing.' },
+  { n: 'III', k: 'Style for Real Life', v: 'Getting ready for work, a date, college, a wedding, a holiday or just another day? HOY helps you dress for the moment.' },
+  { n: 'IV', k: 'Rewear with Purpose', v: 'Discover new combinations from pieces you already own and get more out of your wardrobe.' },
+  { n: 'V', k: 'Shop Smarter', v: 'When your wardrobe needs something new, discover pieces that fit your style and work with what you already own, with purchase links to shop them.' },
 ];
 
 export function Measurements() {
   return (
-    <section id="measurements" className="scroll-mt-20 border-b border-line">
+    <section id="why-hoy" className="scroll-mt-20 border-b border-line">
       <div className="container-page py-16 sm:py-20 lg:py-24">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <Reveal className="lg:col-span-5">
-            <p className="eyebrow">The part everyone skips</p>
+            <p className="eyebrow">Why HOY</p>
             <h2 className="mt-3 text-[1.75rem] leading-tight font-semibold sm:text-4xl">
-              Five numbers change everything.
+              More Than Outfit Ideas.
             </h2>
             <p className="mt-5 max-w-lg text-[1.0625rem] leading-relaxed text-ink-70">
-              Most styling advice guesses at your body from a photo, or skips it and talks
-              about colour instead. We take the measurements a tailor would, once, and every
-              combination after that is built against them.
+              Getting dressed isn't just about what looks good. It's about what works for you, your wardrobe and your real life.
+
             </p>
 
             <div className="mt-8 overflow-hidden rounded-2xl bg-paper-2">
@@ -64,9 +63,9 @@ export function Measurements() {
               ))}
             </dl>
 
-            <p className="mt-6 text-[0.875rem] text-ink-50">
+            {/* <p className="mt-6 text-[0.875rem] text-ink-50">
               Ten minutes with a tape measure, walked through on WhatsApp. You only do it once.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

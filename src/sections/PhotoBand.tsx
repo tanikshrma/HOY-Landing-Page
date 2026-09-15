@@ -28,7 +28,7 @@ export function PhotoBand({ name, alt, caption, position = 'object-center' }: Ph
         {caption && (
           <>
             {/* Scrim only under the caption, so the photograph stays readable. */}
-            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-ink/70 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-linear-to-t from-ink/80 to-transparent" />
             <p
               className="absolute inset-x-0 bottom-0 container-page pb-6 font-display text-lg
                 leading-snug font-medium text-paper sm:pb-8 sm:text-xl lg:pb-10 lg:text-2xl"

@@ -1,47 +1,57 @@
 import { ArrowRight } from 'lucide-react';
-import { Photo, type PhotoKey } from '../components/ui/Photo';
 import { Reveal } from '../components/ui/Reveal';
 import { track } from '../lib/analytics';
+import workImage from '../assets/img/work.avif';
+import datesImage from '../assets/img/Dates.avif';
+import weddingsImage from '../assets/img/Weddings.avif';
+import travelImage from '../assets/img/travel.avif';
+import everydayImage from '../assets/img/everyday.avif';
 
-const LOOKS: { image: PhotoKey; where: string; how: string; alt: string }[] = [
+const LOOKS: { image: string; where: string; how: string; alt: string }[] = [
   {
-    image: 'look-office',
-    where: 'Monday, office',
-    how: 'Cream blazer, brown wide-legs, loafer mules.',
+    image: workImage,
+    where: 'Work',
+    how: 'Look put-together without overthinking your work wardrobe.',
     alt: 'A cream blazer over a white tee with dark brown wide-leg trousers, cream loafer mules and a tan tote',
   },
   {
-    image: 'look-weekend',
-    where: 'Saturday night',
-    how: 'Cropped denim, mini skirt, knee boots.',
+    image: datesImage,
+    where: 'Dates',
+    how: 'Find a look that feels like you, without trying too hard.',
     alt: 'A black cropped denim jacket over a white top with a black mini skirt and tall black knee boots',
   },
   {
-    image: 'look-festive',
-    where: 'The wedding',
+    image: weddingsImage,
+    where: 'Weddings',
     how: 'Embroidered kurta, gold sharara, dupatta.',
     alt: 'A dusty rose embroidered kurta with a gold tissue sharara and a matching organza dupatta',
+  },
+  {
+    image: travelImage,
+    where: 'Travel',
+    how: 'Build practical, comfortable looks around your destination, weather and plans.',
+    alt: 'A practical travel outfit styled for comfort and movement',
+  },
+  {
+    image: everydayImage,
+    where: 'Everyday',
+    how: 'Because even an ordinary day deserves a good outfit.',
+    alt: 'An easy everyday outfit styled for a regular day',
   },
 ];
 
 /**
- * Three occasions out of one wardrobe.
- *
- * This was "one shirt, three ways" until the client supplied reference looks
- * that share no garment — a blazer and trousers, a jacket and a mini skirt,
- * and a full sharara suit. The single-garment headline could not survive
- * that, so the claim is now about the wardrobe rather than the shirt. Keep
- * the two in step: if the photographs ever go back to sharing a piece, the
- * stronger single-garment claim can come back with them.
+ * Five occasions out of one wardrobe, arranged as three editorial cards above
+ * two wider cards so the final two images can breathe.
  */
 export function Looks({ onCta }: { onCta: () => void }) {
   return (
     <section className="border-b border-line bg-paper-2/50">
       <div className="container-page py-16 sm:py-20 lg:py-24">
         <Reveal className="max-w-2xl">
-          <p className="eyebrow">One wardrobe, three occasions</p>
+          <p className="eyebrow">Dress for the Moment</p>
           <h2 className="mt-4 text-[1.75rem] leading-tight font-semibold sm:text-4xl">
-            Monday, Saturday night, and the wedding.
+            What Are You Getting Dressed For?
           </h2>
           <p className="mt-5 text-[1.0625rem] leading-relaxed text-ink-70">
             Three outfits with nothing in common except the cupboard they came out of.
@@ -49,16 +59,20 @@ export function Looks({ onCta }: { onCta: () => void }) {
           </p>
         </Reveal>
 
-        <ul className="mt-12 grid gap-6 sm:mt-14 sm:grid-cols-3 sm:gap-7 lg:gap-8">
+        <ul className="mt-12 grid grid-cols-1 gap-6 sm:mt-14 sm:grid-cols-12 sm:gap-7 lg:gap-8">
           {LOOKS.map((look, i) => (
-            <Reveal as="li" key={look.image} delay={i * 110} className="group">
+            <Reveal
+              as="li"
+              key={look.where}
+              delay={i * 110}
+              className={`group ${i < 3 ? 'sm:col-span-4' : 'sm:col-span-6'}`}
+            >
               <div className="overflow-hidden rounded-2xl bg-paper">
-                <Photo
-                  name={look.image}
+                <img
+                  src={look.image}
                   alt={look.alt}
                   sizes="(min-width: 640px) 31vw, 100vw"
-                  position="object-top"
-                  className="aspect-[3/5] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                  className={`${i < 3 ? 'aspect-[3/5]' : 'aspect-[4/3]'} w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]`}
                 />
               </div>
               <div className="mt-5 flex items-baseline gap-3">
@@ -74,23 +88,7 @@ export function Looks({ onCta }: { onCta: () => void }) {
           ))}
         </ul>
 
-        <Reveal delay={160} className="mt-12 sm:mt-14">
-          <figure>
-            <div className="overflow-hidden rounded-2xl bg-paper">
-              <Photo
-                name="wardrobe-spread"
-                alt="All the pieces from the three outfits laid out together on a bed"
-                sizes="(min-width: 1024px) 80vw, 100vw"
-                className="aspect-4/3 w-full object-cover sm:aspect-16/9"
-              />
-            </div>
-            <figcaption className="mt-3 text-[0.8125rem] text-ink-50">
-              Every piece above, out of one cupboard.
-            </figcaption>
-          </figure>
-        </Reveal>
-
-        <Reveal delay={200} className="mt-12 flex justify-center sm:mt-14">
+        <Reveal delay={160} className="mt-12 flex justify-center sm:mt-14">
           <button
             type="button"
             onClick={() => {

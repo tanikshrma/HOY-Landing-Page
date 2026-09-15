@@ -1,8 +1,5 @@
-import { Check } from 'lucide-react';
-import { Photo } from '../components/ui/Photo';
-import { LeadForm } from '../components/LeadForm';
-
-const ASSURANCES = ['Completely free', 'No card needed', 'Set up on WhatsApp'];
+import { Photo } from "../components/ui/Photo";
+import { LeadForm } from "../components/LeadForm";
 
 interface HeroProps {
   onSuccess: (name: string, slot?: number) => void;
@@ -28,24 +25,22 @@ export function Hero({ onSuccess }: HeroProps) {
             <p className="eyebrow">House of You · Personal styling, India</p>
 
             <h1 className="mt-4 text-[2.05rem] leading-[1.06] font-semibold sm:text-[2.9rem] lg:text-[3.4rem] xl:text-[3.75rem]">
-              You don’t need more clothes.
-              <span className="mt-1 block text-clay">You need to know what to wear.</span>
+              Nothing to Wear?
+              <span className="mt-1 block text-clay">
+                You probably have plenty.
+              </span>
+              <span className="mt-10 block text-sm uppercase tracking-widest text-[#1a1a1a]">
+                Your personal stylist, in your hand.
+              </span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-ink-70 sm:text-lg">
-              We go through your wardrobe, take your measurements, and turn what you already
-              own into outfits that actually fit you — for work, a wedding, or an ordinary
-              Tuesday.
+            <p className="mt-3 max-w-xl text-[1.0625rem] leading-relaxed text-ink-70 sm:text-lg">
+              Tell HOY what you have. Tell us where you're going. We'll help you
+              figure out what to wear, what to pair it with and what to shop for
+              when your wardrobe needs something new.
             </p>
+            <p className="eyebrow text-clay mt-6">BE ONE OF OUR FIRST 20 USERS. GET 14-DAY FREE BETA ACCESS.</p>
 
-            <ul className="mt-7 flex flex-wrap gap-x-6 gap-y-2.5">
-              {ASSURANCES.map((item) => (
-                <li key={item} className="flex items-center gap-1.5 text-sm font-medium text-ink-70">
-                  <Check className="size-4 shrink-0 text-gold" strokeWidth={2.5} />
-                  {item}
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Form */}

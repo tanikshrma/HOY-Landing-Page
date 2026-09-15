@@ -5,15 +5,12 @@ import { Header } from './components/Header';
 import { StickyCta } from './components/StickyCta';
 import { SuccessModal } from './components/SuccessModal';
 import { Hero } from './sections/Hero';
-import { Problem } from './sections/Problem';
 import { HowItWorks } from './sections/HowItWorks';
 import { Measurements } from './sections/Measurements';
+import { Wardrobe } from './sections/Wardrobe';
+import { StyleShopping } from './sections/StyleShopping';
 import { Looks } from './sections/Looks';
-import { WhatYouGet } from './sections/WhatYouGet';
-import { PhotoBand } from './sections/PhotoBand';
-import { MadeForIndia } from './sections/MadeForIndia';
-import { Testimonials } from './sections/Testimonials';
-import { Faq } from './sections/Faq';
+import { BetaAccessCta } from './sections/BetaAccessCta';
 import { FinalCta } from './sections/FinalCta';
 import { Footer } from './sections/Footer';
 
@@ -68,20 +65,23 @@ export default function App() {
 
       <main>
         <Hero onSuccess={handleSuccess} />
-        <Problem />
+        {/* <Problem /> */}
         <HowItWorks />
         <Measurements />
+        <Wardrobe onCta={scrollToForm} />
+        <StyleShopping onCta={scrollToForm} />
         <Looks onCta={scrollToForm} />
-        <WhatYouGet />
-        <PhotoBand
+        {/* <WhatYouGet /> */}
+        {/* <PhotoBand
           name="band-rail"
           alt="A long wardrobe rail packed with kurtas, shirts, jeans, sarees and dupattas"
           caption="Twelve pieces you already own are more outfits than you think."
-        />
-        <MadeForIndia />
-        <Testimonials />
-        <Faq />
-        <FinalCta onSuccess={handleSuccess} />
+        /> */}
+        {/* <MadeForIndia /> */}
+        {/* <Testimonials /> */}
+        {/* <Faq /> */}
+        <BetaAccessCta onCta={scrollToForm} />
+        <FinalCta onCta={scrollToForm} />
       </main>
 
       <Footer />

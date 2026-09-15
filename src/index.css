@@ -63,6 +63,15 @@
     text-wrap: pretty;
   }
 
+  img,
+  svg {
+    max-width: 100%;
+  }
+
+  img {
+    display: block;
+  }
+
   /* One consistent focus ring everywhere, visible on both paper and ink. */
   :focus-visible {
     outline: 2px solid var(--color-gold);

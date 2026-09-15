@@ -1,5 +1,5 @@
 import { useId, useRef, useState, type FormEvent } from 'react';
-import { ArrowRight, Check, Loader2, Lock, TriangleAlert } from 'lucide-react';
+import { ArrowRight, Check, Loader2, TriangleAlert } from 'lucide-react';
 import { submitLead } from '../lib/api';
 import { track } from '../lib/analytics';
 import { VALIDATORS, formatPhone, type Field } from '../lib/validate';
@@ -12,9 +12,9 @@ type Errors = Partial<Record<Field, string>>;
 const EMPTY: Values = { fullName: '', phone: '', email: '' };
 
 const FIELDS: { name: Field; label: string; type: string; autoComplete: string; placeholder: string; inputMode?: 'text' | 'tel' | 'email' }[] = [
-  { name: 'fullName', label: 'Your name', type: 'text', autoComplete: 'name', placeholder: 'Ananya Sharma' },
-  { name: 'phone', label: 'Mobile number', type: 'tel', autoComplete: 'tel-national', placeholder: '98765 43210', inputMode: 'tel' },
-  { name: 'email', label: 'Email', type: 'email', autoComplete: 'email', placeholder: 'you@example.com', inputMode: 'email' },
+  { name: 'fullName', label: 'FULL NAME', type: 'text', autoComplete: 'name', placeholder: 'Enter Your Full Name' },
+  { name: 'phone', label: 'PHONE NUMBER', type: 'tel', autoComplete: 'tel-national', placeholder: 'Enter Your Number', inputMode: 'tel' },
+  { name: 'email', label: 'EMAIL ADDRESS', type: 'email', autoComplete: 'email', placeholder: 'Enter Your Email', inputMode: 'email' },
 ];
 
 interface LeadFormProps {
@@ -38,7 +38,6 @@ export function LeadForm({ id = 'lead-form', onSuccess, variant = 'hero' }: Lead
   const honeypot = useRef('');
   const mountedAt = useRef(Date.now());
   const startedTracked = useRef(false);
-
   const soldOut = availability.soldOut;
 
   function setField(name: Field, raw: string) {
@@ -65,7 +64,7 @@ export function LeadForm({ id = 'lead-form', onSuccess, variant = 'hero' }: Lead
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    if (submitting || done) return;
+    if (submitting || done || soldOut) return;
 
     const next: Errors = {};
     for (const { name } of FIELDS) {
@@ -160,14 +159,17 @@ export function LeadForm({ id = 'lead-form', onSuccess, variant = 'hero' }: Lead
     >
       <SlotMeter />
 
-      <h2 className="mt-5 font-display text-xl leading-snug font-semibold text-ink sm:text-2xl">
-        {soldOut ? 'Join tomorrow’s list' : 'Claim a free spot'}
+      <p className="eyebrow">ACCESS FORM</p>
+      <h2 className="mt-3 font-display text-xl leading-snug font-semibold text-ink sm:text-2xl">
+        Make it Yours.
       </h2>
-      <p className="mt-1.5 text-sm leading-relaxed text-ink-70">
-        {soldOut
-          ? 'Today’s 20 are taken. Leave your details and you go to the front of tomorrow’s queue.'
-          : 'Three details. We’ll set you up on WhatsApp within 24 hours.'}
+      <p className="mt-1 text-sm leading-relaxed text-ink-70">
+        Be one of the first 20 users to experience <strong>14-day free beta access</strong> to HOY
+        before the wider launch.
       </p>
+      {/* <p className="mt-4 text-sm leading-relaxed text-ink-70">
+        Tell us a little about yourself, upload your wardrobe and let HOY start styling around you.
+      </p> */}
 
       <form onSubmit={handleSubmit} noValidate className="mt-6 space-y-4">
         {FIELDS.map(({ name, label, type, autoComplete, placeholder, inputMode }) => {
@@ -254,7 +256,7 @@ export function LeadForm({ id = 'lead-form', onSuccess, variant = 'hero' }: Lead
 
         <button
           type="submit"
-          disabled={submitting || loading}
+          disabled={submitting || loading || soldOut}
           className="group flex w-full items-center justify-center gap-2 rounded-xl bg-ink px-6 py-4
             font-display text-[0.9375rem] font-semibold text-paper transition-all
             hover:bg-gold-dark active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
@@ -266,16 +268,13 @@ export function LeadForm({ id = 'lead-form', onSuccess, variant = 'hero' }: Lead
             </>
           ) : (
             <>
-              {soldOut ? 'Join tomorrow’s list' : 'Claim my free spot'}
+              GET MY FREE BETA ACCESS
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </>
           )}
         </button>
 
-        <p className="flex items-center justify-center gap-1.5 text-center text-[0.75rem] text-ink-50">
-          <Lock className="size-3 shrink-0" strokeWidth={2} />
-          No payment. No spam. Your details stay with us.
-        </p>
+        <p className="text-center text-[0.75rem] text-ink-50">Your 14-day HOY experience starts here.</p>
       </form>
     </div>
   );

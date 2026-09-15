@@ -18,7 +18,7 @@ function countdown(ms: number): string {
  */
 export function SlotMeter() {
   const { availability, loading, offline } = useAvailability();
-  const { capacity, claimed, remaining, soldOut, resetsInMs } = availability;
+  const { capacity, remaining, soldOut, resetsInMs } = availability;
 
   // Tick the reset countdown locally rather than re-polling for it.
   const [resetIn, setResetIn] = useState(resetsInMs);
@@ -32,48 +32,45 @@ export function SlotMeter() {
   // corrects to "3 left" reads as fabricated.
   if (loading || offline) {
     return (
-      <div className="flex items-center gap-2.5" aria-hidden="true">
-        <span className="h-1.5 w-full max-w-[8rem] animate-pulse rounded-full bg-line" />
-        <span className="h-3 w-24 animate-pulse rounded bg-line" />
+      <div className="-mx-6 -mt-6 mb-6 rounded-t-2xl border-b border-line bg-white px-5 py-4 sm:-mx-7 sm:-mt-7 sm:mb-7 sm:px-7 lg:-mx-8 lg:-mt-8 lg:mb-8 lg:px-8" aria-hidden="true">
+        <div className="flex items-center justify-between gap-4">
+          <span className="h-4 w-36 animate-pulse rounded bg-line" />
+          <span className="h-4 w-24 animate-pulse rounded bg-line" />
+        </div>
+        <span className="mt-3 block h-1.5 w-full animate-pulse rounded-full bg-paper-2" />
       </div>
     );
   }
 
-  const pct = capacity > 0 ? Math.round((claimed / capacity) * 100) : 0;
+  const pct = capacity > 0 ? Math.round((remaining / capacity) * 100) : 0;
   const low = !soldOut && remaining <= 5;
 
   return (
-    <div>
-      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+    <div className="-mx-6 -mt-6 mb-6 rounded-t-2xl border-b border-line bg-white px-5 py-4 sm:-mx-7 sm:-mt-7 sm:mb-7 sm:px-7 lg:-mx-8 lg:-mt-8 lg:mb-8 lg:px-8">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
         <p
-          className="text-[0.8125rem] font-semibold"
+          className="text-[0.8125rem] font-semibold text-ink"
           // Announce changes politely so a screen-reader user hears the count drop.
           aria-live="polite"
         >
-          {soldOut ? (
-            <span className="text-ink-70">All 20 spots taken today</span>
-          ) : (
-            <span className={low ? 'text-clay' : 'text-ink'}>
-              {remaining} of {capacity} spots left today
-            </span>
-          )}
+          <span className={low ? 'text-clay' : undefined}>
+            {remaining} of {capacity} spots left today
+          </span>
         </p>
         <p className="text-[0.75rem] text-ink-50">Resets in {countdown(resetIn)}</p>
       </div>
 
       <div
-        className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-paper-2"
+        className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-paper-2"
         role="progressbar"
         aria-valuemin={0}
         aria-valuemax={capacity}
-        aria-valuenow={claimed}
-        aria-label={`${claimed} of ${capacity} daily spots claimed`}
+        aria-valuenow={remaining}
+        aria-label={`${remaining} of ${capacity} daily spots left`}
       >
         <div
-          className={`h-full rounded-full transition-[width] duration-700 ease-out ${
-            soldOut ? 'bg-ink-30' : low ? 'bg-clay' : 'bg-gold'
-          }`}
-          style={{ width: `${Math.max(pct, claimed > 0 ? 4 : 0)}%` }}
+          className={`h-full rounded-full bg-ink-30 transition-[width] duration-700 ease-out ${low ? 'bg-clay' : ''}`}
+          style={{ width: `${pct}%` }}
         />
       </div>
     </div>
